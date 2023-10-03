@@ -8,7 +8,8 @@ const AppRouter = () => {
       <Router>
         <Routes>
           <Route>
-            <Route path="/inventory" element={<AllInventoryPage />} />
+            <Route path="/" element={<AllInventoryPage />} />
+            {/* //TODO CORREGIR LA RUTA*/}
             <Route path="/inventory/add-item" element={<AddItemPage />} />
             <Route path="/inventory/add-supplier" element={<AddSupplierPage />} />
           </Route>

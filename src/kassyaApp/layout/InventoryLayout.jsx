@@ -26,7 +26,7 @@ const InventoryLayout = ({ children }) => {
               Añadir Proveedor
             </BtnMenu>
             <BtnMenu
-              to="/inventory"
+              to="/"
               className={
                 location.pathname === "/inventory" ? "active" : ""
               }
