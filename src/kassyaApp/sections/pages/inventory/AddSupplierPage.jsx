@@ -20,12 +20,12 @@ const AddSupplierPage = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="id">
+                <label htmlFor="nif">
                   Identificación(ID, NIT, NIF, RIF, ETC)
                 </label>
                 <input
                   type="text"
-                  name="id"
+                  name="nif"
                   // value={formValues.nombre}
                   // onChange={onInputChange}
                 />
@@ -33,11 +33,11 @@ const AddSupplierPage = () => {
             </div>
             <div className="group group2">
               <div className="input-group">
-                <label htmlFor="contr">Contribuyente</label>
-                <select name="contr" id="">
+                <label htmlFor="entity">Contribuyente</label>
+                <select name="entity" id="">
                   <option value="">-- Seleccione --</option>
                   <option value="natural">Persona Natural</option>
-                  <option value="juridica">Persona Jurídica</option>
+                  <option value="legal">Persona Jurídica</option>
                 </select>
               </div>
               <div className="input-group">
@@ -62,6 +62,18 @@ const AddSupplierPage = () => {
                 />
               </div>
               <div className="input-group">
+                <label htmlFor="zipCode">Código Postal</label>
+                <input
+                  name="zipCode"
+                  type="number"
+                  // value={formValues.nombre}
+                  // onChange={onInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="group group4">
+            <div className="input-group">
                 <label htmlFor="tel">Teléfono</label>
                 <input
                   name="tel"
@@ -70,9 +82,6 @@ const AddSupplierPage = () => {
                   // onChange={onInputChange}
                 />
               </div>
-            </div>
-
-            <div className="group group4">
               <div className="input-group">
                 <label htmlFor="webSite">Sitio Web</label>
                 <input
@@ -82,7 +91,6 @@ const AddSupplierPage = () => {
                   // onChange={onInputChange}
                 />
               </div>
-              <div className="input-group"></div>
             </div>
 
             <h4>Información Bancaria</h4>

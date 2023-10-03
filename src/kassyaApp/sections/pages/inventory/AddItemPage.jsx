@@ -63,6 +63,7 @@ const AddItemPage = () => {
                   </option>
                 ))}
               </select>
+              {/* //TODO: CAMBIAR EN EL VALUE EL ID DE ACUERDO CON EL SCHEMA */}
             </div>
             <div className="input-group">
               <label htmlFor="amount">Cantidad</label>
