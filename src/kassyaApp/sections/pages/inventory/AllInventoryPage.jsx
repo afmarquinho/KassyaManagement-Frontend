@@ -5,7 +5,7 @@ const AllInventoryPage = () => {
   const inventario = [
     {
       name: "item1",
-      ref: "A40-23",
+      ref: "A40-20",
       supplier: "José Jorge",
       amount: "30",
       unit: "unidad",
@@ -14,7 +14,7 @@ const AllInventoryPage = () => {
     },
     {
       name: "item2",
-      ref: "A40-23",
+      ref: "A40-22",
       supplier: "José Pérez",
       amount: "100",
       unit: "unidad",
@@ -23,7 +23,7 @@ const AllInventoryPage = () => {
     },
     {
       name: "item3",
-      ref: "A40-23",
+      ref: "A40-24",
       supplier: "José Pérez",
       amount: "100",
       unit: "unidad",
@@ -32,7 +32,7 @@ const AllInventoryPage = () => {
     },
     {
       name: "item4",
-      ref: "A40-23",
+      ref: "A40-26",
       supplier: "José Pérez",
       amount: "100",
       unit: "unidad",
@@ -57,7 +57,7 @@ const AllInventoryPage = () => {
           </thead>
           <tbody>
             {inventario.map((item) => (
-              <tr>
+              <tr  key={item.ref}>
                 <td>{item.name}</td>
                 <td>{item.ref}</td>
                 <td>{item.supplier}</td>

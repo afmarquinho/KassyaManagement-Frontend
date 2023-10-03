@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 
 const InventoryLayout = ({ children }) => {
   return (
@@ -28,15 +29,16 @@ const InventoryLayout = ({ children }) => {
             <BtnMenu
               to="/"
               className={
-                location.pathname === "/inventory" ? "active" : ""
+                location.pathname === "/" ? "active" : ""
               }
             >
               Ver Inventario
             </BtnMenu>
           </StyledCol>
-          <Col xs={12} md={10} lg={11} className="pt-4">
+
+          <ChildrenCol xs={12} md={10} lg={11} className="pt-4">
             {children}
-          </Col>
+          </ChildrenCol>
         </Row>
       </Container>
     </>
@@ -49,6 +51,10 @@ const StyledCol = styled(Col)`
   height: 100vh;
   padding: 0;
   background-color: ${(props) => props.theme.blueGray};
+  @media (min-width: 768px) {
+    position: relative;
+    top: 4rem;
+  }
   h2 {
     padding: 1.2rem 0 1.2rem 0.5rem;
     margin: 0;
@@ -76,3 +82,7 @@ const BtnMenu = styled(Link)`
 const BtnMenu1 = styled(BtnMenu)`
   border-top: 1px solid #37474f;
 `;
+
+const ChildrenCol = styled(Col)`
+margin: 0 auto;
+`
