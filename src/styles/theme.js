@@ -1,0 +1,15 @@
+export const theme = {
+  main: "#00bcd4",
+  blue: "#2196f3",
+  deepBlue: "#161638",
+  blueGray: "#607d8b",
+  background: "#f0f0f0",
+  gray:"#90a4ae",
+  deepGray:"#455a64",
+  softGray:"#e0e0e0",
+  primaryText: "#263238",
+  secondaryText: "#eeeeee",
+  white: "#ffffff",
+  black: "#000000",
+  fontStyled: "Nunito Sans, sans-serif",
+};

@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,400;6..12,900&display=swap");
+
+:root {
+  --primario: #00bcd4;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  scroll-behavior: smooth;
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+    line-height: 1.8;
+  }
+}
+h1,
+h2,
+h3 {
+  font-weight: 900;
+  margin: 2rem 0;
+}
+
+h2 {
+  font-size: 2.3rem;
+  @media (min-width: 768px) {
+    font-size: 4.6rem;
+  }
+}
+h3 {
+  font-size: 2rem;
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+}
+h5 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  @media (min-width: 768px) {
+    font-size: 1.7rem;
+  }
+}
+h6 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* //*GLOBAL UTILITIES */
+.contenedor {
+  max-width: 120rem;
+  margin: 0 auto;
+  width: 90%;
+}
+.d-flex {
+  display: flex;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.justify-btw {
+  justify-content: space-between;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-evn {
+  justify-content: space-evenly;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.align-top {
+  align-items: flex-start;
+}
+.text-center {
+  text-align: center;
+}
+
+.m-0 {
+  margin: 0;
+}
+.p-0 {
+  padding: 0;
+}
+.m-0-auto {
+  margin: 0 auto;
+}
+.text-white {
+  color: white;
+}
+.text-black {
+  color: black;
+}
+
+.wdt-100 {
+  width: 100%;
+}
+.hgt-100 {
+  height: 100%;
+}
+.ovf-hidden {
+  overflow: hidden;
+}
+.fst-italic {
+  font-style: italic;
+}
+.obj-fit-cover {
+  object-fit: cover;
+}
