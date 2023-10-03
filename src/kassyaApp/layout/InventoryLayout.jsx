@@ -8,7 +8,7 @@ const InventoryLayout = ({ children }) => {
       <Container fluid>
         <Row>
           <StyledCol xs={12} md={2} lg={1}>
-            <h2 className="inventory">INVETARIO</h2>
+            <h2 className="inventory">INVENTARIO</h2>
             <BtnMenu1
               to="/inventory/add-item"
               className={
