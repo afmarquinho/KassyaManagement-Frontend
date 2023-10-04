@@ -48,12 +48,11 @@ const InventoryLayout = ({ children }) => {
 export default InventoryLayout;
 
 const StyledCol = styled(Col)`
-  height: 100vh;
+  height: calc(100vh - 4rem);
   padding: 0;
   background-color: ${(props) => props.theme.blueGray};
   @media (min-width: 768px) {
-    position: relative;
-    top: 4rem;
+   
   }
   h2 {
     padding: 1.2rem 0 1.2rem 0.5rem;

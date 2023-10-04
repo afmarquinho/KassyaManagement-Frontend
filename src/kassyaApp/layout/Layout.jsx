@@ -12,7 +12,9 @@ const Layout = ({ children }) => {
               <h1>Kassya Management</h1>
               <span>Signed in as: Mark Otto</span>
             </div>
-            <Navbar />
+            <div className="navbar__container">
+              <Navbar />
+            </div>
           </StyledCol>
           <ChildrenCol xs={12}>{children}</ChildrenCol>
         </Row>
@@ -26,17 +28,24 @@ export default Layout;
 const StyledCol = styled(Col)`
   height: 4rem;
   background-color: ${(props) => props.theme.deepBlue};
+  justify-content: space-between;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   @media (min-width: 768px) {
-    position: fixed; 
     z-index: 100;
   }
 
   div {
     display: flex;
+    height: 100%;
     gap: 2rem;
+    justify-content: start;
+    align-items: center;
+  }
+  .navbar__container{
+    padding-right: 2rem;
   }
   span {
     margin: 0;
@@ -48,9 +57,7 @@ const StyledCol = styled(Col)`
     font-size: 1.1rem;
     @media (min-width: 576px) {
       display: flex;
-      
     }
   }
 `;
-const ChildrenCol = styled(Col)`
-padding-top: 6rem;`
+const ChildrenCol = styled(Col)``;

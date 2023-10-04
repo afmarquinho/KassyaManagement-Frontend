@@ -74,7 +74,7 @@ const Button = styled.button`
   border: none;
   height: 3rem;
   width: 5rem;
-  position: ${props => props.$menuAct ? "fixed" : "absolute"};;
+  position: ${props => props.$menuAct ? "fixed" : ""};;
   right: 0;
   z-index: 50;
   display: flex;
