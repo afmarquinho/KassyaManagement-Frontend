@@ -1,60 +1,61 @@
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
 const InventoryLayout = ({ children }) => {
+  const [mostrarMenu, setMostarMenu] = useState(false);
+
   return (
     <>
-      <Container fluid>
-        <Row>
-          <StyledCol xs={12} md={2} lg={1}>
-            <h2 className="inventory">INVENTARIO</h2>
-            <BtnMenu1
-              to="/inventory/add-item"
-              className={
-                location.pathname === "/inventory/add-item" ? "active" : ""
-              }
-            >
-              Añadir Ítem
-            </BtnMenu1>
-            <BtnMenu
-              to="/inventory/add-supplier"
-              className={
-                location.pathname === "/inventory/add-supplier" ? "active" : ""
-              }
-            >
-              Añadir Proveedor
-            </BtnMenu>
-            <BtnMenu
-              to="/"
-              className={
-                location.pathname === "/" ? "active" : ""
-              }
-            >
-              Ver Inventario
-            </BtnMenu>
-          </StyledCol>
-
-          <ChildrenCol xs={12} md={10} lg={11} className="pt-4">
-            {children}
-          </ChildrenCol>
-        </Row>
-      </Container>
+      <Menu
+        onClick={(e) => setMostarMenu(!mostrarMenu)}
+      >
+        Menú
+      </Menu>
+      <NAV  $mostrarMenu={mostrarMenu}>
+        <div className="nav__content">
+          <h5 className="inventory">INVENTARIO</h5>
+          <BtnMenu1
+            to="/inventory/add-item"
+            className={
+              location.pathname === "/inventory/add-item" ? "active" : ""
+            }
+          >
+            Añadir Ítem
+          </BtnMenu1>
+          <BtnMenu
+            to="/inventory/add-supplier"
+            className={
+              location.pathname === "/inventory/add-supplier" ? "active" : ""
+            }
+          >
+            Añadir Proveedor
+          </BtnMenu>
+          <BtnMenu to="/" className={location.pathname === "/" ? "active" : ""}>
+            Ver Inventario
+          </BtnMenu>
+        </div>
+      </NAV>
+      <Content className="content">{children}</Content>
     </>
   );
 };
 
 export default InventoryLayout;
 
-const StyledCol = styled(Col)`
-  height: calc(100vh - 4rem);
-  padding: 0;
+const NAV = styled.nav`
+  width: 12rem;
   background-color: ${(props) => props.theme.blueGray};
-  @media (min-width: 768px) {
-   
+  position: fixed;
+  z-index: 100;
+  top: 4rem;
+  bottom: 0;
+  left: 0;
+  .nav__content {
+    position: sticky;
   }
-  h2 {
+  .nav__content h5 {
     padding: 1.2rem 0 1.2rem 0.5rem;
     margin: 0;
     background-color: ${(props) => props.theme.main};
@@ -63,7 +64,13 @@ const StyledCol = styled(Col)`
   .active {
     background-color: ${(props) => props.theme.deepGray};
   }
+  @media (max-width: 768px) {
+    transition: transform 0.5s ease;
+    transform-origin: left;
+    transform: ${props => props.$mostrarMenu ? "scaleX(1)" : "scaleX(0)"};
+  }
 `;
+
 const BtnMenu = styled(Link)`
   width: 100%;
   padding: 1rem 0 1rem 0.5rem;
@@ -79,9 +86,31 @@ const BtnMenu = styled(Link)`
   }
 `;
 const BtnMenu1 = styled(BtnMenu)`
-  border-top: 1px solid #37474f;
+  border-top: 1px solid #95d1f0;
 `;
 
-const ChildrenCol = styled(Col)`
-margin: 0 auto;
-`
+const Content = styled.div`
+  width: calc(100vw - 14rem);
+  margin: 1rem 1rem 1rem 13rem;
+  @media (max-width: 768px) {
+    margin: 1rem auto;
+
+    width: 100%;
+  }
+`;
+const Menu = styled.button`
+  background-color: transparent;
+  color: ${(props) => props.theme.main};
+  border: 2px solid ${(props) => props.theme.main};
+  width: 6rem;
+  height: 3rem;
+  border-radius: 4px;
+  position: fixed;
+  top: 0.5rem;
+  right: 50%;
+  transform: translateX(100%);
+  @media (min-width: 768px) {
+    display: none;
+  }
+ 
+`;

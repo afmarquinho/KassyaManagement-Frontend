@@ -74,15 +74,16 @@ const Button = styled.button`
   border: none;
   height: 3rem;
   width: 5rem;
-  position: ${props => props.$menuAct ? "fixed" : ""};;
+  position: ${props => props.$menuAct ? "fixed" : ""};
   right: 0;
-  z-index: 50;
+  z-index: 300;
+  right: 2rem;
   display: flex;
+  justify-content: end;
   padding: 0;
   margin: 0;
   @media (min-width: 576px) {
     width: 12rem;
-    right: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,6 +109,7 @@ const Menu = styled.div`
   width: 20rem;
   height: 100vh;
   position: fixed;
+  z-index: 250;
   padding-top: 6rem;
   background-color: ${(props) => props.theme.deepGray};
   top: 0;

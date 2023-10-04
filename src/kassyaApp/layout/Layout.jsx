@@ -8,15 +8,17 @@ const Layout = ({ children }) => {
       <Container fluid className="p-0">
         <Row>
           <StyledCol xs={12}>
-            <div>
-              <h1>Kassya Management</h1>
-              <span>Signed in as: Mark Otto</span>
-            </div>
-            <div className="navbar__container">
-              <Navbar />
-            </div>
+            <NAVContent>
+              <div>
+                <h1>Kassya Management</h1>
+                <span>Signed in as: Mark Otto</span>
+              </div>
+              <div className="navbar">
+                <Navbar />
+              </div>
+            </NAVContent>
           </StyledCol>
-          <ChildrenCol xs={12}>{children}</ChildrenCol>
+          <Col xs={12}>{children}</Col>
         </Row>
       </Container>
     </>
@@ -26,6 +28,8 @@ const Layout = ({ children }) => {
 export default Layout;
 
 const StyledCol = styled(Col)`
+height: 4rem;`
+const NAVContent = styled.div`
   height: 4rem;
   background-color: ${(props) => props.theme.deepBlue};
   justify-content: space-between;
@@ -34,6 +38,9 @@ const StyledCol = styled(Col)`
   justify-content: space-between;
   align-items: center;
   @media (min-width: 768px) {
+    position: fixed;
+    left:0;
+    right:0;
     z-index: 100;
   }
 
@@ -44,7 +51,7 @@ const StyledCol = styled(Col)`
     justify-content: start;
     align-items: center;
   }
-  .navbar__container{
+  .navbar {
     padding-right: 2rem;
   }
   span {
@@ -60,4 +67,3 @@ const StyledCol = styled(Col)`
     }
   }
 `;
-const ChildrenCol = styled(Col)``;
