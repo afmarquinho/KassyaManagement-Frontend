@@ -2,6 +2,7 @@ import styled from "styled-components";
 import InventoryLayout from "../../../layout/InventoryLayout";
 import { inventory } from "../../../../db/db.js";
 
+
 const AllInventoryPage = () => {
   return (
     <InventoryLayout>

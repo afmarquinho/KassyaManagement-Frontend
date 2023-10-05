@@ -1,33 +1,10 @@
 import styled from "styled-components";
 import InventoryLayout from "../../../layout/InventoryLayout";
+import { suppliers } from "../../../../db/db";
+
 
 const AddItemPage = () => {
-  const suppliers = [
-    {
-      name: "Pedro Pérez",
-      id: "123455",
-      address: "cra-24#57",
-      city: "Cartagena",
-      state: "Bolívar",
-      country: "Colombia",
-    },
-    {
-      name: "Fulano de Tal",
-      id: "323455",
-      address: "cra-25#61",
-      city: "Medellín",
-      state: "Antioquia",
-      country: "Colombia",
-    },
-    {
-      name: "Dua Lipa",
-      id: "960455",
-      address: "cra-34-26",
-      city: "Bogotá",
-      state: "Cundinamarca",
-      country: "Colombia",
-    },
-  ];
+  
   return (
     <InventoryLayout>
       <>
@@ -58,8 +35,8 @@ const AddItemPage = () => {
               <select name="supplier" id="">
                 <option value="">-- Seleccione --</option>
                 {suppliers.map((supplier) => (
-                  <option key={supplier.id} value={supplier.name}>
-                    {supplier.name}
+                  <option key={supplier.nif} value={supplier.businessName}>
+                    {supplier.businessName}
                   </option>
                 ))}
               </select>
@@ -78,8 +55,10 @@ const AddItemPage = () => {
               <label htmlFor="unit">Unidad</label>
               <select name="unit" id="">
                 <option value="">-- Seleccione --</option>
-                <option value="volumen">Volumen</option>
                 <option value="unidad">Unidad</option>
+                <option value="g">Gramos</option>
+                <option value="l">Litros</option>
+                <option value=",k">Kilogramos</option>
               </select>
             </div>
             <div className="input-group">
