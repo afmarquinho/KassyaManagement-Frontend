@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const InventoryLayout = ({ children }) => {
+const SupplierLayout = ({ children }) => {
   const [mostrarMenu, setMostarMenu] = useState(false);
 
   return (
@@ -15,17 +14,17 @@ const InventoryLayout = ({ children }) => {
       </Menu>
       <NAV  $mostrarMenu={mostrarMenu}>
         <div className="nav__content">
-          <h5 className="inventory">INVENTARIO</h5>
+          <h5 className="supplier">PROVEEDORES</h5>
           <BtnMenu1
-            to="/inventory/add-item"
+            to="/supplier/add-supplier"
             className={
-              location.pathname === "/inventory/add-item" ? "active" : ""
+              location.pathname === "/supplier/add-supplier" ? "active" : ""
             }
           >
-            Añadir Ítem
+            Añadir Proveedor
           </BtnMenu1>
-          <BtnMenu to="/" className={location.pathname === "/" ? "active" : ""}>
-            Ver Inventario
+          <BtnMenu to="/supplier" className={location.pathname === "/" ? "active" : ""}>
+            Ver Proveedores
           </BtnMenu>
         </div>
       </NAV>
@@ -34,7 +33,7 @@ const InventoryLayout = ({ children }) => {
   );
 };
 
-export default InventoryLayout;
+export default SupplierLayout;
 
 const NAV = styled.nav`
   width: 12rem;

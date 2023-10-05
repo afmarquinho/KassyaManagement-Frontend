@@ -54,7 +54,7 @@ const Navbar = () => {
             Inventarios
           </BtnMenu1>
           <BtnMenu
-            to="/"
+            to="/supplier"
             className={
               location.pathname === "/inventory/add-supplier" ? "active" : ""
             }

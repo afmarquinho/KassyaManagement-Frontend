@@ -3,27 +3,27 @@ import Layout from "../kassyaApp/layout/Layout";
 import {
   AddItemPage,
   AddSupplierPage,
-  AllInventoryPage,
+  InventoryListPage,
+  SupplierListPage,
 } from "../kassyaApp/sections/pages";
 
 const AppRouter = () => {
   return (
     <>
-  
-        <Layout>
-          <Routes>
-            <Route>
-              <Route path="/" element={<AllInventoryPage />} />
-              {/* //TODO CORREGIR LA RUTA*/}
-              <Route path="/inventory/add-item" element={<AddItemPage />} />
-              <Route
-                path="/inventory/add-supplier"
-                element={<AddSupplierPage />}
-              />
-            </Route>
-          </Routes>
-        </Layout>
-     
+      <Layout>
+        <Routes>
+          <Route>
+            <Route path="/" element={<InventoryListPage />} />
+            {/* //TODO CORREGIR LA RUTA*/}
+            <Route path="inventory/add-item" element={<AddItemPage />} />
+          </Route>
+          <Route>
+            <Route path="supplier/add-supplier" element={<AddSupplierPage />} />
+            <Route path="supplier" element={<SupplierListPage />} />
+            
+          </Route>
+        </Routes>
+      </Layout>
     </>
   );
 };

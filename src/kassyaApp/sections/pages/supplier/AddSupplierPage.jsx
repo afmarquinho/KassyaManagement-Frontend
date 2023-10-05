@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import InventoryLayout from "../../../layout/InventoryLayout";
+import SupplierLayout from "../../../layout/SupplierLayout";
+
 
 const AddSupplierPage = () => {
   return (
-    <InventoryLayout>
+    <SupplierLayout>
       <>
         <Form>
           <h3 className="titulo">Registrar Nuevo Proveedor</h3>
@@ -173,7 +174,7 @@ const AddSupplierPage = () => {
           </div>
         </Form>
       </>
-    </InventoryLayout>
+    </SupplierLayout>
   );
 };
 
