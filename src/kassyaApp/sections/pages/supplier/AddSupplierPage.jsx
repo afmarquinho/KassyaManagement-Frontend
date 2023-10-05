@@ -3,6 +3,11 @@ import SupplierLayout from "../../../layout/SupplierLayout";
 import useForm from "../../../../helpers/useForm";
 import { addSupplierAsync } from "../../../../redux/thunks/supplierThunks";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import Alerta from "../../../components/Alerta";
+import Spinner from "../../../components/Spinner";
+
+
 const initialValues = {
   businessName: "",
   nif: "",
@@ -24,18 +29,22 @@ const AddSupplierPage = () => {
   const { formValues, onInputChange, onReset } = useForm(initialValues);
   const dispatch = useDispatch();
 
+  const status = useSelector((state) => state.supplier.status);
+  const msg = useSelector((state) => state.supplier.msg);
+  const loading = useSelector((state) => state.supplier.loaging);
+
   const onCreateSupplier = async (e) => {
     e.preventDefault();
     await dispatch(addSupplierAsync(formValues));
-    
   };
 
   return (
     <SupplierLayout>
       <>
-        <Form onSubmit={onCreateSupplier}>
+      {loading ? <Spinner/> :  <Form onSubmit={onCreateSupplier}>
           <h3 className="titulo">Registrar Nuevo Proveedor</h3>
           <div className="container">
+            <Alerta status={status} msg={msg} />
             <h4>Información del Proveedor</h4>
             <div className="group group1">
               <div className="input-group">
@@ -204,7 +213,8 @@ const AddSupplierPage = () => {
               </BtnSubmmit>
             </div>
           </div>
-        </Form>
+        </Form>}
+       
       </>
     </SupplierLayout>
   );

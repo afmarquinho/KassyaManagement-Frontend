@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-  margin: 0;
+  margin: 0 0 1rem 0;
   .warning {
     margin: 0;
     color: #b71c1c;
@@ -28,19 +28,19 @@ const Div = styled.div`
   }
 `;
 
-const Alerta = ({ mensajeAlerta }) => {
+const Alerta = ({ status, msg }) => {
   return (
     <Div>
       <p
         className={`${
-          mensajeAlerta.warning
+          status === "warning"
             ? "warning"
-            : mensajeAlerta.ok
-            ? "success"
-            : "error"
+            : status === "error"
+            ? "error"
+            : "success"
         }`}
       >
-        {mensajeAlerta.msg}
+        {msg}
       </p>
     </Div>
   );
