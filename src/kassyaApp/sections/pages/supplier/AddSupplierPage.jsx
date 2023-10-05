@@ -1,23 +1,50 @@
 import styled from "styled-components";
 import SupplierLayout from "../../../layout/SupplierLayout";
-
+import useForm from "../../../../helpers/useForm";
+import { addSupplierAsync } from "../../../../redux/thunks/supplierThunks";
+import { useDispatch } from "react-redux";
+const initialValues = {
+  businessName: "",
+  nif: "",
+  entity: "",
+  country: "",
+  address: "",
+  zipCode: "",
+  tel: "",
+  webSite: "",
+  bank: "",
+  bankingAccount: "",
+  paymentTerms: "",
+  contactName: "",
+  contactNumber: "",
+  contactEmail: "",
+};
 
 const AddSupplierPage = () => {
+  const { formValues, onInputChange, onReset } = useForm(initialValues);
+  const dispatch = useDispatch();
+
+  const onCreateSupplier = async (e) => {
+    e.preventDefault();
+    await dispatch(addSupplierAsync(formValues));
+    
+  };
+
   return (
     <SupplierLayout>
       <>
-        <Form>
+        <Form onSubmit={onCreateSupplier}>
           <h3 className="titulo">Registrar Nuevo Proveedor</h3>
           <div className="container">
             <h4>Información del Proveedor</h4>
             <div className="group group1">
               <div className="input-group">
-                <label htmlFor="name">Razón Social</label>
+                <label htmlFor="businessName">Razón Social</label>
                 <input
                   type="text"
-                  name="name"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  name="businessName"
+                  value={formValues.businessName}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group">
@@ -27,15 +54,20 @@ const AddSupplierPage = () => {
                 <input
                   type="text"
                   name="nif"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.nif}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
             <div className="group group2">
               <div className="input-group">
                 <label htmlFor="entity">Contribuyente</label>
-                <select name="entity" id="">
+                <select
+                  name="entity"
+                  id=""
+                  value={formValues.entity}
+                  onChange={onInputChange}
+                >
                   <option value="">-- Seleccione --</option>
                   <option value="natural">Persona Natural</option>
                   <option value="legal">Persona Jurídica</option>
@@ -46,8 +78,8 @@ const AddSupplierPage = () => {
                 <input
                   name="country"
                   type="text"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.country}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -58,8 +90,8 @@ const AddSupplierPage = () => {
                 <input
                   name="address"
                   type="text"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.address}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group">
@@ -67,20 +99,20 @@ const AddSupplierPage = () => {
                 <input
                   name="zipCode"
                   type="number"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.zipCode}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
 
             <div className="group group4">
-            <div className="input-group">
+              <div className="input-group">
                 <label htmlFor="tel">Teléfono</label>
                 <input
                   name="tel"
                   type="tel"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.tel}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group">
@@ -88,8 +120,8 @@ const AddSupplierPage = () => {
                 <input
                   name="webSite"
                   type="tel"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.webSite}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -99,10 +131,10 @@ const AddSupplierPage = () => {
               <div className="input-group">
                 <label htmlFor="bank">Banco</label>
                 <input
-                  name="banck"
+                  name="bank"
                   type="text"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.bank}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group">
@@ -112,8 +144,8 @@ const AddSupplierPage = () => {
                 <input
                   name="bankingAccount"
                   type="text"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.bankingAccount}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -124,8 +156,8 @@ const AddSupplierPage = () => {
                 <input
                   name="paymentTerms"
                   type="number"
-                  // value={formValues.nombre}
-                  // onChange={onInputChange}
+                  value={formValues.paymentTerms}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group"></div>
@@ -138,8 +170,8 @@ const AddSupplierPage = () => {
                 <input
                   name="contactName"
                   type="text"
-                  // value={formValues.descripcion}
-                  // onChange={onInputChange}
+                  value={formValues.contactName}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group">
@@ -147,8 +179,8 @@ const AddSupplierPage = () => {
                 <input
                   name="contactNumber"
                   type="tel"
-                  // value={formValues.descripcion}
-                  // onChange={onInputChange}
+                  value={formValues.contactNumber}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -159,8 +191,8 @@ const AddSupplierPage = () => {
                 <input
                   name="contactEmail"
                   type="email"
-                  // value={formValues.descripcion}
-                  // onChange={onInputChange}
+                  value={formValues.contactEmail}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group"></div>

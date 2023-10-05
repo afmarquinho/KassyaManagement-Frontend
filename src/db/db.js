@@ -1,7 +1,7 @@
 export const suppliers = [
   {
     businessName: "Ntag",
-    nif: "83-310-1549",
+    nif: "833101549",
     entity: "natural",
     country: "Jordan",
     address: "PO Box 20734",
@@ -17,7 +17,7 @@ export const suppliers = [
   },
   {
     businessName: "Feedbug",
-    nif: "51-998-6529",
+    nif: "519986529",
     entity: "natural",
     country: "Philippines",
     address: "PO Box 66109",
@@ -33,7 +33,7 @@ export const suppliers = [
   },
   {
     businessName: "Quire",
-    nif: "61-623-5938",
+    nif: "616235938",
     entity: "natural",
     country: "Poland",
     address: "Suite 15",
@@ -49,7 +49,7 @@ export const suppliers = [
   },
   {
     businessName: "Twitterworks",
-    nif: "74-805-3978",
+    nif: "748053978",
     entity: "legal",
     country: "China",
     address: "Suite 65",
@@ -65,7 +65,7 @@ export const suppliers = [
   },
   {
     businessName: "Podcat",
-    nif: "32-676-1123",
+    nif: "326761123",
     entity: "natural",
     country: "Malaysia",
     address: "Suite 65",
@@ -81,7 +81,7 @@ export const suppliers = [
   },
   {
     businessName: "Jabbertype",
-    nif: "37-461-0435",
+    nif: "370610435",
     entity: "natural",
     country: "Luxembourg",
     address: "PO Box 44392",
@@ -97,7 +97,7 @@ export const suppliers = [
   },
   {
     businessName: "Skinte",
-    nif: "27-762-6928",
+    nif: "277626928",
     entity: "legal",
     country: "United States",
     address: "PO Box 90852",
@@ -113,7 +113,7 @@ export const suppliers = [
   },
   {
     businessName: "Devpulse",
-    nif: "46-248-9921",
+    nif: "462489921",
     entity: "natural",
     country: "France",
     address: "Room 340",
@@ -129,7 +129,7 @@ export const suppliers = [
   },
   {
     businessName: "Twitterlist",
-    nif: "91-450-6448",
+    nif: "914506448",
     entity: "natural",
     country: "Costa Rica",
     address: "Room 1878",
@@ -145,7 +145,7 @@ export const suppliers = [
   },
   {
     businessName: "Gigabox",
-    nif: "95-261-6741",
+    nif: "952616741",
     entity: "natural",
     country: "Germany",
     address: "PO Box 352",

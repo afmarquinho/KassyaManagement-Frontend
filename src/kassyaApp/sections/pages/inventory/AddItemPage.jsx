@@ -1,14 +1,32 @@
 import styled from "styled-components";
 import InventoryLayout from "../../../layout/InventoryLayout";
 import { suppliers } from "../../../../db/db";
-
+import useForm from "../../../../helpers/useForm";
+import { addItemAsync } from "../../../../redux/thunks/inventoryThunks";
+import { useDispatch } from "react-redux";
+const initialValues = {
+  name: "",
+  ref: "",
+  supplier: "",
+  amount: "",
+  unit: "",
+  unitPrice: "",
+};
 
 const AddItemPage = () => {
-  
+  const { formValues, onInputChange, onReset } = useForm(initialValues);
+  const dispatch = useDispatch();
+
+  const onCreateArticle = async (e) => {
+    e.preventDefault();
+    console.log(formValues);
+    await dispatch(addItemAsync(formValues));
+  };
+
   return (
     <InventoryLayout>
       <>
-        <Form>
+        <Form onSubmit={onCreateArticle}>
           <h3 className="titulo">Registrar Nuevo Ítem</h3>
           <div className="container">
             <div className="input-group">
@@ -16,8 +34,8 @@ const AddItemPage = () => {
               <input
                 type="text"
                 name="name"
-                // value={formValues.nombre}
-                // onChange={onInputChange}
+                value={formValues.name}
+                onChange={onInputChange}
               />
             </div>
             <div className="input-group">
@@ -25,14 +43,19 @@ const AddItemPage = () => {
               <input
                 name="ref"
                 type="text"
-                // value={formValues.descripcion}
-                // onChange={onInputChange}
+                value={formValues.ref}
+                onChange={onInputChange}
               />
             </div>
 
             <div className="input-group">
               <label htmlFor="supplier">Proveedor</label>
-              <select name="supplier" id="">
+              <select
+                name="supplier"
+                id=""
+                value={formValues.supplier}
+                onChange={onInputChange}
+              >
                 <option value="">-- Seleccione --</option>
                 {suppliers.map((supplier) => (
                   <option key={supplier.nif} value={supplier.businessName}>
@@ -45,15 +68,20 @@ const AddItemPage = () => {
             <div className="input-group">
               <label htmlFor="amount">Cantidad</label>
               <input
-                name="amout"
+                name="amount"
                 type="number"
-                // value={formValues.descripcion}
-                // onChange={onInputChange}
+                value={formValues.amount}
+                onChange={onInputChange}
               />
             </div>
             <div className="input-group">
               <label htmlFor="unit">Unidad</label>
-              <select name="unit" id="">
+              <select
+                name="unit"
+                id=""
+                value={formValues.unit}
+                onChange={onInputChange}
+              >
                 <option value="">-- Seleccione --</option>
                 <option value="unidad">Unidad</option>
                 <option value="g">Gramos</option>
@@ -62,12 +90,12 @@ const AddItemPage = () => {
               </select>
             </div>
             <div className="input-group">
-              <label htmlFor="price">Precio Unitario en COP</label>
+              <label htmlFor="unitPrice">Precio Unitario en COP</label>
               <input
-                name="price"
+                name="unitPrice"
                 type="number"
-                // value={formValues.descripcion}
-                // onChange={onInputChange}
+                value={formValues.unitPricet}
+                onChange={onInputChange}
               />
             </div>
             <div className="input-btn">
