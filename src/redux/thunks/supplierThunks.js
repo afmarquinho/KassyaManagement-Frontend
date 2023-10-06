@@ -1,5 +1,10 @@
 import axios from "axios";
-import { addSupplier, setMsg, setStatus } from "../slices/supplierSlice";
+import {
+  addSupplier,
+  setMsg,
+  setStatus,
+  setLoading,
+} from "../slices/supplierSlice";
 
 export const addSupplierAsync = (item) => {
   return async (dispatch) => {
@@ -9,6 +14,8 @@ export const addSupplierAsync = (item) => {
         "http://localhost:4000/api/supplier/add-supplier",
         item
       );
+      // cambiar el loading a true para ver el spinner
+      dispatch(setLoading(true));
 
       // Si la solicitud es exitosa, actualiza el estado local de: lista de proveedores, status y msg
 
@@ -20,7 +27,7 @@ export const addSupplierAsync = (item) => {
       setTimeout(() => {
         dispatch(setStatus(null));
         dispatch(setMsg(null));
-      }, 6000);
+      }, 5000);
     } catch (error) {
       // actualizar estado local
       console.log(error);
