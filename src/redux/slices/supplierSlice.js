@@ -9,10 +9,13 @@ export const supplierSlice = createSlice({
     loading: false, // para agragr el spinner
   },
   reducers: {
+    setData: (state, action) => {
+      state.data = action.payload;
+    },
     //actualizar el listado de proveedores
     addSupplier: (state, action) => {
       const updatedSupplier = action.payload;
-      state.data.push(updatedSupplier);
+      state.data = [...state.data, updatedSupplier];
     },
     //actualizar el status para personalizar los estilos del componente ALERTTA
     setStatus: (state, action) => {
@@ -44,11 +47,12 @@ export const supplierSlice = createSlice({
 });
 
 export const {
+  setData,
   addSupplier,
   setStatus,
   setMsg,
   removeSupplier,
   updateSupplier,
-  setLoading
+  setLoading,
 } = supplierSlice.actions;
 export default supplierSlice.reducer;

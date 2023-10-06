@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { listSuppliersAsync } from "../../redux/thunks/supplierThunks";
+
+// ?NOTA: PARA EVITAR CONSULTAR LA BBDD MUCHAS VECES, ES MEJOR CARGAR EL STATE DE LA DATA UNA VEZ AL CARGAR EL LAYOUT.
 
 const SupplierLayout = ({ children }) => {
   const [mostrarMenu, setMostarMenu] = useState(false);
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    dispatch(listSuppliersAsync());
+  }, []);
 
   return (
     <>
-      <Menu
-        onClick={(e) => setMostarMenu(!mostrarMenu)}
-      >
-        Menú
-      </Menu>
-      <NAV  $mostrarMenu={mostrarMenu}>
+      <Menu onClick={(e) => setMostarMenu(!mostrarMenu)}>Menú</Menu>
+      <NAV $mostrarMenu={mostrarMenu}>
         <div className="nav__content">
           <h5 className="supplier">PROVEEDORES</h5>
           <BtnMenu1
@@ -23,7 +29,10 @@ const SupplierLayout = ({ children }) => {
           >
             Añadir Proveedor
           </BtnMenu1>
-          <BtnMenu to="/supplier" className={location.pathname === "/" ? "active" : ""}>
+          <BtnMenu
+            to="/supplier"
+            className={location.pathname === "/supplier" ? "active" : ""}
+          >
             Ver Proveedores
           </BtnMenu>
         </div>
@@ -58,7 +67,7 @@ const NAV = styled.nav`
   @media (max-width: 768px) {
     transition: transform 0.5s ease;
     transform-origin: left;
-    transform: ${props => props.$mostrarMenu ? "scaleX(1)" : "scaleX(0)"};
+    transform: ${(props) => (props.$mostrarMenu ? "scaleX(1)" : "scaleX(0)")};
   }
 `;
 
@@ -103,5 +112,4 @@ const Menu = styled.button`
   @media (min-width: 768px) {
     display: none;
   }
- 
 `;

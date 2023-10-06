@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { suppliers } from "../../../../db/db.js";
 import SupplierLayout from "../../../layout/SupplierLayout.jsx";
-
+import { useSelector } from "react-redux";
 
 const SupplierListPage = () => {
+  const dataList = useSelector((state) => state.supplier.data);
+
+
   return (
     <SupplierLayout>
       <>
@@ -26,7 +28,7 @@ const SupplierListPage = () => {
             </tr>
           </thead>
           <tbody>
-            {suppliers.map((item) => (
+            {dataList.map((item) => (
               <tr key={item.nif}>
                 <td>{item.businessName}</td>
                 <td>{item.entity}</td>
