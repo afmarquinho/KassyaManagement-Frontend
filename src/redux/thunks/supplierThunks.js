@@ -23,11 +23,6 @@ export const addSupplierAsync = (item) => {
       dispatch(setStatus(response.data.status));
       dispatch(setMsg(response.data.msg));
 
-      //setear a null la alerta
-      setTimeout(() => {
-        dispatch(setStatus(null));
-        dispatch(setMsg(null));
-      }, 5000);
     } catch (error) {
       // actualizar estado local
       console.log(error);
@@ -37,7 +32,7 @@ export const addSupplierAsync = (item) => {
       // Independientemente del resultado de la solicitud, establecer loading en false después de 3 segundos
       setTimeout(() => {
         dispatch(setLoading(false));
-      }, 3000);
+      }, 2000);
     }
   };
 };

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Alerta from "../../../components/Alerta";
 import Spinner from "../../../components/Spinner";
-// import Spinner from "react-bootstrap/Spinner";
+import { setMsg, setStatus } from "../../../../redux/slices/supplierSlice";
 
 const initialValues = {
   businessName: "",
@@ -35,8 +35,16 @@ const AddSupplierPage = () => {
 
   const onCreateSupplier = async (e) => {
     e.preventDefault();
-    await dispatch(addSupplierAsync(formValues));
-    resetForm();
+    dispatch(addSupplierAsync(formValues));
+    
+    //setear a null la alerta
+    setTimeout(() => {
+      dispatch(setStatus("ok"));
+      dispatch(setMsg(null));
+    }, 3000);
+    if (status === "ok") {
+      resetForm();
+    }
   };
 
   return (

@@ -9,7 +9,7 @@ const useForm = (initialValue = {}) => {
  
   };
 
-  const resetForm = (initialValue) => {
+  const resetForm = () => {
     setFormValues(initialValue);
   };
 
