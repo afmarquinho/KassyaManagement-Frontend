@@ -42,6 +42,11 @@ export const listSuppliersAsync = () => {
       //? Enviar la solicitud al backend
       const response = await axios.get("http://localhost:4000/api/supplier/");
       dispatch(setData(response.data));
-    } catch (error) {}
+      console.log(response.data)
+
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

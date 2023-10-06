@@ -27,13 +27,13 @@ const SupplierLayout = ({ children }) => {
               location.pathname === "/supplier/add-supplier" ? "active" : ""
             }
           >
-            Añadir Proveedor
+            Nuevo Proveedor
           </BtnMenu1>
           <BtnMenu
             to="/supplier"
             className={location.pathname === "/supplier" ? "active" : ""}
           >
-            Ver Proveedores
+            Ver Todos
           </BtnMenu>
         </div>
       </NAV>

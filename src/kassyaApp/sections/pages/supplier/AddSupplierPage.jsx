@@ -13,6 +13,7 @@ const initialValues = {
   nif: "",
   entity: "",
   country: "",
+  country: "",
   address: "",
   zipCode: "",
   tel: "",
@@ -36,7 +37,7 @@ const AddSupplierPage = () => {
   const onCreateSupplier = async (e) => {
     e.preventDefault();
     dispatch(addSupplierAsync(formValues));
-    
+
     //setear a null la alerta
     setTimeout(() => {
       dispatch(setStatus("ok"));
@@ -103,6 +104,15 @@ const AddSupplierPage = () => {
                       name="country"
                       type="text"
                       value={formValues.country}
+                      onChange={onInputChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="city">Ciudad</label>
+                    <input
+                      name="city"
+                      type="text"
+                      value={formValues.city}
                       onChange={onInputChange}
                     />
                   </div>
