@@ -6,6 +6,7 @@ export const supplierSlice = createSlice({
     status: null,
     msg: null,
     data: [],
+    oneSupplier: null,
     loading: false, // para agragr el spinner
   },
   reducers: {
@@ -30,6 +31,11 @@ export const supplierSlice = createSlice({
       state.loading = action.payload;
     },
     //eliminar proveedor de la lista
+
+    getOneSupplier: (state, action) => {
+      state.oneSupplier = action.payload;
+    },
+
     removeSupplier: (state, action) => {
       const updatedSupplier = action.payload;
       state.data = state.data.filter(
@@ -54,5 +60,6 @@ export const {
   removeSupplier,
   updateSupplier,
   setLoading,
+  getOneSupplier,
 } = supplierSlice.actions;
 export default supplierSlice.reducer;

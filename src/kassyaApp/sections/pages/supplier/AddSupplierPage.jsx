@@ -13,7 +13,7 @@ const initialValues = {
   nif: "",
   entity: "",
   country: "",
-  country: "",
+  city: "",
   address: "",
   zipCode: "",
   tel: "",
