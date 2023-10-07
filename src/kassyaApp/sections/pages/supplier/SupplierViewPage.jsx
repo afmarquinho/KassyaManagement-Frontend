@@ -15,17 +15,14 @@ const SupplierViewPage = () => {
   useEffect(() => {
     dispatch(getOneSuppilerAsync(params.id));
   }, []);
-  useEffect(() => {
-    console.log(supplier);
-  }, [supplier]);
-
+ 
   return (
     <SupplierLayout>
       <>
         <Container>
           <Row>
             <Col xs={12} className="mb-5 d-flex">
-            <ModalEditSupplier/>
+              <ModalEditSupplier />
               <Button className="btn btn-danger">
                 {" "}
                 <svg
@@ -108,7 +105,6 @@ const SupplierViewPage = () => {
             </StyledCol>
           </Row>
         </Container>
-        
       </>
     </SupplierLayout>
   );

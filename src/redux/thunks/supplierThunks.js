@@ -58,6 +58,7 @@ export const getOneSuppilerAsync = (id) => {
       );
 
       dispatch(getOneSupplier(response.data.data));
+      
     } catch (error) {
       console.log(error);
     }
