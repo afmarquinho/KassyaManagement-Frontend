@@ -2,35 +2,54 @@ import { useState } from "react";
 import styled from "styled-components";
 import Alerta from "./Alerta";
 import { useSelector } from "react-redux";
-import useForm from "../../helpers/useForm";
+import useFormData from "../../helpers/useFormData";
 
 
 const ModalEditSupplier = () => {
-  const supplier = useSelector((state) => state.supplier.oneSupplier);
-
+  // const supplier = useSelector((state) => state.supplier.oneSupplier);
+ 
   const initialValues = {
-    businessName: supplier.businessName,
-    nif:supplier.nif,
-    entity: supplier.entity,
-    country:supplier. country,
-    city:supplier.city,
-    address: supplier.address,
-    zipCode:supplier.zipCode,
-    tel:supplier.tel,
-    webSite:supplier.webSite,
-    bank: supplier.bank,
-    bankingAccount:supplier.bankingAccount,
-    paymentTerms:supplier.paymentTerms,
-    contactName: supplier.ontactName,
-    contactNumber: supplier.contactNumber,
-    contactEmail: supplier.contactEmail,
+    businessName: "",
+    nif: "",
+    entity: "",
+    country: "",
+    city: "",
+    address: "",
+    zipCode: "",
+    tel: "",
+    webSite: "",
+    bank: "",
+    bankingAccount: "",
+    paymentTerms: "",
+    contactName: "",
+    contactNumber: "",
+    contactEmail: "",
   };
-  const { formValues, onInputChange, resetForm } = useForm(initialValues);
-  
-  const [activeModal, setActiveModal] = useState(false);
+
+  // const initialValues = {
+  //   businessName: supplier.businessName,
+  //   nif: supplier.nif,
+  //   entity: supplier.entity,
+  //   country: supplier.country,
+  //   city: supplier.city,
+  //   address: supplier.address,
+  //   zipCode: supplier.zipCode,
+  //   tel: supplier.tel,
+  //   webSite: supplier.webSite,
+  //   bank: supplier.bank,
+  //   bankingAccount: supplier.bankingAccount,
+  //   paymentTerms: supplier.paymentTerms,
+  //   contactName: supplier.contactName,
+  //   contactNumber: supplier.contactNumber,
+  //   contactEmail: supplier.contactEmail,
+  // };
+   const { formData, handleChange, resetForm } = useFormData(initialValues);
+
+   const [activeModal, setActiveModal] = useState(false);
 
   const abrirModal = () => {
     setActiveModal(true);
+
   };
 
   const cerrarModal = () => {
@@ -61,15 +80,14 @@ const ModalEditSupplier = () => {
         Editar
       </Button>
 
-      <ModalWrapper visible={activeModal}>
+       <ModalWrapper visible={activeModal}>
         <ModalContent>
           <Cerrar onClick={cerrarModal}>&times;</Cerrar>
-          <h2>Formulario en el Modal</h2>
 
           <Form onSubmit={handleSubmit}>
-          <h3 className="titulo">Registrar Nuevo Proveedor</h3>
+            <h3 className="titulo">Editar</h3>
             <div className="container">
-              {/* <Alerta status={status} msg={msg} /> */}
+               {/* <Alerta status={status} msg={msg} />  */}
 
               <>
                 <h4>Información del Proveedor</h4>
@@ -79,8 +97,8 @@ const ModalEditSupplier = () => {
                     <input
                       type="text"
                       name="businessName"
-                      value={formValues.businessName}
-                      onChange={onInputChange}
+                      // value={formData.businessName}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group">
@@ -90,8 +108,8 @@ const ModalEditSupplier = () => {
                     <input
                       type="text"
                       name="nif"
-                      value={formValues.nif}
-                      onChange={onInputChange}
+                      // value={formData.nif}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -101,8 +119,8 @@ const ModalEditSupplier = () => {
                     <select
                       name="entity"
                       id=""
-                      value={formValues.entity}
-                      onChange={onInputChange}
+                      // value={formData.entity}
+                      onChange={handleChange}
                     >
                       <option value="">-- Seleccione --</option>
                       <option value="natural">Persona Natural</option>
@@ -114,8 +132,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="country"
                       type="text"
-                      value={formValues.country}
-                      onChange={onInputChange}
+                      // value={formData.country}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group">
@@ -123,8 +141,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="city"
                       type="text"
-                      value={formValues.city}
-                      onChange={onInputChange}
+                      // value={formData.city}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -135,8 +153,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="address"
                       type="text"
-                      value={formValues.address}
-                      onChange={onInputChange}
+                      // value={formData.address}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group">
@@ -144,8 +162,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="zipCode"
                       type="number"
-                      value={formValues.zipCode}
-                      onChange={onInputChange}
+                      // value={formData.zipCode}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -156,8 +174,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="tel"
                       type="tel"
-                      value={formValues.tel}
-                      onChange={onInputChange}
+                      // value={formData.tel}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group">
@@ -165,8 +183,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="webSite"
                       type="tel"
-                      value={formValues.webSite}
-                      onChange={onInputChange}
+                      // value={formData.webSite}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -178,8 +196,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="bank"
                       type="text"
-                      value={formValues.bank}
-                      onChange={onInputChange}
+                      // value={formData.bank}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group">
@@ -189,8 +207,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="bankingAccount"
                       type="text"
-                      value={formValues.bankingAccount}
-                      onChange={onInputChange}
+                      // value={formData.bankingAccount}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -201,8 +219,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="paymentTerms"
                       type="number"
-                      value={formValues.paymentTerms}
-                      onChange={onInputChange}
+                      // value={formData.paymentTerms}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group"></div>
@@ -215,8 +233,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="contactName"
                       type="text"
-                      value={formValues.contactName}
-                      onChange={onInputChange}
+                      // value={formData.contactName}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group">
@@ -224,8 +242,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="contactNumber"
                       type="tel"
-                      value={formValues.contactNumber}
-                      onChange={onInputChange}
+                      // value={formData.contactNumber}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -236,8 +254,8 @@ const ModalEditSupplier = () => {
                     <input
                       name="contactEmail"
                       type="email"
-                      value={formValues.contactEmail}
-                      onChange={onInputChange}
+                      // value={formData.contactEmail}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="input-group"></div>
@@ -245,14 +263,14 @@ const ModalEditSupplier = () => {
 
                 <div className="input-btn">
                   <BtnSubmmit type="submit" className="btn-crear">
-                    CREAR
+                        EDITAR
                   </BtnSubmmit>
                 </div>
               </>
             </div>
           </Form>
         </ModalContent>
-      </ModalWrapper>
+      </ModalWrapper> 
     </div>
   );
 };
