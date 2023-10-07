@@ -9,15 +9,12 @@ import { ModalEditSupplier } from "../../../components";
 
 const SupplierViewPage = () => {
   const params = useParams();
-  const supplier = useSelector((state) => state.supplier.oneSupplier);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOneSuppilerAsync(params.id));
   }, []);
-  useEffect(() => {
-    console.log(supplier);
-  }, [supplier]);
+  const supplier = useSelector((state) => state.supplier.oneSupplier);
 
   return (
     <SupplierLayout>
@@ -25,7 +22,7 @@ const SupplierViewPage = () => {
         <Container>
           <Row>
             <Col xs={12} className="mb-5 d-flex">
-            <ModalEditSupplier/>
+              <ModalEditSupplier /> 
               <Button className="btn btn-danger">
                 {" "}
                 <svg
@@ -108,7 +105,6 @@ const SupplierViewPage = () => {
             </StyledCol>
           </Row>
         </Container>
-        
       </>
     </SupplierLayout>
   );

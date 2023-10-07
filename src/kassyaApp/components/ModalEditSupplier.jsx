@@ -1,11 +1,55 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Alerta from "./Alerta";
+import { useSelector } from "react-redux";
+import useFormData from "../../helpers/useFormData";
+
 
 const ModalEditSupplier = () => {
-  const [activeModal, setActiveModal] = useState(false);
+  // const supplier = useSelector((state) => state.supplier.oneSupplier);
+ 
+  const initialValues = {
+    businessName: "",
+    nif: "",
+    entity: "",
+    country: "",
+    city: "",
+    address: "",
+    zipCode: "",
+    tel: "",
+    webSite: "",
+    bank: "",
+    bankingAccount: "",
+    paymentTerms: "",
+    contactName: "",
+    contactNumber: "",
+    contactEmail: "",
+  };
+
+  // const initialValues = {
+  //   businessName: supplier.businessName,
+  //   nif: supplier.nif,
+  //   entity: supplier.entity,
+  //   country: supplier.country,
+  //   city: supplier.city,
+  //   address: supplier.address,
+  //   zipCode: supplier.zipCode,
+  //   tel: supplier.tel,
+  //   webSite: supplier.webSite,
+  //   bank: supplier.bank,
+  //   bankingAccount: supplier.bankingAccount,
+  //   paymentTerms: supplier.paymentTerms,
+  //   contactName: supplier.contactName,
+  //   contactNumber: supplier.contactNumber,
+  //   contactEmail: supplier.contactEmail,
+  // };
+   const { formData, handleChange, resetForm } = useFormData(initialValues);
+
+   const [activeModal, setActiveModal] = useState(false);
 
   const abrirModal = () => {
     setActiveModal(true);
+
   };
 
   const cerrarModal = () => {
@@ -36,17 +80,197 @@ const ModalEditSupplier = () => {
         Editar
       </Button>
 
-      <ModalWrapper visible={activeModal}>
-        <ModalContenido>
+       <ModalWrapper visible={activeModal}>
+        <ModalContent>
           <Cerrar onClick={cerrarModal}>&times;</Cerrar>
-          <h2>Formulario en el Modal</h2>
-          <Formulario onSubmit={handleSubmit}>
-            <input type="text" placeholder="Nombre" />
-            <textarea placeholder="Mensaje"></textarea>
-            <button type="submit">Enviar</button>
-          </Formulario>
-        </ModalContenido>
-      </ModalWrapper>
+
+          <Form onSubmit={handleSubmit}>
+            <h3 className="titulo">Editar</h3>
+            <div className="container">
+               {/* <Alerta status={status} msg={msg} />  */}
+
+              <>
+                <h4>Información del Proveedor</h4>
+                <div className="group group1">
+                  <div className="input-group">
+                    <label htmlFor="businessName">Razón Social</label>
+                    <input
+                      type="text"
+                      name="businessName"
+                      // value={formData.businessName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="nif">
+                      Identificación(ID, NIT, NIF, RIF, ETC)
+                    </label>
+                    <input
+                      type="text"
+                      name="nif"
+                      // value={formData.nif}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="group group2">
+                  <div className="input-group">
+                    <label htmlFor="entity">Contribuyente</label>
+                    <select
+                      name="entity"
+                      id=""
+                      // value={formData.entity}
+                      onChange={handleChange}
+                    >
+                      <option value="">-- Seleccione --</option>
+                      <option value="natural">Persona Natural</option>
+                      <option value="legal">Persona Jurídica</option>
+                    </select>
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="country">País</label>
+                    <input
+                      name="country"
+                      type="text"
+                      // value={formData.country}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="city">Ciudad</label>
+                    <input
+                      name="city"
+                      type="text"
+                      // value={formData.city}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="group group3">
+                  <div className="input-group">
+                    <label htmlFor="address">Dirección</label>
+                    <input
+                      name="address"
+                      type="text"
+                      // value={formData.address}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="zipCode">Código Postal</label>
+                    <input
+                      name="zipCode"
+                      type="number"
+                      // value={formData.zipCode}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="group group4">
+                  <div className="input-group">
+                    <label htmlFor="tel">Teléfono</label>
+                    <input
+                      name="tel"
+                      type="tel"
+                      // value={formData.tel}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="webSite">Sitio Web</label>
+                    <input
+                      name="webSite"
+                      type="tel"
+                      // value={formData.webSite}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <h4>Información Bancaria</h4>
+                <div className="group group5">
+                  <div className="input-group">
+                    <label htmlFor="bank">Banco</label>
+                    <input
+                      name="bank"
+                      type="text"
+                      // value={formData.bank}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="bankingAccount">
+                      Número de cuenta bancaria
+                    </label>
+                    <input
+                      name="bankingAccount"
+                      type="text"
+                      // value={formData.bankingAccount}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="group group6">
+                  <div className="input-group">
+                    <label htmlFor="paymentTerms">Plazo de pago en días</label>
+                    <input
+                      name="paymentTerms"
+                      type="number"
+                      // value={formData.paymentTerms}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group"></div>
+                </div>
+
+                <h4>Información del Contacto</h4>
+                <div className="group group7">
+                  <div className="input-group">
+                    <label htmlFor="contactName">Nombre de Contacto</label>
+                    <input
+                      name="contactName"
+                      type="text"
+                      // value={formData.contactName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="contactNumber">Teléfono de Contacto</label>
+                    <input
+                      name="contactNumber"
+                      type="tel"
+                      // value={formData.contactNumber}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="group group8">
+                  <div className="input-group">
+                    <label htmlFor="contactEmail">Email de Contacto</label>
+                    <input
+                      name="contactEmail"
+                      type="email"
+                      // value={formData.contactEmail}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="input-group"></div>
+                </div>
+
+                <div className="input-btn">
+                  <BtnSubmmit type="submit" className="btn-crear">
+                        EDITAR
+                  </BtnSubmmit>
+                </div>
+              </>
+            </div>
+          </Form>
+        </ModalContent>
+      </ModalWrapper> 
     </div>
   );
 };
@@ -76,7 +300,7 @@ const ModalWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const ModalContenido = styled.div`
+const ModalContent = styled.div`
   background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
@@ -97,19 +321,87 @@ const Cerrar = styled.span`
   }
 `;
 
-const Formulario = styled.form`
-  display: flex;
-  flex-direction: column;
-
-  input,
-  textarea {
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
+const Form = styled.form`
+  background-color: ${(props) => props.theme.white};
+  width: 90%;
+  max-width: 90rem;
+  margin: 0 auto;
+  h3 {
+    background-color: ${(props) => props.theme.deepBlue};
+    color: ${(props) => props.theme.white};
+    padding: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    @media (min-width: 576px) {
+      padding: 3rem;
+    }
+    @media (min-width: 768px) {
+      padding: 3.5rem;
+    }
+  }
+  .container {
+    width: 100%;
+    padding: 1rem 2rem;
+    position: relative;
+    @media (min-width: 576px) {
+      padding: 1.2rem 3rem;
+    }
+    @media (min-width: 768px) {
+      padding: 2rem 4rem;
+    }
+  }
+  .container h4 {
+    margin-top: 1rem;
+    padding: 0.8rem 0 0.8rem 1rem;
+    background-color: ${(props) => props.theme.deepGray};
+    color: ${(props) => props.theme.white};
+  }
+  .container .group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+  .container .group .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
   }
 
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
+  .container .group .input-group input {
+    border: none;
+    background-color: ${(props) => props.theme.softGray};
+    outline: none;
+    height: 3rem;
+  }
+  .container .group .input-group select {
+    border: none;
+    background-color: ${(props) => props.theme.softGray};
+    outline: none;
+    height: 3rem;
+  }
+
+  .container .input-btn {
+    width: 100%;
+    padding: 2rem 0 0 0;
+  }
+`;
+
+const BtnSubmmit = styled.button`
+  width: 100%;
+  max-width: 25rem;
+  margin: auto;
+  background-color: ${(props) => props.theme.deepBlue};
+  color: ${(props) => props.theme.white};
+  border: none;
+  padding: 0.5rem;
+  display: block;
+  font-weight: bold;
+  &:hover {
+    background-color: ${(props) => props.theme.deepGray};
   }
 `;

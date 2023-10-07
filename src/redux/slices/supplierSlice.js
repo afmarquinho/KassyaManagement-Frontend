@@ -6,7 +6,7 @@ export const supplierSlice = createSlice({
     status: null,
     msg: null,
     data: [],
-    oneSupplier: null,
+    oneSupplier: {},
     loading: false, // para agragr el spinner
   },
   reducers: {
