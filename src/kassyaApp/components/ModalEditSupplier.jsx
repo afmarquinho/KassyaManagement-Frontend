@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Alerta from "./Alerta";
 import { useDispatch, useSelector } from "react-redux";
-import useFormData from "../../helpers/useFormData";
-import { getOneSuppilerAsync } from "../../redux/thunks/supplierThunks";
+import { useParams } from "react-router-dom";
+import { editSupplier } from "../../redux/thunks/supplierThunks";
 
 const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
   const [businessName, setBusinessName] = useState(supplier.businessName);
@@ -22,24 +22,41 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
   const [contactNumber, setContactNumber] = useState(supplier.contactNumber);
   const [contactEmail, setContactEmail] = useState(supplier.contactEmail);
 
-  useEffect(() => {
-    console.log(supplier);
-  });
+  const params = useParams();
+  const dispatch = useDispatch();
 
   const cerrarModal = () => {
     setActiveModal(false);
   };
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar la lógica de envío del formulario
+    const formData = {
+      businessName,
+      nif,
+      entity,
+      country,
+      city,
+      address,
+      zipCode,
+      tel,
+      webSite,
+      bank,
+      bankingAccount,
+      paymentTerms,
+      contactName,
+      contactNumber,
+      contactEmail,
+    };
+
+    dispatch(editSupplier(params.id, formData));
   };
   return (
     <ModalWrapper $activeModal={activeModal}>
       <ModalContent>
         <Cerrar onClick={cerrarModal}>&times;</Cerrar>
 
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={onSubmit}>
           <h3 className="titulo">Editar: {supplier.businessName}</h3>
           <div className="container">
             {/* <Alerta status={status} msg={msg} />  */}
@@ -151,7 +168,7 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   <input
                     name="bank"
                     type="text"
-                    value={bankc || ""}
+                    value={bank || ""}
                     onChange={(e) => setBank(e.target.value)}
                   />
                 </div>

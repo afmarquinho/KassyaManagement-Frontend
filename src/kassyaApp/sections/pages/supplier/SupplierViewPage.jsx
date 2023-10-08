@@ -17,6 +17,9 @@ const SupplierViewPage = () => {
   useEffect(() => {
     dispatch(getOneSuppilerAsync(params.id));
   }, []);
+  useEffect(() => {
+    dispatch(getOneSuppilerAsync(params.id));
+  }, [supplier]);
 
   const abrirModal = () => {
     setActiveModal(true);
