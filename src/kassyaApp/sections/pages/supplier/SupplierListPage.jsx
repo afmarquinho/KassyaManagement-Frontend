@@ -16,10 +16,7 @@ const SupplierListPage = () => {
     )
   );
 
-  useEffect(() => {
-    filteredSuppliers;
-    console.log(filteredSuppliers);
-  }, [searchTerm]);
+  
 
   return (
     <SupplierLayout>
