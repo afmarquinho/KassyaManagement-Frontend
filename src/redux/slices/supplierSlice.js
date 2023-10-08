@@ -3,11 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export const supplierSlice = createSlice({
   name: "supplier",
   initialState: {
-    status: null,
-    msg: null,
-    data: [],
-    oneSupplier: {},
-    loading: false, // para agragr el spinner
+    status: null, //? status para las alertas
+    msg: null, //?msg de la alerta
+    data: [], //? array que guarda la data traída de la bd
+    oneSupplier: {}, //? objeto que almacena un proveedor para verlo o editarlo
+    searchTerm: "", //? state para almacenar la busqueda en el componente seachSupplier
+    loading: false, //? para agregr el spinner
   },
   reducers: {
     setData: (state, action) => {
@@ -25,6 +26,10 @@ export const supplierSlice = createSlice({
     //actualizar el msg para mostrar en la alerta
     setMsg: (state, action) => {
       state.msg = action.payload;
+    },
+
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
     },
     //actualizar loaging para mostrar spinner
     setLoading: (state, action) => {
@@ -59,6 +64,7 @@ export const {
   setMsg,
   removeSupplier,
   updateSupplier,
+  setSearchTerm,
   setLoading,
   getOneSupplier,
 } = supplierSlice.actions;
