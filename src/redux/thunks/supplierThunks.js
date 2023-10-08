@@ -6,6 +6,7 @@ import {
   setLoading,
   setData,
   getOneSupplier,
+  updateSupplier,
 } from "../slices/supplierSlice";
 
 export const addSupplierAsync = (item) => {
@@ -58,9 +59,21 @@ export const getOneSuppilerAsync = (id) => {
       );
 
       dispatch(getOneSupplier(response.data.data));
-      
     } catch (error) {
       console.log(error);
     }
+  };
+};
+export const editSupplier = (id, updatedSupplier) => {
+  return async (dispatch) => {
+    try {
+      //? Enviar la solicitud al backend
+      const response = await axios.put(
+        `http://localhost:4000/api/supplier/${id}`,
+        updatedSupplier
+      );
+
+      dispatch(updateSupplier(response.data.data));
+    } catch (error) {}
   };
 };
