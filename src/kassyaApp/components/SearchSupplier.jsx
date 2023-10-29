@@ -2,17 +2,19 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { setSearchTerm } from "../../redux/slices/supplierSlice";
 
-
-
 const SearchSupplier = () => {
   const dispatch = useDispatch();
   const onInputChange = (e) => {
     dispatch(setSearchTerm(e.target.value));
-    
   };
   return (
-    <Form>
-      <input type="search" placeholder="Buscar..." onChange={onInputChange} />
+    <form className="flex items-center px-3 w-72 mb-3 bg-customSoftGray h-8">
+      <input
+        className="bg-transparent h-full w-full focus:outline-none"
+        type="search"
+        placeholder="Buscar..."
+        onChange={onInputChange}
+      />
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +30,7 @@ const SearchSupplier = () => {
           d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
         />
       </svg>
-    </Form>
+    </form>
   );
 };
 

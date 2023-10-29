@@ -15,6 +15,8 @@ export default {
         customDeepBlue: "#161638",
         customBlueGray: "#607d8b",
         customDeepBlueGray: "#455a64",
+        customSoftGray:"#e0e0e0",
+        customDeepGray:"#455a64",
       },
     },
   },

@@ -15,8 +15,6 @@ const SupplierListPage = () => {
     )
   );
 
-  
-
   return (
     <SupplierLayout>
       <>
@@ -25,21 +23,22 @@ const SupplierListPage = () => {
             <SearchSupplier />
           </div>
           <div>
-            <Table>
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>País</th>
-                  <th>Teléfono</th>
-                  <th>Banco</th>
-                  <th>Cuenta</th>
-                  <th>Plazo</th>
+            <Table className="w-full text-sm">
+              <thead className="bg-customDeepBlueGray text-slate-300">
+                <tr className="h-7">
+                  <th className="text-start">Nombre</th>
+                  <th className="text-start">País</th>
+                  <th className="text-start">Teléfono</th>
+                  <th className="text-start">Banco</th>
+                  <th className="text-start">Cuenta</th>
+                  <th className="text-start">Plazo</th>
                   <th></th>
                 </tr>
               </thead>
-              {searchTerm === "" ? <tbody>
+              {searchTerm === "" ? (
+                <tbody>
                   {dataList.map((item) => (
-                    <tr key={item.nif}>
+                    <tr className="h-7" key={item.nif}>
                       <td>{item.businessName}</td>
                       <td>{item.country}</td>
                       <td>{item.tel}</td>
@@ -47,11 +46,12 @@ const SupplierListPage = () => {
                       <td>{item.bankingAccount}</td>
                       <td>{item.paymentTerms}</td>
                       <td>
-                        {<Link to={`/supplier/${item._id}`}>ver mas</Link>}
+                        {<Link  className="text-blue-700" to={`/supplier/${item._id}`}>Ver mas</Link>}
                       </td>
                     </tr>
                   ))}
-                </tbody> : Object.keys(filteredSuppliers).length > 0 ? (
+                </tbody>
+              ) : Object.keys(filteredSuppliers).length > 0 ? (
                 <tbody>
                   {filteredSuppliers.map((item) => (
                     <tr key={item.nif}>
@@ -62,7 +62,14 @@ const SupplierListPage = () => {
                       <td>{item.bankingAccount}</td>
                       <td>{item.paymentTerms}</td>
                       <td>
-                        {<Link to={`/supplier/${item._id}`}>ver mas</Link>}
+                        {
+                          <Link
+                            className="text-blue-700"
+                            to={`/supplier/${item._id}`}
+                          >
+                            Ver mas
+                          </Link>
+                        }
                       </td>
                     </tr>
                   ))}
@@ -80,17 +87,7 @@ const SupplierListPage = () => {
 
 export default SupplierListPage;
 const Table = styled.table`
-  width: 100%;
-  font-size: 1.2rem;
-  thead {
-    background-color: ${(props) => props.theme.deepGray};
-    color: ${(props) => props.theme.secondaryText};
-  }
   tbody tr:nth-child(even) {
     background-color: ${(props) => props.theme.softGray};
-  }
-  td,
-  th {
-    padding-left: 0.5rem;
   }
 `;
