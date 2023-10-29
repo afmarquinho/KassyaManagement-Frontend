@@ -57,7 +57,7 @@ const AddSupplierPage = () => {
         ) : (
           <form
             onSubmit={onCreateSupplier}
-            className=" w-90 md:w-4/5 lg:w-3/5 max-w-3xl m-auto bg-white"
+            className=" w-11/12 md:w-4/5 lg:w-3/5 max-w-3xl m-auto bg-white"
           >
             <h3 className="bg-customDeepBlue w-full h-20  flex items-center justify-center uppercase text-white">
               Nuevo Proveedor
@@ -139,7 +139,9 @@ const AddSupplierPage = () => {
 
                 <div className="flex flex-col md:flex-row w-full gap-3">
                   <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="address">Dirección</label>
+                    <label className="w-full" htmlFor="address">
+                      Dirección
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="address"
@@ -149,7 +151,9 @@ const AddSupplierPage = () => {
                     />
                   </div>
                   <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="zipCode">Código Postal</label>
+                    <label className="w-full" htmlFor="zipCode">
+                      Código Postal
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="zipCode"
@@ -161,8 +165,10 @@ const AddSupplierPage = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row w-full gap-3">
-                <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="tel">Teléfono</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="tel">
+                      Teléfono
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="tel"
@@ -172,7 +178,9 @@ const AddSupplierPage = () => {
                     />
                   </div>
                   <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="webSite">Sitio Web</label>
+                    <label className="w-full" htmlFor="webSite">
+                      Sitio Web
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="webSite"
@@ -183,10 +191,14 @@ const AddSupplierPage = () => {
                   </div>
                 </div>
 
-                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">Información Bancaria</h4>
+                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">
+                  Información Bancaria
+                </h4>
                 <div className="flex flex-col md:flex-row w-full gap-3">
-                <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="bank">Banco</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="bank">
+                      Banco
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="bank"
@@ -211,7 +223,9 @@ const AddSupplierPage = () => {
 
                 <div className="flex flex-col md:flex-row w-full gap-3">
                   <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="paymentTerms">Plazo de pago en días</label>
+                    <label className="w-full" htmlFor="paymentTerms">
+                      Plazo de pago en días
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="paymentTerms"
@@ -223,10 +237,14 @@ const AddSupplierPage = () => {
                   <div className="w-full md:w-1/2 flex flex-col"></div>
                 </div>
 
-                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">Información del Contacto</h4>
+                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">
+                  Información del Contacto
+                </h4>
                 <div className="flex flex-col md:flex-row w-full gap-3">
-                <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="contactName">Nombre de Contacto</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="contactName">
+                      Nombre de Contacto
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="contactName"
@@ -236,7 +254,9 @@ const AddSupplierPage = () => {
                     />
                   </div>
                   <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="contactNumber">Teléfono de Contacto</label>
+                    <label className="w-full" htmlFor="contactNumber">
+                      Teléfono de Contacto
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="contactNumber"
@@ -248,8 +268,10 @@ const AddSupplierPage = () => {
                 </div>
 
                 <div className="flex flex-col md:flex-row w-full gap-3">
-                <div className="w-full md:w-1/2 flex flex-col">
-                    <label className="w-full" htmlFor="contactEmail">Email de Contacto</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="contactEmail">
+                      Email de Contacto
+                    </label>
                     <input
                       className="w-full h-7 focus:outline-none bg-slate-200"
                       name="contactEmail"
@@ -259,14 +281,14 @@ const AddSupplierPage = () => {
                     />
                   </div>
                   <div className="w-full md:w-1/2 flex flex-col"></div>
-                
                 </div>
 
-              
-                  <button type="submit" className="w-3/4 md:w-1/2 max-w-md h-8 flex justify-center items-center m-auto mt-3 bg-customMainColor hover:bg-cyan-300 transition-colors duration-500 ease-linear font-bold">
-                    CREAR
-                  </button>
-                
+                <button
+                  type="submit"
+                  className="w-3/4 md:w-1/2 max-w-md h-10 flex justify-center items-center m-auto mt-3 bg-customDeepBlue text-white hover:bg-customMainColor transition-colors duration-500 ease-linear font-bold"
+                >
+                  CREAR
+                </button>
               </>
             </div>
           </form>

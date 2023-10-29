@@ -26,12 +26,20 @@ const AddItemPage = () => {
   return (
     <InventoryLayout>
       <>
-        <Form onSubmit={onCreateArticle}>
-          <h3 className="titulo">Registrar Nuevo Ítem</h3>
-          <div className="container">
-            <div className="input-group">
-              <label htmlFor="name">Nombre del Item</label>
+        <form
+          className=" w-11/12 md:w-4/5 lg:w-1/3 max-w-lg m-auto bg-white"
+          onSubmit={onCreateArticle}
+        >
+          <h3 className="bg-customDeepBlue w-full h-20  flex items-center justify-center uppercase text-white">
+            Nuevo Artículo
+          </h3>
+          <div className="contenedor w-full p-10 pt-6">
+            <div className="w-full flex flex-col">
+              <label className="w-full" htmlFor="name">
+                Nombre del Item
+              </label>
               <input
+                className="w-full h-7 focus:outline-none bg-slate-200"
                 type="text"
                 name="name"
                 value={formValues.name}
@@ -39,8 +47,11 @@ const AddItemPage = () => {
               />
             </div>
             <div className="input-group">
-              <label htmlFor="ref">Referencia</label>
+              <label className="w-full" htmlFor="ref">
+                Referencia
+              </label>
               <input
+                className="w-full h-7 focus:outline-none bg-slate-200"
                 name="ref"
                 type="text"
                 value={formValues.ref}
@@ -49,8 +60,11 @@ const AddItemPage = () => {
             </div>
 
             <div className="input-group">
-              <label htmlFor="supplier">Proveedor</label>
+              <label className="w-full" htmlFor="supplier">
+                Proveedor
+              </label>
               <select
+                className="w-full h-7 focus:outline-none bg-slate-200"
                 name="supplier"
                 id=""
                 value={formValues.supplier}
@@ -66,8 +80,11 @@ const AddItemPage = () => {
               {/* //TODO: CAMBIAR EN EL VALUE EL ID DE ACUERDO CON EL SCHEMA */}
             </div>
             <div className="input-group">
-              <label htmlFor="amount">Cantidad</label>
+              <label className="w-full" htmlFor="amount">
+                Cantidad
+              </label>
               <input
+                className="w-full h-7 focus:outline-none bg-slate-200"
                 name="amount"
                 type="number"
                 value={formValues.amount}
@@ -75,8 +92,11 @@ const AddItemPage = () => {
               />
             </div>
             <div className="input-group">
-              <label htmlFor="unit">Unidad</label>
+              <label className="w-full" htmlFor="unit">
+                Unidad
+              </label>
               <select
+                className="w-full h-7 focus:outline-none bg-slate-200"
                 name="unit"
                 id=""
                 value={formValues.unit}
@@ -90,8 +110,11 @@ const AddItemPage = () => {
               </select>
             </div>
             <div className="input-group">
-              <label htmlFor="unitPrice">Precio Unitario en COP</label>
+              <label className="w-full" htmlFor="unitPrice">
+                Precio Unitario en COP
+              </label>
               <input
+                className="w-full h-7 focus:outline-none bg-slate-200"
                 name="unitPrice"
                 type="number"
                 value={formValues.unitPricet}
@@ -99,12 +122,15 @@ const AddItemPage = () => {
               />
             </div>
             <div className="input-btn">
-              <BtnSubmmit type="submit" className="btn-crear">
+              <button
+                className="w-full max-w-md h-10 flex justify-center items-center m-auto mt-3 bg-customDeepBlue text-white hover:bg-customMainColor transition-colors duration-500 ease-linear font-bold"
+                type="submit"
+              >
                 CREAR
-              </BtnSubmmit>
+              </button>
             </div>
           </div>
-        </Form>
+        </form>
       </>
     </InventoryLayout>
   );
