@@ -55,29 +55,37 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
     <ModalWrapper $activeModal={activeModal}>
       <ModalContent>
         <Cerrar onClick={cerrarModal}>&times;</Cerrar>
-
-        <Form onSubmit={onSubmit}>
-          <h3 className="titulo">Editar: {supplier.businessName}</h3>
-          <div className="container">
+        {/* //TODO: AGREGAR EL COMPONENRTE DE LA ALERTA */}
+        <form className=" w-full max-w-3xl m-auto bg-white" onSubmit={onSubmit}>
+          <h3 className="bg-customDeepBlue w-full h-20  flex items-center justify-center uppercase text-white">
+            Editar Proveedor: {supplier.businessName}
+          </h3>
+          <div className="contenedor w-full p-10 pt-6">
             {/* <Alerta status={status} msg={msg} />  */}
 
             <>
-              <h4>Información del Proveedor</h4>
-              <div className="group group1">
-                <div className="input-group">
-                  <label htmlFor="businessName">Razón Social</label>
+              <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center mb-3 font-semibold text-white">
+                Información del Proveedor
+              </h4>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="businessName">
+                    Razón Social
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     type="text"
                     name="businessName"
                     value={businessName || ""}
                     onChange={(e) => setBusinessName(e.target.value)}
                   />
                 </div>
-                <div className="input-group">
-                  <label htmlFor="nif">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="nif">
                     Identificación(ID, NIT, NIF, RIF, ETC)
                   </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     type="text"
                     name="nif"
                     value={nif || ""}
@@ -85,10 +93,13 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   />
                 </div>
               </div>
-              <div className="group group2">
-                <div className="input-group">
-                  <label htmlFor="entity">Contribuyente</label>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/3 flex flex-col">
+                  <label className="w-full" htmlFor="entity">
+                    Contribuyente
+                  </label>
                   <select
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="entity"
                     id=""
                     value={entity || ""}
@@ -99,18 +110,24 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                     <option value="legal">Persona Jurídica</option>
                   </select>
                 </div>
-                <div className="input-group">
-                  <label htmlFor="country">País</label>
+                <div className="w-full md:w-1/3 flex flex-col">
+                  <label className="w-full" htmlFor="country">
+                    País
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="country"
                     type="text"
                     value={country || ""}
                     onChange={(e) => setCountry(e.target.value)}
                   />
                 </div>
-                <div className="input-group">
-                  <label htmlFor="city">Ciudad</label>
+                <div className="w-full md:w-1/3 flex flex-col">
+                  <label className="w-full" htmlFor="city">
+                    Ciudad
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="city"
                     type="text"
                     value={city || ""}
@@ -119,19 +136,25 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 </div>
               </div>
 
-              <div className="group group3">
-                <div className="input-group">
-                  <label htmlFor="address">Dirección</label>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="address">
+                    Dirección
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="address"
                     type="text"
                     value={address || ""}
                     onChange={(e) => setAddress(e.target.value)}
                   />
                 </div>
-                <div className="input-group">
-                  <label htmlFor="zipCode">Código Postal</label>
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="zipCode">
+                    Código Postal
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="zipCode"
                     type="number"
                     value={zipCode || ""}
@@ -140,19 +163,25 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 </div>
               </div>
 
-              <div className="group group4">
-                <div className="input-group">
-                  <label htmlFor="tel">Teléfono</label>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="tel">
+                    Teléfono
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="tel"
                     type="tel"
                     value={tel || ""}
                     onChange={(e) => setTel(e.target.value)}
                   />
                 </div>
-                <div className="input-group">
-                  <label htmlFor="webSite">Sitio Web</label>
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="webSite">
+                    Sitio Web
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="webSite"
                     type="tel"
                     value={webSite || ""}
@@ -161,22 +190,28 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 </div>
               </div>
 
-              <h4>Información Bancaria</h4>
-              <div className="group group5">
-                <div className="input-group">
-                  <label htmlFor="bank">Banco</label>
+              <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">
+                Información Bancaria
+              </h4>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="bank">
+                    Banco
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="bank"
                     type="text"
                     value={bank || ""}
                     onChange={(e) => setBank(e.target.value)}
                   />
                 </div>
-                <div className="input-group">
-                  <label htmlFor="bankingAccount">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="bankingAccount">
                     Número de cuenta bancaria
                   </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="bankingAccount"
                     type="text"
                     value={bankingAccount || ""}
@@ -185,10 +220,13 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 </div>
               </div>
 
-              <div className="group group6">
-                <div className="input-group">
-                  <label htmlFor="paymentTerms">Plazo de pago en días</label>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="paymentTerms">
+                    Plazo de pago en días
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="paymentTerms"
                     type="number"
                     value={paymentTerms || ""}
@@ -198,20 +236,28 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 <div className="input-group"></div>
               </div>
 
-              <h4>Información del Contacto</h4>
-              <div className="group group7">
-                <div className="input-group">
-                  <label htmlFor="contactName">Nombre de Contacto</label>
+              <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">
+                Información del Contacto
+              </h4>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="contactName">
+                    Nombre de Contacto
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="contactName"
                     type="text"
                     value={contactName || ""}
                     onChange={(e) => setContactName(e.target.value)}
                   />
                 </div>
-                <div className="input-group">
-                  <label htmlFor="contactNumber">Teléfono de Contacto</label>
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="contactNumber">
+                    Teléfono de Contacto
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="contactNumber"
                     type="tel"
                     value={contactNumber || ""}
@@ -220,10 +266,13 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 </div>
               </div>
 
-              <div className="group group8">
-                <div className="input-group">
-                  <label htmlFor="contactEmail">Email de Contacto</label>
+              <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <label className="w-full" htmlFor="contactEmail">
+                    Email de Contacto
+                  </label>
                   <input
+                    className="w-full h-7 focus:outline-none bg-slate-200"
                     name="contactEmail"
                     type="email"
                     value={contactEmail || ""}
@@ -233,14 +282,15 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                 <div className="input-group"></div>
               </div>
 
-              <div className="input-btn">
-                <BtnSubmmit type="submit" className="btn-crear">
-                  EDITAR
-                </BtnSubmmit>
-              </div>
+              <button
+                type="submit"
+                className="w-3/4 md:w-1/2 max-w-md h-10 flex justify-center items-center m-auto mt-3 bg-customDeepBlue text-white hover:bg-customMainColor transition-colors duration-500 ease-linear font-bold"
+              >
+                EDITAR
+              </button>
             </>
           </div>
-        </Form>
+        </form>
       </ModalContent>
     </ModalWrapper>
   );
@@ -257,111 +307,26 @@ const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const ModalContent = styled.div`
-  background-color: #fefefe;
+  // background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
+  // border: 1px solid #888;
   width: 80%;
 `;
 
 const Cerrar = styled.span`
-  color: #aaa;
+  color: white;
   float: right;
-  font-size: 28px;
+  font-size: 50px;
   font-weight: bold;
   cursor: pointer;
 
   &:hover {
     color: black;
     text-decoration: none;
-  }
-`;
-
-const Form = styled.form`
-  background-color: ${(props) => props.theme.white};
-  width: 90%;
-  max-width: 90rem;
-  margin: 0 auto;
-  h3 {
-    background-color: ${(props) => props.theme.deepBlue};
-    color: ${(props) => props.theme.white};
-    padding: 2rem;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    @media (min-width: 576px) {
-      padding: 3rem;
-    }
-    @media (min-width: 768px) {
-      padding: 3.5rem;
-    }
-  }
-  .container {
-    width: 100%;
-    padding: 1rem 2rem;
-    position: relative;
-    @media (min-width: 576px) {
-      padding: 1.2rem 3rem;
-    }
-    @media (min-width: 768px) {
-      padding: 2rem 4rem;
-    }
-  }
-  .container h4 {
-    margin-top: 1rem;
-    padding: 0.8rem 0 0.8rem 1rem;
-    background-color: ${(props) => props.theme.deepGray};
-    color: ${(props) => props.theme.white};
-  }
-  .container .group {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    @media (min-width: 768px) {
-      flex-direction: row;
-      gap: 1rem;
-    }
-  }
-  .container .group .input-group {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-  }
-
-  .container .group .input-group input {
-    border: none;
-    background-color: ${(props) => props.theme.softGray};
-    outline: none;
-    height: 3rem;
-  }
-  .container .group .input-group select {
-    border: none;
-    background-color: ${(props) => props.theme.softGray};
-    outline: none;
-    height: 3rem;
-  }
-
-  .container .input-btn {
-    width: 100%;
-    padding: 2rem 0 0 0;
-  }
-`;
-
-const BtnSubmmit = styled.button`
-  width: 100%;
-  max-width: 25rem;
-  margin: auto;
-  background-color: ${(props) => props.theme.deepBlue};
-  color: ${(props) => props.theme.white};
-  border: none;
-  padding: 0.5rem;
-  display: block;
-  font-weight: bold;
-  &:hover {
-    background-color: ${(props) => props.theme.deepGray};
   }
 `;

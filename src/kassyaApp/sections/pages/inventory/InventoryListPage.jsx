@@ -2,28 +2,26 @@ import styled from "styled-components";
 import InventoryLayout from "../../../layout/InventoryLayout";
 import { inventory } from "../../../../db/db.js";
 
-
 const AllInventoryPage = () => {
   return (
     <InventoryLayout>
       <>
-      <Table>
-          <thead>
-
-         
-            <tr>
-              <th>Nombre</th>
-              <th>Referencia</th>
-              <th>Proveedor</th>
-              <th>Stock</th>
-              <th>Unidad</th>
-              <th>Precio Untario</th>
-              <th>Días</th>
+        <p className="text-red-600">AGREGAR EL SEARCH</p>
+        <Table className="w-full text-sm">
+          <thead className="bg-customDeepBlueGray text-slate-300">
+            <tr className="h-7">
+              <th className="text-start">Nombre</th>
+              <th className="text-start">Referencia</th>
+              <th className="text-start">Proveedor</th>
+              <th className="text-start">Stock</th>
+              <th className="text-start">Unidad</th>
+              <th className="text-start">Precio Untario</th>
+              <th className="text-start">Días</th>
             </tr>
           </thead>
           <tbody>
             {inventory.map((item) => (
-              <tr key={item.ref}>
+              <tr className="h-7" key={item.ref}>
                 <td>{item.name}</td>
                 <td>{item.ref}</td>
                 <td>{item.supplier}</td>
@@ -45,12 +43,6 @@ const AllInventoryPage = () => {
 export default AllInventoryPage;
 
 const Table = styled.table`
-  width: 100%;
-  font-size: 1.2rem;
-  thead {
-    background-color: ${(props) => props.theme.deepGray};
-    color: ${(props) => props.theme.secondaryText};
-  }
   tbody tr:nth-child(even) {
     background-color: ${(props) => props.theme.softGray};
   }

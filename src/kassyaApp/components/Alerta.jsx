@@ -15,7 +15,6 @@ const Div = styled.div`
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     text-align: center;
-    padding: 0 1rem 0 1rem;
   }
   .error {
     font-size: 1.4rem;
@@ -32,7 +31,7 @@ const Alerta = ({ status, msg }) => {
   return (
     <Div>
       <p
-        className={`${
+        className={`m-0 ${
           status === "warning"
             ? "warning"
             : status === "error"
