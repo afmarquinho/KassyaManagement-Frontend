@@ -14,23 +14,23 @@ const GlobalStyle = createGlobalStyle`
       line-height: 1.8;
     }
   }
-    
-  h1{
-    font-size: 1rem;
-    font-weight: bold;    
-    margin: 0;
-    color: ${(props) => props.theme.main};  
-    @media (min-width: 768px) {
-      font-size: 1.2rem;
-      
+    //? USAR SOLO EN EL TITULO
+    h1{
+      font-size: 1rem;
+      font-weight: bold;    
+      margin: 0;
+      color: ${(props) => props.theme.main};  
+      @media (min-width: 768px) {
+        font-size: 1.2rem;
+        
+      }
     }
-  }
+    
+    //? USAR SOLO EN LOS NOMBRES DEL MODULO
   h2 {
-    font-size: 1.4rem;
-    font-weight: bold;    
-    color: ${(props) => props.theme.secondaryText};  
+    font-size: 0.8rem; 
   @media (min-width: 768px) {
-    font-size: 1.7rem;
+    font-size: 1rem;
   }
 }
 a{
