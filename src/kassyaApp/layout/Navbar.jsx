@@ -7,8 +7,12 @@ const Navbar = () => {
 
   return (
     <>
-      <button onClick={(e) => setMenuAct(!menuAct)} $menuAct={menuAct} className="text-sm text-slate-300 flex items-center gap-3 pe-6">
-        <span>{ menuAct ? "Cerrar" : "Menú"}</span>
+      <button
+        onClick={(e) => setMenuAct(!menuAct)}
+        $menuAct={menuAct}
+        className="text-sm text-slate-300 flex items-center gap-3 pe-6 h-10 fixed top-0 right-0 z-50"
+      >
+        <span className="hidden md:block ">{menuAct ? "Cerrar" : "Menú"}</span>
         {menuAct ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,26 +45,25 @@ const Navbar = () => {
           </svg>
         )}
       </button>
-      {/* <div $menuAct={menuAct}>
+      <div
+        $menuAct={menuAct}
+        className={`fixed top-0 right-0 h-full w-32 pt-10 bg-customBlueGray trasition duration-300 ease-linear origin-right ${ menuAct ? "scale-x-100" : "scale-x-0"}`}
+      >
         <div className="btn_group">
           <Link
             to="/"
-            className={
-              location.pathname === "/inventory/add-supplier" ? "active" : ""
-            }
+            className="w-full h-10 ps-3 text-sm text-slate-100 hover:bg-customDeepBlue flex items-center border-t border-slate-300"
           >
             Inventarios
           </Link>
           <Link
             to="/supplier"
-            className={
-              location.pathname === "/inventory/add-supplier" ? "active" : ""
-            }
+            className="w-full h-10 ps-3 text-sm text-slate-100 hover:bg-customDeepBlue flex items-center border-t border-b border-slate-300"
           >
             Proveedores
           </Link>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
