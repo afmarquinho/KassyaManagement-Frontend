@@ -6,11 +6,10 @@ const GlobalStyle = createGlobalStyle`
       background-color: ${(props) => props.theme.background};
       color: ${(props) => props.theme.primaryText};
       font-style: ${(props) => props.theme.fontStyled};
-      font-size: 1.4rem;
       line-height: 1.4;
       scroll-behavior: smooth;
+      font-size: 1em;
       @media (min-width: 768px) {
-      font-size: 1.6rem;
       line-height: 1.8;
     }
   }
@@ -27,15 +26,23 @@ const GlobalStyle = createGlobalStyle`
     }
     
     //? USAR SOLO EN LOS NOMBRES DEL MODULO
-  h2 {
-    font-size: 0.8rem; 
-  @media (min-width: 768px) {
-    font-size: 1rem;
-  }
-}
-a{
-  text-decoration:none;
-}
+    h2 {
+      font-size: 0.8rem; 
+      @media (min-width: 768px) {
+      font-size: 1rem;
+      }
+    }
+    //? TITULOS INTERNOS
+    h3 {
+      font-size: 1.1rem;      
+      font-weight: bold;
+      @media (min-width: 768px) {
+      }
+    }
+    
+    a{
+      text-decoration:none;
+    }
         
 `;
 

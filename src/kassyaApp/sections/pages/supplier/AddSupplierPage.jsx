@@ -55,28 +55,38 @@ const AddSupplierPage = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <Form onSubmit={onCreateSupplier}>
-            <h3 className="titulo">Registrar Nuevo Proveedor</h3>
-            <div className="container">
+          <form
+            onSubmit={onCreateSupplier}
+            className=" w-90 md:w-4/5 lg:w-3/5 max-w-3xl m-auto bg-white"
+          >
+            <h3 className="bg-customDeepBlue w-full h-20  flex items-center justify-center uppercase text-white">
+              Nuevo Proveedor
+            </h3>
+            <div className="contenedor w-full p-10 pt-6">
               <Alerta status={status} msg={msg} />
-
               <>
-                <h4>Información del Proveedor</h4>
-                <div className="group group1">
-                  <div className="input-group">
-                    <label htmlFor="businessName">Razón Social</label>
+                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center mb-3 font-semibold text-white">
+                  Información del Proveedor
+                </h4>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="businessName">
+                      Razón Social
+                    </label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       type="text"
                       name="businessName"
                       value={formValues.businessName}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="nif">
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="nif">
                       Identificación(ID, NIT, NIF, RIF, ETC)
                     </label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       type="text"
                       name="nif"
                       value={formValues.nif}
@@ -84,10 +94,13 @@ const AddSupplierPage = () => {
                     />
                   </div>
                 </div>
-                <div className="group group2">
-                  <div className="input-group">
-                    <label htmlFor="entity">Contribuyente</label>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                  <div className="w-full md:w-1/3 flex flex-col">
+                    <label className="w-full" htmlFor="entity">
+                      Contribuyente
+                    </label>
                     <select
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="entity"
                       id=""
                       value={formValues.entity}
@@ -98,18 +111,24 @@ const AddSupplierPage = () => {
                       <option value="legal">Persona Jurídica</option>
                     </select>
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="country">País</label>
+                  <div className="w-full md:w-1/3 flex flex-col">
+                    <label className="w-full" htmlFor="country">
+                      País
+                    </label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="country"
                       type="text"
                       value={formValues.country}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="city">Ciudad</label>
+                  <div className="w-full md:w-1/3 flex flex-col">
+                    <label className="w-full" htmlFor="city">
+                      Ciudad
+                    </label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="city"
                       type="text"
                       value={formValues.city}
@@ -118,19 +137,21 @@ const AddSupplierPage = () => {
                   </div>
                 </div>
 
-                <div className="group group3">
-                  <div className="input-group">
-                    <label htmlFor="address">Dirección</label>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="address">Dirección</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="address"
                       type="text"
                       value={formValues.address}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="zipCode">Código Postal</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="zipCode">Código Postal</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="zipCode"
                       type="number"
                       value={formValues.zipCode}
@@ -139,19 +160,21 @@ const AddSupplierPage = () => {
                   </div>
                 </div>
 
-                <div className="group group4">
-                  <div className="input-group">
-                    <label htmlFor="tel">Teléfono</label>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="tel">Teléfono</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="tel"
                       type="tel"
                       value={formValues.tel}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="webSite">Sitio Web</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="webSite">Sitio Web</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="webSite"
                       type="tel"
                       value={formValues.webSite}
@@ -160,22 +183,24 @@ const AddSupplierPage = () => {
                   </div>
                 </div>
 
-                <h4>Información Bancaria</h4>
-                <div className="group group5">
-                  <div className="input-group">
-                    <label htmlFor="bank">Banco</label>
+                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">Información Bancaria</h4>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="bank">Banco</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="bank"
                       type="text"
                       value={formValues.bank}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="bankingAccount">
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="bankingAccount">
                       Número de cuenta bancaria
                     </label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="bankingAccount"
                       type="text"
                       value={formValues.bankingAccount}
@@ -184,33 +209,36 @@ const AddSupplierPage = () => {
                   </div>
                 </div>
 
-                <div className="group group6">
-                  <div className="input-group">
-                    <label htmlFor="paymentTerms">Plazo de pago en días</label>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="paymentTerms">Plazo de pago en días</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="paymentTerms"
                       type="number"
                       value={formValues.paymentTerms}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group"></div>
+                  <div className="w-full md:w-1/2 flex flex-col"></div>
                 </div>
 
-                <h4>Información del Contacto</h4>
-                <div className="group group7">
-                  <div className="input-group">
-                    <label htmlFor="contactName">Nombre de Contacto</label>
+                <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center my-3 font-semibold text-white">Información del Contacto</h4>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="contactName">Nombre de Contacto</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="contactName"
                       type="text"
                       value={formValues.contactName}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group">
-                    <label htmlFor="contactNumber">Teléfono de Contacto</label>
+                  <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="contactNumber">Teléfono de Contacto</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="contactNumber"
                       type="tel"
                       value={formValues.contactNumber}
@@ -219,27 +247,29 @@ const AddSupplierPage = () => {
                   </div>
                 </div>
 
-                <div className="group group8">
-                  <div className="input-group">
-                    <label htmlFor="contactEmail">Email de Contacto</label>
+                <div className="flex flex-col md:flex-row w-full gap-3">
+                <div className="w-full md:w-1/2 flex flex-col">
+                    <label className="w-full" htmlFor="contactEmail">Email de Contacto</label>
                     <input
+                      className="w-full h-7 focus:outline-none bg-slate-200"
                       name="contactEmail"
                       type="email"
                       value={formValues.contactEmail}
                       onChange={onInputChange}
                     />
                   </div>
-                  <div className="input-group"></div>
+                  <div className="w-full md:w-1/2 flex flex-col"></div>
+                
                 </div>
 
-                <div className="input-btn">
-                  <BtnSubmmit type="submit" className="btn-crear">
+              
+                  <button type="submit" className="w-3/4 md:w-1/2 max-w-md h-8 flex justify-center items-center m-auto mt-3 bg-customMainColor hover:bg-cyan-300 transition-colors duration-500 ease-linear font-bold">
                     CREAR
-                  </BtnSubmmit>
-                </div>
+                  </button>
+                
               </>
             </div>
-          </Form>
+          </form>
         )}
       </>
     </SupplierLayout>
@@ -248,8 +278,6 @@ const AddSupplierPage = () => {
 
 export default AddSupplierPage;
 const Form = styled.form`
-  background-color: ${(props) => props.theme.white};
-  width: 90%;
   max-width: 90rem;
   margin: 0 auto;
   h3 {
