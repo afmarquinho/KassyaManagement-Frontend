@@ -7,101 +7,51 @@ const InventoryLayout = ({ children }) => {
 
   return (
     <>
-      <Menu
+      <button
         onClick={(e) => setMostarMenu(!mostrarMenu)}
+        className="h-6 fixed z-10 top-2 right-40 text-sm px-5 font-semibold md:hidden bg-customMainColor text-black hover:bg-cyan-30"
       >
         Menú
-      </Menu>
-      <NAV  $mostrarMenu={mostrarMenu}>
-        <div className="nav__content">
-          <h5 className="inventory">INVENTARIO</h5>
-          <BtnMenu1
-            to="/inventory/add-item"
-            className={
-              location.pathname === "/inventory/add-item" ? "active" : ""
-            }
-          >
-            Añadir Ítem
-          </BtnMenu1>
-          <BtnMenu to="/" className={location.pathname === "/" ? "active" : ""}>
-            Ver Inventario
-          </BtnMenu>
-        </div>
+      </button>
+
+      <NAV
+        $mostrarMenu={mostrarMenu}
+        className="fixed z-10 top-10 h-full w-36 transition-transform duration-500 origin-left ease-linear bg-customBlueGray"
+      >
+        <h2 className="bg-customMainColor h-8 md:h-10 flex items-center justify-start ps-2 text-white uppercase font-bold">
+          Inventario
+        </h2>
+        <Link
+          to="/inventory/add-item"
+          className={`text-sm flex items-center h-10 w-full ps-2 border-b boder-slate-500 text-slate-100 ${
+            location.pathname === "/inventory/add-item"
+              ? "bg-customDeepBlueGray text-red-300"
+              : ""
+          }
+            `}
+        >
+          Añadir
+        </Link>
+        <Link
+          to="/"
+          className={`text-sm flex items-center h-10 w-full ps-2 border-b boder-slate-500 text-slate-100 ${
+            location.pathname === "/"
+              ? "bg-customDeepBlueGray text-red-300"
+              : ""
+          }
+            `}
+        >
+          Ver Inventario
+        </Link>
       </NAV>
-      <Content className="content">{children}</Content>
+      <div className="p-1 md:p-2 md:ps-40">{children}</div>
     </>
   );
 };
 
 export default InventoryLayout;
-
 const NAV = styled.nav`
-  width: 12rem;
-  background-color: ${(props) => props.theme.blueGray};
-  position: fixed;
-  z-index: 100;
-  top: 4rem;
-  bottom: 0;
-  left: 0;
-  .nav__content {
-    position: sticky;
-  }
-  .nav__content h5 {
-    padding: 1.2rem 0 1.2rem 0.5rem;
-    margin: 0;
-    background-color: ${(props) => props.theme.main};
-    color: ${(props) => props.theme.black};
-  }
-  .active {
-    background-color: ${(props) => props.theme.deepGray};
-  }
   @media (max-width: 768px) {
-    transition: transform 0.5s ease;
-    transform-origin: left;
-    transform: ${props => props.$mostrarMenu ? "scaleX(1)" : "scaleX(0)"};
+    transform: ${(props) => (props.$mostrarMenu ? "scaleX(1)" : "scaleX(0)")};
   }
-`;
-
-const BtnMenu = styled(Link)`
-  width: 100%;
-  padding: 1rem 0 1rem 0.5rem;
-  font-size: 1.3rem;
-  border: none;
-  border-bottom: 1px solid #37474f;
-  background-color: transparent;
-  color: ${(props) => props.theme.secondaryText};
-  transition: background-color 0.5s ease;
-  display: flex;
-  &:hover {
-    background-color: ${(props) => props.theme.deepGray};
-  }
-`;
-const BtnMenu1 = styled(BtnMenu)`
-  border-top: 1px solid #95d1f0;
-`;
-
-const Content = styled.div`
-  width: calc(100vw - 14rem);
-  margin: 1rem 1rem 1rem 13rem;
-  @media (max-width: 768px) {
-    margin: 1rem auto;
-
-    width: 100%;
-  }
-`;
-const Menu = styled.button`
-  background-color: transparent;
-  color: ${(props) => props.theme.main};
-  border: 2px solid ${(props) => props.theme.main};
-  width: 6rem;
-  height: 3rem;
-  border-radius: 4px;
-  position: fixed;
-  top: 0.5rem;
-  right: 50%;
-  transform: translateX(100%);
-  @media (min-width: 768px) {
-    display: none;
-  }
- 
 `;
