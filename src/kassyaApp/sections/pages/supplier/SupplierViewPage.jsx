@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { getOneSuppilerAsync } from "../../../../redux/thunks/supplierThunks";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Container, Row, Col } from "react-bootstrap";
 import { ModalEditSupplier } from "../../../components";
 
 const SupplierViewPage = () => {
@@ -28,9 +27,9 @@ const SupplierViewPage = () => {
   return (
     <SupplierLayout>
       <>
-        <Container>
-          <Row>
-            <Col xs={12} className="mb-5 d-flex">
+        <div>
+          <div>
+            <div className="mb-5 d-flex">
               {activeModal && (
                 <ModalEditSupplier
                   supplier={supplier}
@@ -74,8 +73,8 @@ const SupplierViewPage = () => {
                 </svg>
                 Eliminar
               </Button>
-            </Col>
-            <Col xs={12} md={6} lg={5}>
+            </div>
+            <div>
               <Card1>
                 <h2>{supplier.businessName}</h2>
                 <div>
@@ -105,8 +104,8 @@ const SupplierViewPage = () => {
                   </p>
                 </div>
               </Card1>
-            </Col>
-            <StyledCol xs={12} md={6} lg={7}>
+            </div>
+            <div>
               <Card2>
                 <h3>Información Bancanria</h3>
                 <div>
@@ -135,9 +134,9 @@ const SupplierViewPage = () => {
                   </p>
                 </div>
               </Card2>
-            </StyledCol>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </>
     </SupplierLayout>
   );
@@ -175,7 +174,7 @@ const Card1 = styled.div`
     }
   }
 `;
-const StyledCol = styled(Col)`
+const StyledCol = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

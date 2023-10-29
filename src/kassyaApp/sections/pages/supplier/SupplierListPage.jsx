@@ -2,7 +2,6 @@ import styled from "styled-components";
 import SupplierLayout from "../../../layout/SupplierLayout.jsx";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Col, Row } from "react-bootstrap";
 import SearchSupplier from "../../../components/SearchSupplier.jsx";
 import { useEffect } from "react";
 
@@ -21,11 +20,11 @@ const SupplierListPage = () => {
   return (
     <SupplierLayout>
       <>
-        <Row>
-          <Col xs={12}>
+        <div>
+          <div>
             <SearchSupplier />
-          </Col>
-          <Col xs={12}>
+          </div>
+          <div>
             <Table>
               <thead>
                 <tr>
@@ -72,8 +71,8 @@ const SupplierListPage = () => {
                 <h5>No hay coincidencias con su búsqueda</h5>
               )}
             </Table>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </>
     </SupplierLayout>
   );
