@@ -19,7 +19,7 @@ export const supplierSlice = createSlice({
       const updatedSupplier = action.payload;
       state.data = [...state.data, updatedSupplier];
     },
-    //actualizar el status para personalizar los estilos del componente ALERTTA
+    //actualizar el status para personalizar los estilos del componente ALERTA
     setStatus: (state, action) => {
       state.status = action.payload;
     },
@@ -42,9 +42,9 @@ export const supplierSlice = createSlice({
     },
 
     removeSupplier: (state, action) => {
-      const updatedSupplier = action.payload;
+      const deletedSupplier = action.payload;
       state.data = state.data.filter(
-        (item) => item._id !== updatedSupplier._id
+        (item) => item._id !== deletedSupplier._id
       );
     },
     //actualizar un proveedor

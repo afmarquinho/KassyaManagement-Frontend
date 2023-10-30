@@ -7,6 +7,7 @@ import {
   setData,
   getOneSupplier,
   updateSupplier,
+  removeSupplier,
 } from "../slices/supplierSlice";
 
 export const addSupplierAsync = (item) => {
@@ -34,7 +35,7 @@ export const addSupplierAsync = (item) => {
       //? Independientemente del resultado de la solicitud, establecer loading en false después de 3 segundos
       setTimeout(() => {
         dispatch(setLoading(false));
-      }, 2000);
+      }, 3000);
     }
   };
 };
@@ -74,6 +75,31 @@ export const editSupplier = (id, updatedSupplier) => {
       );
 
       dispatch(updateSupplier(response.data.data));
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteSupplier = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:4000/api/supplier/delete-supplier/${id}`
+      );
+
+      dispatch(removeSupplier(response.data.data));
+      dispatch(setLoading(true));
+      dispatch(setStatus(response.data.status));
+      dispatch(setMsg(response.data.msg));
+    } catch (error) {
+      console.log(error);
+      dispatch(setStatus(error.response.data.status));
+      dispatch(setMsg(error.response.data.msg));
+    } finally {
+      setTimeout(() => {
+        dispatch(setLoading(false));
+      }, 3000);
+    }
   };
 };
