@@ -19,7 +19,6 @@ const AddItemPage = () => {
 
   const onCreateArticle = async (e) => {
     e.preventDefault();
-    console.log(formValues);
     await dispatch(addItemAsync(formValues));
   };
 

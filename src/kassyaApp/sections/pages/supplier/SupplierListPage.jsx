@@ -6,6 +6,7 @@ import SearchSupplier from "../../../components/SearchSupplier.jsx";
 import { useEffect } from "react";
 
 const SupplierListPage = () => {
+  let i = 0;
   const dataList = useSelector((state) => state.supplier.data);
   const searchTerm = useSelector((state) => state.supplier.searchTerm);
 
@@ -26,6 +27,7 @@ const SupplierListPage = () => {
             <Table className="w-full text-sm">
               <thead className="bg-customDeepBlueGray text-slate-300">
                 <tr className="h-7">
+                  <th className="text-start"></th>
                   <th className="text-start">Nombre</th>
                   <th className="text-start">País</th>
                   <th className="text-start">Teléfono</th>
@@ -37,9 +39,10 @@ const SupplierListPage = () => {
               </thead>
               {searchTerm === "" ? (
                 <tbody>
-                  {dataList.map((item) => (
+                  {dataList.map((item, index) => (
                     <tr className="h-7" key={item.nif}>
-                      <td>{item.businessName}</td>
+                      <td>{index + 1}</td>
+                      <td className="w-32">{item.businessName}</td>
                       <td>{item.country}</td>
                       <td>{item.tel}</td>
                       <td>{item.bank}</td>

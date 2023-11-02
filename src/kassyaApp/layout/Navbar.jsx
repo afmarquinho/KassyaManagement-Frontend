@@ -63,6 +63,13 @@ const Navbar = () => {
           >
             Proveedores
           </Link>
+          <Link
+            to="/purchasing"
+            className="w-full h-10 ps-3 text-sm text-slate-100 hover:bg-customDeepBlue flex items-center border-b border-slate-300"
+            onClick={(e) => setMenuAct(false)}
+          >
+            Compras
+          </Link>
         </div>
       </div>
     </>

@@ -1,14 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SupplierLayout from "../../../layout/SupplierLayout";
 import { useEffect, useState } from "react";
 import { getOneSuppilerAsync } from "../../../../redux/thunks/supplierThunks";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { ModalEditSupplier } from "../../../components";
+import { ModalDeleteSupplier, ModalEditSupplier } from "../../../modals";
 
 const SupplierViewPage = () => {
   const supplier = useSelector((state) => state.supplier.oneSupplier);
-  const [activeModal, setActiveModal] = useState(false);
+  const [actModalEditar, setActModalEditar] = useState(false);
+  const [actModalDelete, setActModalDelete] = useState(false);
+  const navigate = useNavigate();
 
   const params = useParams();
 
@@ -21,22 +22,33 @@ const SupplierViewPage = () => {
   }, [supplier]);
 
   const abrirModal = () => {
-    setActiveModal(true);
+    setActModalEditar(true);
+  };
+
+  const goBack = () => {
+    navigate("/supplier");
   };
 
   return (
     <SupplierLayout>
       <>
-        <div>
-          <div className="flex gap-5 mb-5">
-            {activeModal && (
-              <ModalEditSupplier
-                supplier={supplier}
-                activeModal={activeModal}
-                setActiveModal={setActiveModal}
-              />
-            )}
+        <div className="flex justify-between items-center mb-3">
+          {actModalDelete && (
+            <ModalDeleteSupplier
+              setActModalDelete={setActModalDelete}
+              mensaje={"Realmente deseas eliminar el proveedor:"}
+              nombre={supplier.businessName}
+            />
+          )}
 
+          {actModalEditar && (
+            <ModalEditSupplier
+              supplier={supplier}
+              activeModal={actModalEditar}
+              setActiveModal={setActModalEditar}
+            />
+          )}
+          <div className="flex gap-3">
             <button
               className="px-3 py-1 w-28 flex items-center gap-1 text-white font-medium bg-green-600 hover:bg-green-500"
               onClick={abrirModal}
@@ -57,7 +69,10 @@ const SupplierViewPage = () => {
               </svg>
               Editar
             </button>
-            <button className="px-3 py-1 w-28 flex items-center gap-1 text-white font-medium bg-red-600 hover:bg-red-500">
+            <button
+              className="px-3 py-1 w-28 flex items-center gap-1 text-white font-medium bg-red-600 hover:bg-red-500"
+              onClick={(e) => setActModalDelete(true)}
+            >
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -76,65 +91,97 @@ const SupplierViewPage = () => {
               Eliminar
             </button>
           </div>
-          <div>
-            <table className="w-11/12 bg-white text-sm m-auto">
-              <caption className="bg-customDeepBlue w-full text-white py-2 font-semibold text-lg uppercase">
-                {supplier.businessName}
-              </caption>
-              <tbody>
-                <tr>
-                 <td className="text-start py-2 font-bold">ID/NIT</td>
-                 <td className="text-start py-2">{supplier.nif}</td>
+          <button
+            className="flex justify-center items-center gap-1 me-5"
+            onClick={goBack}
+          >
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+              />
+            </svg>
+            Atrás
+          </button>
+        </div>
+
+        <div>
+          <table className="w-11/12 bg-white text-sm m-auto">
+            <caption className="bg-customDeepBlue w-full text-white py-2 font-semibold text-lg uppercase">
+              {supplier.businessName}
+            </caption>
+            <tbody>
+              <tr>
+                <td className="text-start py-2 font-bold">Categoría:</td>
+                <td className="text-start py-2 font-bold">{supplier.category}</td>
+              </tr>
+              <tr>
+                <td className="text-start py-2 font-bold">ID/NIT</td>
+                <td className="text-start py-2">{supplier.nif}</td>
                 <td className="text-start py-2 font-bold">Persona</td>
-                 <td className="text-start py-2">{supplier.entity}</td>
+                <td className="text-start py-2">{supplier.entity}</td>
                 <td className="text-start py-2 font-bold">País</td>
-                 <td className="text-start py-2">{supplier.country}</td>
+                <td className="text-start py-2">{supplier.country}</td>
                 <td className="text-start py-2 font-bold">Ciudad</td>
-                 <td className="text-start py-2">{supplier.city}</td>
-                </tr>
-                <tr>
+                <td className="text-start py-2">{supplier.city}</td>
+              </tr>
+              <tr>
                 <td className="text-start py-2 font-bold">Dirección</td>
-                 <td className="text-start py-2">{supplier.address}</td>
+                <td className="text-start py-2">{supplier.address}</td>
                 <td className="text-start py-2 font-bold">Código Postal</td>
-                 <td className="text-start py-2">{supplier.zipCode}</td>
+                <td className="text-start py-2">{supplier.zipCode}</td>
                 <td className="text-start py-2 font-bold">Teléfono</td>
-                 <td className="text-start py-2">{supplier.tel}</td>
+                <td className="text-start py-2">{supplier.tel}</td>
                 <td className="text-start py-2 font-bold">Sitio Web</td>
-                 <td className="text-start py-2">{supplier.webSite}</td>
-                </tr>
+                <td className="text-start py-2">{supplier.webSite}</td>
+              </tr>
 
-                <tr className="bg-customBackground text-black w-full">
-                  <th colspan="8" className="py-2">Información Bancaria</th>
-                </tr>
+              <tr className="bg-customBackground text-black w-full">
+                <th colSpan="8" className="py-2">
+                  Información Bancaria
+                </th>
+              </tr>
 
-                <tr>
+              <tr>
                 <td className="text-start py-2 font-bold">Banco</td>
-                 <td className="text-start py-2">{supplier.bank}</td>
+                <td className="text-start py-2">{supplier.bank}</td>
                 <td className="text-start py-2 font-bold">N° de Cuenta</td>
-                 <td className="text-start py-2">{supplier.bankingAccount}</td>
+                <td className="text-start py-2">{supplier.bankingAccount}</td>
                 <td className="text-start py-2 font-bold">Plazo de Pago</td>
-                 <td className="text-start py-2">{supplier.paymentTerms} días</td>
+                <td className="text-start py-2">
+                  {supplier.paymentTerms} días
+                </td>
                 <td className="text-start py-2 font-bold"></td>
-                 <td className="text-start py-2"></td>
-                </tr>
+                <td className="text-start py-2"></td>
+              </tr>
 
-                <tr className="bg-customBackground text-black w-full">
-                  <th colspan="8" className="py-2">Datos de Contacto</th>
-                </tr>
+              <tr className="bg-customBackground text-black w-full">
+                <th colSpan="8" className="py-2">
+                  Datos de Contacto
+                </th>
+              </tr>
 
-                <tr>
+              <tr>
                 <td className="text-start py-2 font-bold">Nombre</td>
-                 <td className="text-start py-2">{supplier.contactName}</td>
+                <td className="text-start py-2">{supplier.contactName}</td>
                 <td className="text-start py-2 font-bold">Teléfono</td>
-                 <td className="text-start py-2">{supplier.contactNumber}</td>
+                <td className="text-start py-2">{supplier.contactNumber}</td>
                 <td className="text-start py-2 font-bold">E-mail</td>
-                 <td className="text-start py-2">{supplier.contactEmail}</td>
+                <td className="text-start py-2">{supplier.contactEmail}</td>
                 <td className="text-start py-2 font-bold"></td>
-                 <td className="text-start py-2"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                <td className="text-start py-2"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </>
     </SupplierLayout>
@@ -142,65 +189,3 @@ const SupplierViewPage = () => {
 };
 
 export default SupplierViewPage;
-
-const Card1 = styled.div`
-  width: 90%;
-  max-width: 50rem;
-  background-color: ${(props) => props.theme.white};
-  overflow: hidden;
-
-  h2 {
-    font-size: 2rem;
-    width: 100%;
-    margin: 0;
-    background-color: ${(props) => props.theme.deepBlue};
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    @media (min-width: 768px) {
-      font-size: 3rem;
-    }
-  }
-  div {
-    padding: 1rem;
-  }
-  div p {
-    margin: 1rem 0;
-    span {
-      font-weight: bold;
-    }
-  }
-`;
-const StyledCol = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-const Card2 = styled(Card1)`
-  max-width: 30rem;
-  margin: 0;
-  flex-basis: 48%;
-  h3 {
-    background-color: ${(props) => props.theme.main};
-    color: ${(props) => props.theme.deepBlue};
-    padding: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-`;
-const Button = styled.button`
-  border-radius: 0;
-  width: 10rem;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: space-evenly;
-  svg {
-    width: 2rem;
-  }
-`;
