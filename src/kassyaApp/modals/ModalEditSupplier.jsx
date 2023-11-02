@@ -4,62 +4,61 @@ import Alerta from "../components/Alerta";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editSupplier } from "../../redux/thunks/supplierThunks";
+import useForm from "../../helpers/useForm";
+import { setMsg, setStatus } from "../../redux/slices/supplierSlice";
 
 const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
-  const [businessName, setBusinessName] = useState(supplier.businessName);
-  const [nif, setNif] = useState(supplier.nif);
-  const [entity, setEntity] = useState(supplier.entity);
-  const [country, setCountry] = useState(supplier.country);
-  const [city, setCity] = useState(supplier.city);
-  const [address, setAddress] = useState(supplier.address);
-  const [zipCode, setZipCode] = useState(supplier.zipCode);
-  const [tel, setTel] = useState(supplier.tel);
-  const [webSite, setWebSite] = useState(supplier.webSite);
-  const [bank, setBank] = useState(supplier.bank);
-  const [bankingAccount, setBankingAccount] = useState(supplier.bankingAccount);
-  const [paymentTerms, setPaymentTerms] = useState(supplier.paymentTerms);
-  const [contactName, setContactName] = useState(supplier.contactName);
-  const [contactNumber, setContactNumber] = useState(supplier.contactNumber);
-  const [contactEmail, setContactEmail] = useState(supplier.contactEmail);
+  const initialValues = {
+    businessName: supplier.businessName,
+    nif: supplier.nif,
+    entity: supplier.entity,
+    country: supplier.country,
+    city: supplier.city,
+    address: supplier.address,
+    zipCode: supplier.zipCode,
+    tel: supplier.tel,
+    webSite: supplier.webSite,
+    bank: supplier.bank,
+    bankingAccount: supplier.bankingAccount,
+    paymentTerms: supplier.paymentTerms,
+    contactNumber: supplier.contactNumber,
+    contactName: supplier.contactName,
+    contactEmail: supplier.contactEmail,
+  };
+  const { formValues, resetForm, onInputChange } = useForm(initialValues);
+  const status = useSelector((state) => state.supplier.status);
+  const msg = useSelector((state) => state.supplier.msg);
 
   const params = useParams();
   const dispatch = useDispatch();
 
-  const cerrarModal = () => {
+  const onClose = () => {
     setActiveModal(false);
+    //? Me aseguro que al cerrar el modal no se vaya una alerta sin setear que me vaya a afectar en otro formulario
+    dispatch(setMsg(""));
+    dispatch(setStatus(""));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      businessName,
-      nif,
-      entity,
-      country,
-      city,
-      address,
-      zipCode,
-      tel,
-      webSite,
-      bank,
-      bankingAccount,
-      paymentTerms,
-      contactName,
-      contactNumber,
-      contactEmail,
-    };
 
-    dispatch(editSupplier(params.id, formData));
+    dispatch(editSupplier(params.id, formValues));
+
+    setTimeout(() => {
+      dispatch(setMsg(""));
+      dispatch(setStatus(""));
+      setActiveModal(false);
+    }, 2000);
   };
   return (
-    <div className="block fixed z-[60] left-0 right-0 bottom-0 top-0 overflow-auto pt-10 bg-customDeepBlueGray bg-opacity-90">
+    <div className="block fixed z-[60] left-0 right-0 bottom-0 top-0 overflow-auto pt-10  bg-black bg-opacity-80">
       {/* //TODO: AGREGAR EL COMPONENRTE DE LA ALERTA */}
-      <form
-        className=" w-full max-w-3xl m-auto bg-white relative"
-        onSubmit={onSubmit}
-      >
+      <form className=" w-full max-w-3xl m-auto bg-white" onSubmit={onSubmit}>
         {/* <Cerrar className="absolute"onClick={cerrarModal}>&times;</Cerrar> */}
-        <div className="btn-cerrar absolute top-4 right-4 cursor-pointer text-red-500" onClick={cerrarModal}>
+        <div
+          className="btn-cerrar absolute top-4 right-4 cursor-pointer text-white"
+          onClick={onClose}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -75,12 +74,12 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
             />
           </svg>
         </div>
-        <h3 className="bg-customDeepBlue w-full h-20  flex items-center justify-center uppercase text-white">
-          Editar Proveedor: {supplier.businessName}
+        <h3 className="w-full h-20  flex items-center justify-center uppercase text-cyan-100 bg-cyan-700">
+          Editar: {supplier.businessName}
         </h3>
-        <div className="contenedor w-full p-10 pt-6">
-          {/* <Alerta status={status} msg={msg} />  */}
+        {msg && <Alerta status={status} msg={msg} />}
 
+        <div className="contenedor w-full p-10 pt-6">
           <>
             <h4 className="bg-customDeepBlueGray w-full h-10 flex items-center justify-center mb-3 font-semibold text-white">
               Información del Proveedor
@@ -94,8 +93,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   type="text"
                   name="businessName"
-                  value={businessName || ""}
-                  onChange={(e) => setBusinessName(e.target.value)}
+                  value={formValues.businessName || ""}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col">
@@ -106,8 +105,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   type="text"
                   name="nif"
-                  value={nif || ""}
-                  onChange={(e) => setNif(e.target.value)}
+                  value={formValues.nif || ""}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -120,8 +119,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="entity"
                   id=""
-                  value={entity || ""}
-                  onChange={(e) => setEntity(e.target.value)}
+                  value={formValues.entity || ""}
+                  onChange={onInputChange}
                 >
                   <option value="">-- Seleccione --</option>
                   <option value="natural">Persona Natural</option>
@@ -136,8 +135,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="country"
                   type="text"
-                  value={country || ""}
-                  onChange={(e) => setCountry(e.target.value)}
+                  value={formValues.country || ""}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="w-full md:w-1/3 flex flex-col">
@@ -148,8 +147,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="city"
                   type="text"
-                  value={city || ""}
-                  onChange={(e) => setCity(e.target.value)}
+                  value={formValues.city || ""}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -163,7 +162,7 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="address"
                   type="text"
-                  value={address || ""}
+                  value={formValues.address || ""}
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
@@ -175,8 +174,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="zipCode"
                   type="number"
-                  value={zipCode || ""}
-                  onChange={(e) => setZipCode(e.target.value)}
+                  value={formValues.zipCode || ""}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -190,7 +189,7 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="tel"
                   type="tel"
-                  value={tel || ""}
+                  value={formValues.tel || ""}
                   onChange={(e) => setTel(e.target.value)}
                 />
               </div>
@@ -202,8 +201,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="webSite"
                   type="tel"
-                  value={webSite || ""}
-                  onChange={(e) => setWebSite(e.target.value)}
+                  value={formValues.webSite || ""}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -220,8 +219,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="bank"
                   type="text"
-                  value={bank || ""}
-                  onChange={(e) => setBank(e.target.value)}
+                  value={formValues.bank || ""}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col">
@@ -232,8 +231,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="bankingAccount"
                   type="text"
-                  value={bankingAccount || ""}
-                  onChange={(e) => setBankingAccount(e.target.value)}
+                  value={formValues.bankingAccount || ""}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -247,8 +246,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="paymentTerms"
                   type="number"
-                  value={paymentTerms || ""}
-                  onChange={(e) => setPaymentTerms(e.target.value)}
+                  value={formValues.paymentTerms || ""}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group"></div>
@@ -266,8 +265,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="contactName"
                   type="text"
-                  value={contactName || ""}
-                  onChange={(e) => setContactName(e.target.value)}
+                  value={formValues.contactName || ""}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="w-full md:w-1/2 flex flex-col">
@@ -278,8 +277,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="contactNumber"
                   type="tel"
-                  value={contactNumber || ""}
-                  onChange={(e) => setContactNumber(e.target.value)}
+                  value={formValues.contactNumber || ""}
+                  onChange={onInputChange}
                 />
               </div>
             </div>
@@ -293,8 +292,8 @@ const ModalEditSupplier = ({ supplier, activeModal, setActiveModal }) => {
                   className="w-full h-7 focus:outline-none bg-slate-200"
                   name="contactEmail"
                   type="email"
-                  value={contactEmail || ""}
-                  onChange={(e) => setContactEmail(e.target.value)}
+                  value={formValues.contactEmail || ""}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="input-group"></div>

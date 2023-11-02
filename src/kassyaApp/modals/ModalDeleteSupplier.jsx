@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useNavigation, useParams } from "react-router-dom";
 import { deleteSupplier } from "../../redux/thunks/supplierThunks";
-import { SpinnerDeleting } from "../components";
+import { Alerta, SpinnerDeleting } from "../components";
+
 
 const ModalDeleteSupplier = ({
   setActModalDelete,
@@ -15,17 +16,25 @@ const ModalDeleteSupplier = ({
   const status = useSelector((state) => state.supplier.status);
   const msg = useSelector((state) => state.supplier.msg);
   const loading = useSelector((state) => state.supplier.loading);
+  const navigate = useNavigate();
+
+  //TODO: COLOCAR MENSAJE DE BORRADO Y SPINNER
+
 
   const remove = () => {
     dispatch(deleteSupplier(params.id));
     setActModalDelete(false);
+    navigate("/supplier")
+   
+    
   };
   return (
     <>
-      {loading ? (
-        <SpinnerDeleting />
+      {msg ? (
+        <Alerta status={status}
+         msg={msg} />
       ) : (
-        <div className="fixed z-[60] left-0 right-0 bottom-0 top-0 overflow-auto pt-10 bg-customDeepBlueGray bg-opacity-90 flex justify-center items-center">
+        <div className="fixed z-[60] left-0 right-0 bottom-0 top-0 overflow-auto pt-10 bg-black bg-opacity-80 flex justify-center items-center">
           <div className="bg-white p-6 w-96 max-w-96 h-60 flex flex-col justify-center items-center text-md">
             <div className="">
               <svg

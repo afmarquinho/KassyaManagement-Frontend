@@ -1,12 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../kassyaApp/layout/Layout";
 import {
-  AddItemPage,
+ AddItemPage,
   AddSupplierPage,
+  AnalysisPage,
   InventoryListPage,
+  NewPurchase,
   SupplierListPage,
   SupplierViewPage
 } from "../kassyaApp/sections/pages";
+
 
 const AppRouter = () => {
   return (
@@ -22,6 +25,8 @@ const AppRouter = () => {
             <Route path="supplier/add-supplier" element={<AddSupplierPage />} />
             <Route path="supplier" element={<SupplierListPage />} />
             <Route path="supplier/:id" element={<SupplierViewPage />} />
+            <Route path="supplier/statistics" element={<AnalysisPage />} />
+            <Route path="purchasing" element={<NewPurchase />} />
             
           </Route>
         </Routes>

@@ -26,7 +26,7 @@ const SupplierViewPage = () => {
   };
 
   const goBack = () => {
-    navigate("/supplier")
+    navigate("/supplier");
   };
 
   return (
@@ -121,6 +121,10 @@ const SupplierViewPage = () => {
             </caption>
             <tbody>
               <tr>
+                <td className="text-start py-2 font-bold">Categoría:</td>
+                <td className="text-start py-2 font-bold">{supplier.category}</td>
+              </tr>
+              <tr>
                 <td className="text-start py-2 font-bold">ID/NIT</td>
                 <td className="text-start py-2">{supplier.nif}</td>
                 <td className="text-start py-2 font-bold">Persona</td>
@@ -185,5 +189,3 @@ const SupplierViewPage = () => {
 };
 
 export default SupplierViewPage;
-
-
