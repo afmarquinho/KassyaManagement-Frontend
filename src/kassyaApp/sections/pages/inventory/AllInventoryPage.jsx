@@ -9,7 +9,7 @@ const AllInventoryPage = () => {
       supplier: "José Jorge",
       amount: "30",
       unit: "unidad",
-      unitPrice: "4000",
+      unitCost: "4000",
       createdAt: "30-09-2023",
     },
     {
@@ -18,7 +18,7 @@ const AllInventoryPage = () => {
       supplier: "José Pérez",
       amount: "100",
       unit: "unidad",
-      unitPrice: "3400",
+      unitCost: "3400",
       createdAt: "30-09-2023",
     },
     {
@@ -27,7 +27,7 @@ const AllInventoryPage = () => {
       supplier: "José Pérez",
       amount: "100",
       unit: "unidad",
-      unitPrice: "3400",
+      unitCost: "3400",
       createdAt: "30-09-2023",
     },
     {
@@ -36,7 +36,7 @@ const AllInventoryPage = () => {
       supplier: "José Pérez",
       amount: "100",
       unit: "unidad",
-      unitPrice: "3400",
+      unitCost: "3400",
       createdAt: "30-09-2023",
     },
   ];
@@ -63,7 +63,7 @@ const AllInventoryPage = () => {
                 <td>{item.supplier}</td>
                 <td>{item.amount}</td>
                 <td>{item.unit}</td>
-                <td>{item.unitPrice}</td>
+                <td>{item.unitCost}</td>
                 <td>{item.createdAt}</td>
               </tr>
             ))}

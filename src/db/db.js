@@ -21,7 +21,7 @@ export const inventory = [
     supplier: "Quire",
     amount: 231,
     unit: "unit",
-    unitPrice: 338,
+    unitCost: 338,
   },
   {
     name: "Cake - Night And Day Choclate",
@@ -29,7 +29,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 227,
     unit: "unit",
-    unitPrice: 874,
+    unitCost: 874,
   },
   {
     name: "Nut - Hazelnut, Ground, Natural",
@@ -37,7 +37,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 950,
     unit: "unit",
-    unitPrice: 258,
+    unitCost: 258,
   },
   {
     name: "Potatoes - Parissienne",
@@ -45,7 +45,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 421,
     unit: "g",
-    unitPrice: 486,
+    unitCost: 486,
   },
   {
     name: "Nantucket - Kiwi Berry Cktl.",
@@ -53,7 +53,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 50,
     unit: "k",
-    unitPrice: 288,
+    unitCost: 288,
   },
   {
     name: "Apple - Delicious, Golden",
@@ -61,7 +61,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 328,
     unit: "k",
-    unitPrice: 173,
+    unitCost: 173,
   },
   {
     name: "Pickle - Dill",
@@ -69,7 +69,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 685,
     unit: "l",
-    unitPrice: 685,
+    unitCost: 685,
   },
   {
     name: "Soup Campbells Turkey Veg.",
@@ -77,7 +77,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 320,
     unit: "k",
-    unitPrice: 503,
+    unitCost: 503,
   },
   {
     name: "Tea - Green",
@@ -85,7 +85,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 376,
     unit: "k",
-    unitPrice: 802,
+    unitCost: 802,
   },
   {
     name: "Soup - Campbells Tomato Ravioli",
@@ -93,7 +93,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 100,
     unit: "g",
-    unitPrice: 584,
+    unitCost: 584,
   },
   {
     name: "Cookie Double Choco",
@@ -101,7 +101,7 @@ export const inventory = [
     supplier: "Feedbug",
     amount: 261,
     unit: "unit",
-    unitPrice: 802,
+    unitCost: 802,
   },
   {
     name: "Crush - Grape, 355 Ml",
@@ -109,7 +109,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 180,
     unit: "unit",
-    unitPrice: 942,
+    unitCost: 942,
   },
   {
     name: "Sugar - Invert",
@@ -117,7 +117,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 478,
     unit: "unit",
-    unitPrice: 364,
+    unitCost: 364,
   },
   {
     name: "Sauce - Hp",
@@ -125,7 +125,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 642,
     unit: "k",
-    unitPrice: 576,
+    unitCost: 576,
   },
   {
     name: "Bread - Pullman, Sliced",
@@ -133,7 +133,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 491,
     unit: "g",
-    unitPrice: 358,
+    unitCost: 358,
   },
   {
     name: "Buffalo - Short Rib Fresh",
@@ -141,7 +141,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 130,
     unit: "l",
-    unitPrice: 534,
+    unitCost: 534,
   },
   {
     name: "Trueblue - Blueberry 12x473ml",
@@ -149,7 +149,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 8,
     unit: "g",
-    unitPrice: 310,
+    unitCost: 310,
   },
   {
     name: "Onion Powder",
@@ -157,7 +157,7 @@ export const inventory = [
     supplier: "Quire",
     amount: 3,
     unit: "k",
-    unitPrice: 851,
+    unitCost: 851,
   },
   {
     name: "C - Plus, Orange",
@@ -165,7 +165,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 973,
     unit: "unit",
-    unitPrice: 511,
+    unitCost: 511,
   },
   {
     name: "Paper Towel Touchless",
@@ -173,7 +173,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 897,
     unit: "unit",
-    unitPrice: 463,
+    unitCost: 463,
   },
   {
     name: "Split Peas - Green, Dry",
@@ -181,7 +181,7 @@ export const inventory = [
     supplier: "Quire",
     amount: 395,
     unit: "g",
-    unitPrice: 247,
+    unitCost: 247,
   },
   {
     name: "Bread - Focaccia Quarter",
@@ -189,7 +189,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 817,
     unit: "unit",
-    unitPrice: 914,
+    unitCost: 914,
   },
   {
     name: "Cranberries - Dry",
@@ -197,7 +197,7 @@ export const inventory = [
     supplier: "Feedbug",
     amount: 210,
     unit: "l",
-    unitPrice: 852,
+    unitCost: 852,
   },
   {
     name: "Wine - Cotes Du Rhone",
@@ -205,7 +205,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 851,
     unit: "l",
-    unitPrice: 630,
+    unitCost: 630,
   },
   {
     name: "Chocolate - Dark Callets",
@@ -213,7 +213,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 386,
     unit: "l",
-    unitPrice: 945,
+    unitCost: 945,
   },
   {
     name: "Oil - Coconut",
@@ -221,7 +221,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 141,
     unit: "g",
-    unitPrice: 100,
+    unitCost: 100,
   },
   {
     name: "Barley - Pearl",
@@ -229,7 +229,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 713,
     unit: "k",
-    unitPrice: 118,
+    unitCost: 118,
   },
   {
     name: "Dried Apple",
@@ -237,7 +237,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 366,
     unit: "g",
-    unitPrice: 79,
+    unitCost: 79,
   },
   {
     name: "Godiva White Chocolate",
@@ -245,7 +245,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 76,
     unit: "unit",
-    unitPrice: 353,
+    unitCost: 353,
   },
   {
     name: "Cherries - Fresh",
@@ -253,7 +253,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 472,
     unit: "l",
-    unitPrice: 885,
+    unitCost: 885,
   },
   {
     name: "Wine - Pinot Noir Pond Haddock",
@@ -261,7 +261,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 464,
     unit: "k",
-    unitPrice: 843,
+    unitCost: 843,
   },
   {
     name: "White Baguette",
@@ -269,7 +269,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 737,
     unit: "l",
-    unitPrice: 931,
+    unitCost: 931,
   },
   {
     name: "Wine - Beaujolais Villages",
@@ -277,7 +277,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 698,
     unit: "l",
-    unitPrice: 377,
+    unitCost: 377,
   },
   {
     name: "Lid - 0090 Clear",
@@ -285,7 +285,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 913,
     unit: "g",
-    unitPrice: 105,
+    unitCost: 105,
   },
   {
     name: "Ostrich - Fan Fillet",
@@ -293,7 +293,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 623,
     unit: "k",
-    unitPrice: 827,
+    unitCost: 827,
   },
   {
     name: "Crackers - Melba Toast",
@@ -301,7 +301,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 305,
     unit: "k",
-    unitPrice: 479,
+    unitCost: 479,
   },
   {
     name: "Lumpfish Black",
@@ -309,7 +309,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 780,
     unit: "g",
-    unitPrice: 569,
+    unitCost: 569,
   },
   {
     name: "Soup - Chicken And Wild Rice",
@@ -317,7 +317,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 653,
     unit: "l",
-    unitPrice: 884,
+    unitCost: 884,
   },
   {
     name: "Table Cloth 91x91 Colour",
@@ -325,7 +325,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 519,
     unit: "k",
-    unitPrice: 273,
+    unitCost: 273,
   },
   {
     name: "Cheese - Mozzarella, Shredded",
@@ -333,7 +333,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 39,
     unit: "unit",
-    unitPrice: 156,
+    unitCost: 156,
   },
   {
     name: "Mustard Prepared",
@@ -341,7 +341,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 365,
     unit: "l",
-    unitPrice: 160,
+    unitCost: 160,
   },
   {
     name: "Lamb - Leg, Bone In",
@@ -349,7 +349,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 351,
     unit: "unit",
-    unitPrice: 971,
+    unitCost: 971,
   },
   {
     name: "Wiberg Cure",
@@ -357,7 +357,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 388,
     unit: "l",
-    unitPrice: 684,
+    unitCost: 684,
   },
   {
     name: "Tea - Herbal I Love Lemon",
@@ -365,7 +365,7 @@ export const inventory = [
     supplier: "Feedbug",
     amount: 351,
     unit: "k",
-    unitPrice: 548,
+    unitCost: 548,
   },
   {
     name: "Jam - Apricot",
@@ -373,7 +373,7 @@ export const inventory = [
     supplier: "Quire",
     amount: 758,
     unit: "k",
-    unitPrice: 97,
+    unitCost: 97,
   },
   {
     name: "Jam - Strawberry, 20 Ml Jar",
@@ -381,7 +381,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 873,
     unit: "l",
-    unitPrice: 372,
+    unitCost: 372,
   },
   {
     name: "Garlic - Peeled",
@@ -389,7 +389,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 335,
     unit: "k",
-    unitPrice: 708,
+    unitCost: 708,
   },
   {
     name: "Cheese - Camembert",
@@ -397,7 +397,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 442,
     unit: "g",
-    unitPrice: 527,
+    unitCost: 527,
   },
   {
     name: "Turkey Tenderloin Frozen",
@@ -405,7 +405,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 621,
     unit: "unit",
-    unitPrice: 669,
+    unitCost: 669,
   },
   {
     name: "Appetizer - Asian Shrimp Roll",
@@ -413,7 +413,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 482,
     unit: "unit",
-    unitPrice: 964,
+    unitCost: 964,
   },
   {
     name: "Longos - Greek Salad",
@@ -421,7 +421,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 504,
     unit: "g",
-    unitPrice: 612,
+    unitCost: 612,
   },
   {
     name: "Tea - Camomele",
@@ -429,7 +429,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 624,
     unit: "unit",
-    unitPrice: 432,
+    unitCost: 432,
   },
   {
     name: "Split Peas - Yellow, Dry",
@@ -437,7 +437,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 185,
     unit: "unit",
-    unitPrice: 461,
+    unitCost: 461,
   },
   {
     name: "Cookies - Fortune",
@@ -445,7 +445,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 993,
     unit: "unit",
-    unitPrice: 825,
+    unitCost: 825,
   },
   {
     name: "Cheese - Mozzarella, Buffalo",
@@ -453,7 +453,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 809,
     unit: "l",
-    unitPrice: 978,
+    unitCost: 978,
   },
   {
     name: "Eggplant - Baby",
@@ -461,7 +461,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 944,
     unit: "g",
-    unitPrice: 95,
+    unitCost: 95,
   },
   {
     name: "Milk Powder",
@@ -469,7 +469,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 49,
     unit: "g",
-    unitPrice: 725,
+    unitCost: 725,
   },
   {
     name: "Pepper - Black, Ground",
@@ -477,7 +477,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 632,
     unit: "k",
-    unitPrice: 322,
+    unitCost: 322,
   },
   {
     name: "Lettuce Romaine Chopped",
@@ -485,7 +485,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 143,
     unit: "g",
-    unitPrice: 228,
+    unitCost: 228,
   },
   {
     name: "Hog / Sausage Casing - Pork",
@@ -493,7 +493,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 911,
     unit: "l",
-    unitPrice: 521,
+    unitCost: 521,
   },
   {
     name: "Rice - Brown",
@@ -501,7 +501,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 768,
     unit: "k",
-    unitPrice: 747,
+    unitCost: 747,
   },
   {
     name: "Longos - Greek Salad",
@@ -509,7 +509,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 832,
     unit: "k",
-    unitPrice: 279,
+    unitCost: 279,
   },
   {
     name: "Pasta - Orzo, Dry",
@@ -517,7 +517,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 223,
     unit: "g",
-    unitPrice: 161,
+    unitCost: 161,
   },
   {
     name: "Persimmons",
@@ -525,7 +525,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 183,
     unit: "unit",
-    unitPrice: 858,
+    unitCost: 858,
   },
   {
     name: "Cloves - Whole",
@@ -533,7 +533,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 273,
     unit: "g",
-    unitPrice: 853,
+    unitCost: 853,
   },
   {
     name: "General Purpose Trigger",
@@ -541,7 +541,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 498,
     unit: "unit",
-    unitPrice: 597,
+    unitCost: 597,
   },
   {
     name: "Wine - Chardonnay South",
@@ -549,7 +549,7 @@ export const inventory = [
     supplier: "Feedbug",
     amount: 645,
     unit: "unit",
-    unitPrice: 970,
+    unitCost: 970,
   },
   {
     name: "Bread Base - Gold Formel",
@@ -557,7 +557,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 867,
     unit: "l",
-    unitPrice: 637,
+    unitCost: 637,
   },
   {
     name: "Flour - Strong Pizza",
@@ -565,7 +565,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 917,
     unit: "k",
-    unitPrice: 762,
+    unitCost: 762,
   },
   {
     name: "Water - Spring Water, 355 Ml",
@@ -573,7 +573,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 8,
     unit: "unit",
-    unitPrice: 283,
+    unitCost: 283,
   },
   {
     name: "Pepper - Chilli Seeds Mild",
@@ -581,7 +581,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 68,
     unit: "k",
-    unitPrice: 343,
+    unitCost: 343,
   },
   {
     name: "Chicken Thigh - Bone Out",
@@ -589,7 +589,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 522,
     unit: "l",
-    unitPrice: 857,
+    unitCost: 857,
   },
   {
     name: "Gelatine Powder",
@@ -597,7 +597,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 62,
     unit: "k",
-    unitPrice: 681,
+    unitCost: 681,
   },
   {
     name: "Extract - Rum",
@@ -605,7 +605,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 100,
     unit: "k",
-    unitPrice: 565,
+    unitCost: 565,
   },
   {
     name: "Catfish - Fillets",
@@ -613,7 +613,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 565,
     unit: "l",
-    unitPrice: 924,
+    unitCost: 924,
   },
   {
     name: "Nantucket Cranberry Juice",
@@ -621,7 +621,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 224,
     unit: "g",
-    unitPrice: 111,
+    unitCost: 111,
   },
   {
     name: "Cheese - Comtomme",
@@ -629,7 +629,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 665,
     unit: "g",
-    unitPrice: 896,
+    unitCost: 896,
   },
   {
     name: "Oranges",
@@ -637,7 +637,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 581,
     unit: "k",
-    unitPrice: 764,
+    unitCost: 764,
   },
   {
     name: "Anisette - Mcguiness",
@@ -645,7 +645,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 333,
     unit: "unit",
-    unitPrice: 869,
+    unitCost: 869,
   },
   {
     name: "Chips Potato Salt Vinegar 43g",
@@ -653,7 +653,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 536,
     unit: "k",
-    unitPrice: 22,
+    unitCost: 22,
   },
   {
     name: "Pastry - Apple Large",
@@ -661,7 +661,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 29,
     unit: "g",
-    unitPrice: 758,
+    unitCost: 758,
   },
   {
     name: "Quail - Whole, Bone - In",
@@ -669,7 +669,7 @@ export const inventory = [
     supplier: "Podcat",
     amount: 859,
     unit: "unit",
-    unitPrice: 670,
+    unitCost: 670,
   },
   {
     name: "Pail For Lid 1537",
@@ -677,7 +677,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 751,
     unit: "unit",
-    unitPrice: 328,
+    unitCost: 328,
   },
   {
     name: "Mushrooms - Black, Dried",
@@ -685,7 +685,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 765,
     unit: "l",
-    unitPrice: 641,
+    unitCost: 641,
   },
   {
     name: "Shrimp - Black Tiger 26/30",
@@ -693,7 +693,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 873,
     unit: "k",
-    unitPrice: 502,
+    unitCost: 502,
   },
   {
     name: "Foil - 4oz Custard Cup",
@@ -701,7 +701,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 250,
     unit: "g",
-    unitPrice: 892,
+    unitCost: 892,
   },
   {
     name: "Syrup - Chocolate",
@@ -709,7 +709,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 1,
     unit: "g",
-    unitPrice: 975,
+    unitCost: 975,
   },
   {
     name: "Pasta - Canelloni, Single Serve",
@@ -717,7 +717,7 @@ export const inventory = [
     supplier: "Gigabox",
     amount: 416,
     unit: "unit",
-    unitPrice: 909,
+    unitCost: 909,
   },
   {
     name: "Chinese Foods - Thick Noodles",
@@ -725,7 +725,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 799,
     unit: "unit",
-    unitPrice: 442,
+    unitCost: 442,
   },
   {
     name: "Wine - Gato Negro Cabernet",
@@ -733,7 +733,7 @@ export const inventory = [
     supplier: "Feedbug",
     amount: 277,
     unit: "unit",
-    unitPrice: 928,
+    unitCost: 928,
   },
   {
     name: "Beef - Roasted, Cooked",
@@ -741,7 +741,7 @@ export const inventory = [
     supplier: "Jabbertype",
     amount: 664,
     unit: "l",
-    unitPrice: 669,
+    unitCost: 669,
   },
   {
     name: "Sugar - Icing",
@@ -749,7 +749,7 @@ export const inventory = [
     supplier: "Devpulse",
     amount: 299,
     unit: "k",
-    unitPrice: 274,
+    unitCost: 274,
   },
   {
     name: "Kellogs Special K Cereal",
@@ -757,7 +757,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 410,
     unit: "g",
-    unitPrice: 274,
+    unitCost: 274,
   },
   {
     name: "Flour - Whole Wheat",
@@ -765,7 +765,7 @@ export const inventory = [
     supplier: "Skinte",
     amount: 774,
     unit: "unit",
-    unitPrice: 323,
+    unitCost: 323,
   },
   {
     name: "Pickles - Gherkins",
@@ -773,7 +773,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 844,
     unit: "g",
-    unitPrice: 892,
+    unitCost: 892,
   },
   {
     name: "Juice - Grapefruit, 341 Ml",
@@ -781,7 +781,7 @@ export const inventory = [
     supplier: "Twitterworks",
     amount: 585,
     unit: "unit",
-    unitPrice: 817,
+    unitCost: 817,
   },
   {
     name: "Barley - Pearl",
@@ -789,7 +789,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 730,
     unit: "unit",
-    unitPrice: 360,
+    unitCost: 360,
   },
   {
     name: "Crab - Meat",
@@ -797,7 +797,7 @@ export const inventory = [
     supplier: "Quire",
     amount: 500,
     unit: "g",
-    unitPrice: 688,
+    unitCost: 688,
   },
   {
     name: "Nut - Pecan, Pieces",
@@ -805,7 +805,7 @@ export const inventory = [
     supplier: "Twitterlist",
     amount: 631,
     unit: "l",
-    unitPrice: 924,
+    unitCost: 924,
   },
   {
     name: "Wine - Niagara,vqa Reisling",
@@ -813,7 +813,7 @@ export const inventory = [
     supplier: "Ntag",
     amount: 260,
     unit: "unit",
-    unitPrice: 130,
+    unitCost: 130,
   },
 ];
 

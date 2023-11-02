@@ -10,7 +10,7 @@ const intialValues = {
   supplier: "",
   amount: "",
   unit: "",
-  unitPrice: "",
+  unitCost: "",
 };
 const ModalNewPurchasing = ({ setActModal }) => {
   const { formValues, resetForm, onInputChange } = useForm(intialValues);
@@ -147,14 +147,14 @@ const ModalNewPurchasing = ({ setActModal }) => {
             </select>
           </div>
           <div className="input-group">
-            <label className="w-full" htmlFor="unitPrice">
+            <label className="w-full" htmlFor="unitCost">
               Precio Unitario en COP
             </label>
             <input
               className="w-full h-7 focus:outline-none bg-slate-200"
-              name="unitPrice"
+              name="unitCost"
               type="number"
-              value={formValues.unitPricet}
+              value={formValues.unitCostt}
               onChange={onInputChange}
             />
           </div>

@@ -30,5 +30,5 @@ export const purchasingSlice = createSlice({
   },
 });
 
-export const { setStatus, setMsg, addNew } = purchasingSlice.actions;
+export const { setStatus, setMsg, addNew, setData } = purchasingSlice.actions;
 export default purchasingSlice.reducer;

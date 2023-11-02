@@ -47,6 +47,8 @@ const NewPurchase = () => {
           <table className="w-full">
             <thead>
               <tr>
+                <th className="text-start"></th>
+                <th className="text-start">Nombre</th>
                 <th className="text-start">Nombre</th>
                 <th className="text-start">Referencia</th>
                 <th className="text-start">Proveedor</th>
@@ -57,14 +59,15 @@ const NewPurchase = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
+              {data.map((item, index) => (
                 <tr key={item.ref}>
+                  <td className="text-start">{index + 1}</td>
                   <td className="text-start">{item.name}</td>
                   <td className="text-start">{item.ref}</td>
                   <td className="text-start">{item.supplier}</td>
                   <td className="text-start">{item.amount}</td>
                   <td className="text-start">{item.unit}</td>
-                  <td className="text-start">{item.unitPrice}</td>
+                  <td className="text-start">{item.unitCost}</td>
                   <td className="text-start">{item.createdAt}</td>
                 </tr>
               ))}
