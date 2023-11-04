@@ -27,7 +27,7 @@ const AllInventoryPage = () => {
                 <td>{item.supplier}</td>
                 <td>{item.amount}</td>
                 <td>{item.unit}</td>
-                <td>{item.unitPrice}</td>
+                <td>{item.unitCost}</td>
                 <td>Días</td>
               </tr>
             ))}

@@ -19,70 +19,72 @@ const SupplierListPage = () => {
   return (
     <SupplierLayout>
       <>
-        <div>
-          <div>
-            <SearchSupplier />
-          </div>
-          <div>
-            <Table className="w-full text-sm">
-              <thead className="bg-customDeepBlueGray text-slate-300">
-                <tr className="h-7">
-                  <th className="text-start"></th>
-                  <th className="text-start">Nombre</th>
-                  <th className="text-start">País</th>
-                  <th className="text-start">Teléfono</th>
-                  <th className="text-start">Banco</th>
-                  <th className="text-start">Cuenta</th>
-                  <th className="text-start">Plazo</th>
-                  <th></th>
+        <SearchSupplier />
+
+        <Table className="w-full text-xs">
+          <thead className="bg-customDeepBlueGray text-slate-300">
+            <tr className="h-7">
+              <th className="text-start"></th>
+              <th className="text-start">Nombre</th>
+              <th className="text-start">País</th>
+              <th className="text-start">Teléfono</th>
+              <th className="text-start">Banco</th>
+              <th className="text-start">Cuenta</th>
+              <th className="text-start">Plazo</th>
+              <th></th>
+            </tr>
+          </thead>
+          {searchTerm === "" ? (
+            <tbody>
+              {dataList.map((item, index) => (
+                <tr className="h-7" key={item.nif}>
+                  <td>{index + 1}</td>
+                  <td className="w-32">{item.businessName}</td>
+                  <td>{item.country}</td>
+                  <td>{item.tel}</td>
+                  <td>{item.bank}</td>
+                  <td>{item.bankingAccount}</td>
+                  <td>{item.paymentTerms}</td>
+                  <td>
+                    {
+                      <Link
+                        className="text-blue-700"
+                        to={`/supplier/${item._id}`}
+                      >
+                        Ver mas
+                      </Link>
+                    }
+                  </td>
                 </tr>
-              </thead>
-              {searchTerm === "" ? (
-                <tbody>
-                  {dataList.map((item, index) => (
-                    <tr className="h-7" key={item.nif}>
-                      <td>{index + 1}</td>
-                      <td className="w-32">{item.businessName}</td>
-                      <td>{item.country}</td>
-                      <td>{item.tel}</td>
-                      <td>{item.bank}</td>
-                      <td>{item.bankingAccount}</td>
-                      <td>{item.paymentTerms}</td>
-                      <td>
-                        {<Link  className="text-blue-700" to={`/supplier/${item._id}`}>Ver mas</Link>}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              ) : Object.keys(filteredSuppliers).length > 0 ? (
-                <tbody>
-                  {filteredSuppliers.map((item) => (
-                    <tr key={item.nif}>
-                      <td>{item.businessName}</td>
-                      <td>{item.country}</td>
-                      <td>{item.tel}</td>
-                      <td>{item.bank}</td>
-                      <td>{item.bankingAccount}</td>
-                      <td>{item.paymentTerms}</td>
-                      <td>
-                        {
-                          <Link
-                            className="text-blue-700"
-                            to={`/supplier/${item._id}`}
-                          >
-                            Ver mas
-                          </Link>
-                        }
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              ) : (
-                <h5>No hay coincidencias con su búsqueda</h5>
-              )}
-            </Table>
-          </div>
-        </div>
+              ))}
+            </tbody>
+          ) : Object.keys(filteredSuppliers).length > 0 ? (
+            <tbody>
+              {filteredSuppliers.map((item) => (
+                <tr key={item.nif}>
+                  <td>{item.businessName}</td>
+                  <td>{item.country}</td>
+                  <td>{item.tel}</td>
+                  <td>{item.bank}</td>
+                  <td>{item.bankingAccount}</td>
+                  <td>{item.paymentTerms}</td>
+                  <td>
+                    {
+                      <Link
+                        className="text-blue-700"
+                        to={`/supplier/${item._id}`}
+                      >
+                        Ver mas
+                      </Link>
+                    }
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ) : (
+            <h5>No hay coincidencias con su búsqueda</h5>
+          )}
+        </Table>
       </>
     </SupplierLayout>
   );

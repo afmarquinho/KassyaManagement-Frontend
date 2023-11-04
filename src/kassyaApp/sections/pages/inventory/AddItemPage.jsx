@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import InventoryLayout from "../../../layout/InventoryLayout";
-import { suppliers } from "../../../../db/db";
 import useForm from "../../../../helpers/useForm";
 import { addItemAsync } from "../../../../redux/thunks/inventoryThunks";
 import { useDispatch } from "react-redux";
@@ -10,7 +9,7 @@ const initialValues = {
   supplier: "",
   amount: "",
   unit: "",
-  unitPrice: "",
+  unitCost: "",
 };
 
 const AddItemPage = () => {
@@ -109,14 +108,14 @@ const AddItemPage = () => {
               </select>
             </div>
             <div className="input-group">
-              <label className="w-full" htmlFor="unitPrice">
+              <label className="w-full" htmlFor="unitCost">
                 Precio Unitario en COP
               </label>
               <input
                 className="w-full h-7 focus:outline-none bg-slate-200"
-                name="unitPrice"
+                name="unitCost"
                 type="number"
-                value={formValues.unitPricet}
+                value={formValues.unitCost}
                 onChange={onInputChange}
               />
             </div>
