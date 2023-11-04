@@ -6,6 +6,8 @@ export const purchasingSlice = createSlice({
     data: [], //? array que guarda la data traída de la bd
     status: "",
     msg: "",
+    count: 0,
+    itemArray: [], //? array que en el front de manera temporal todos los articulos de un nuevo pedido
   },
   reducers: {
     //? actulizar el status de la data
@@ -27,8 +29,18 @@ export const purchasingSlice = createSlice({
     setMsg: (state, action) => {
       state.msg = action.payload;
     },
+    //? conteno de la data para el consecutivo
+    setCount: (state, action) => {
+      state.count = action.payload;
+    },
+    //? guardar en el array los item de un nuevo pedido antes de mandarlo al backend, al procesar el pedido es necesario resetear el array
+    setItemArray: (state, action) => {
+      const newItem = action.payload;
+      state.itemArray = [...state.itemArray, newItem]
+    },
   },
 });
 
-export const { setStatus, setMsg, addNew, setData } = purchasingSlice.actions;
+export const { setStatus, setMsg, addNew, setData, setCount, setItemArray } =
+  purchasingSlice.actions;
 export default purchasingSlice.reducer;

@@ -1,18 +1,4 @@
-export const suppliers = [{"businessName":"McClure, Christiansen and Spencer","nif":"1GqRtCw5opQ4RsZjfCCes5fPUuF6Pzth4B","category":"Servicios logísticos","entity":"natural","country":"Indonesia","city":"Kotatengah","address":"8510 Alpine Avenue","zipCode":15335,"tel":"9696064556","webSite":"https://about.com","bank":"Skivee","bankingAccount":"1PiF5HnTgJjCv213ro6ZtDDhXbnPGUyUxR","paymentTerms":56,"contactNam":"Claudina Dowley","contactNumber":"9184067871","contactEmail":"cdowley0@domainmarket.com"},
-{"businessName":"Bailey-Donnelly","nif":"1FZghxVWxGhB7TxD5AwgJh35mnzVJu1hX2","category":"Servicios de mantenimiento","entity":"legal","country":"Philippines","city":"Cabannungan Second","address":"53 Jay Circle","zipCode":10113,"tel":"4758783975","webSite":"http://ftc.gov","bank":"Linkbridge","bankingAccount":"1PqLonWjeuFvWkqBRUR3ZdnYKfBZnB8Q14","paymentTerms":59,"contactNam":"Marietta Ripley","contactNumber":"3186977374","contactEmail":"mripley1@si.edu"},
-{"businessName":"Gerhold, Bayer and O'Conner","nif":"1DxU5jcF8vQhe8GG9yS5Qc3MVwrWq5PvrN","category":"Servicio de limpieza","entity":"legal","country":"Bolivia","city":"Cliza","address":"812 Monica Circle","zipCode":10506,"tel":"2559265823","webSite":"https://soundcloud.com","bank":"Gabcube","bankingAccount":"1L4VygAU3AWQtP3Fcj1KMkEaZWAExqSG4e","paymentTerms":29,"contactNam":"Sibbie Shillan","contactNumber":"4961910951","contactEmail":"sshillan2@seattletimes.com"},
-{"businessName":"Runte LLC","nif":"1LxtzNh3356RX7tjzpQ7i7XPZbmQFAHNuZ","category":"Servicios de consultoría","entity":"natural","country":"China","city":"Linfen","address":"7497 Sachtjen Parkway","zipCode":19084,"tel":"8101744516","webSite":"https://ocn.ne.jp","bank":"Eadel","bankingAccount":"1Lopu3DDxXPSaorsaDtRQgcirr6X5TraZo","paymentTerms":19,"contactNam":"Em Nacey","contactNumber":"7332394265","contactEmail":"enacey3@virginia.edu"},
-{"businessName":"Lebsack, Beer and Conroy","nif":"1aBjfNrp9658DLYPcBYNbTE8XKk3cueNQ","category":"Servicios de consultoría","entity":"legal","country":"China","city":"Hongtang","address":"07879 Beilfuss Parkway","zipCode":12461,"tel":"5383657563","webSite":"https://cyberchimps.com","bank":"Tazzy","bankingAccount":"1JcBDHsVDdR3As8xYwJPLNdAf2krjqroRm","paymentTerms":44,"contactNam":"Abbye Virgin","contactNumber":"1397418131","contactEmail":"avirgin4@amazon.com"},
-{"businessName":"Fritsch Inc","nif":"1RkJQkZpU1ymw5J9MhQ9zVdv6PQSxZaj7","category":"Proveedores de alimentos y bebidas","entity":"legal","country":"Indonesia","city":"Ujungpangkah","address":"0044 Muir Place","zipCode":18814,"tel":"9603926518","webSite":"https://nps.gov","bank":"Jetwire","bankingAccount":"1KBd9H5tgCoHLicH3VfaYtjxPmp9sNTNJa","paymentTerms":12,"contactNam":"Marv Blakeman","contactNumber":"4697058923","contactEmail":"mblakeman5@springer.com"},
-{"businessName":"Mueller-Kassulke","nif":"1P64uEwnQWoZdkYWJGqdNHqvZUEhCRZp8r","category":"Servicios de consultoría","entity":"natural","country":"China","city":"Leiling","address":"274 Buell Terrace","zipCode":10042,"tel":"3437364640","webSite":"http://huffingtonpost.com","bank":"Dabfeed","bankingAccount":"1M6NbcAZsezBbCYpk3FvS6KZ6VCEDHAnVK","paymentTerms":32,"contactNam":"Pru Bossons","contactNumber":"6104899081","contactEmail":"pbossons6@wikipedia.org"},
-{"businessName":"Rowe and Sons","nif":"1A6wKKaBedvy1VvaWp4TmngbRftadWdCeF","category":"Servicios logísticos","entity":"legal","country":"Jamaica","city":"Richmond","address":"0 Welch Point","zipCode":12850,"tel":"2648160142","webSite":"http://wordpress.com","bank":"Voonix","bankingAccount":"19isGnUjv8d1KUzmJFtGeFFYc3AByzTpm1","paymentTerms":12,"contactNam":"Harold McKeady","contactNumber":"3046569250","contactEmail":"hmckeady7@springer.com"},
-{"businessName":"Turner, Tremblay and Anderson","nif":"16Uvyi4HA7zN9pixuwWPz4uwdUYqUoJvWK","category":"Marketing y publicidad","entity":"natural","country":"Syria","city":"Subaykhān","address":"21 Kipling Road","zipCode":10503,"tel":"6755715662","webSite":"http://tuttocitta.it","bank":"Mita","bankingAccount":"1FxnqC1QU7pNkqhJWuUDB1t3pcMp2wggpx","paymentTerms":52,"contactNam":"Clovis Rawes","contactNumber":"9861262711","contactEmail":"crawes8@nature.com"},
-{"businessName":"Stamm, Deckow and Kulas","nif":"1Pixz9WUadMvNrNhDvTeD5qNDim71HGgSf","category":"Servicios logísticos","entity":"legal","country":"Portugal","city":"Montes Velhos","address":"30946 Daystar Pass","zipCode":10996,"tel":"3373134995","webSite":"https://nyu.edu","bank":"Meemm","bankingAccount":"1HKmv7H2bkENRwcChhS6UnJVQm98viCo1i","paymentTerms":25,"contactNam":"Sammy Orred","contactNumber":"3194591976","contactEmail":"sorred9@blogs.com"},
-{"businessName":"Stamm-Herman","nif":"16am28KA36GEZ5h4tD1pSKHLaxx2JwqiyS","category":"Servicios de consultoría","entity":"legal","country":"Thailand","city":"Nong Phok","address":"1918 Northport Junction","zipCode":13534,"tel":"8232950118","webSite":"https://multiply.com","bank":"Mymm","bankingAccount":"17ZvWGX6iYRJrFh135KUxLLXv5pPrANZdM","paymentTerms":55,"contactNam":"Zara Dracksford","contactNumber":"3506446965","contactEmail":"zdracksforda@acquirethisname.com"},
-{"businessName":"Bahringer, Glover and Heller","nif":"1A5k6ygAZRfmWhoH1LoZLEqC1LzKmSfMYq","category":"Servicios logísticos","entity":"natural","country":"Ukraine","city":"Talalayivka","address":"3 Kinsman Street","zipCode":19649,"tel":"2853868481","webSite":"https://dropbox.com","bank":"Dabtype","bankingAccount":"1JEYze1PCvzvt3XnTknaJA77zvnXuHtktk","paymentTerms":35,"contactNam":"Pamelina Zanioletti","contactNumber":"9598968255","contactEmail":"pzaniolettib@senate.gov"},
-{"businessName":"Walker Inc","nif":"1JRE8xzvPmweG4u69uUinxNgrNkgMZ5QqE","category":"Suministros de oficina","entity":"legal","country":"Philippines","city":"San Vicente","address":"544 Bartillon Point","zipCode":13116,"tel":"8363152698","webSite":"http://pen.io","bank":"Linkbridge","bankingAccount":"1LSxtKa1guzaazuEGZ4JGaq3SFYVAkVYL9","paymentTerms":22,"contactNam":"Gordon Scampion","contactNumber":"8301226573","contactEmail":"gscampionc@deliciousdays.com"},
-{"businessName":"Kreiger LLC","nif":"1Npx5vHLzGVPKWMd4Wso5Jc3HgQAiY1dCM","category":"Proveedores de servicios públicos","entity":"legal","country":"Greece","city":"Graikochóri","address":"074 Packers Terrace","zipCode":19462,"tel":"6612930681","webSite":"https://amazon.com","bank":"Kazu","bankingAccount":"1B3os3dkJWcCATuw4KF29JPwBqSXSXJWpD","paymentTerms":32,"contactNam":"Roseanne Tremmil","contactNumber":"5711645702","contactEmail":"rtremmild@dedecms.com"},
-{"businessName":"Littel-Feil","nif":"12bsxXpGVU4aQSXKfxK9B8ekd2nXTAtUGE","category":"Suministros de oficina","entity":"natural","country":"Colombia","city":"Montenegro","address":"5313 Meadow Valley Street","zipCode":16652,"tel":"3485853926","webSite":"http://tuttocitta.it","bank":"Skaboo","bankingAccount":"14u2DwK8WSZmEKMuvTK5HewWPF2N6r2u8N","paymentTerms":36,"contactNam":"Janette McCullough","contactNumber":"7271960023","contactEmail":"jmcculloughe@un.org"}]
+
 
 export const inventory = [
   {
@@ -828,4 +814,19 @@ export const categories = [
   "Proveedores de servicios públicos",
   " Gestión humana y contrataciones",
   "Marketing y publicidad",
+];
+export const companyDepartments = [
+  "Gestión Humana",
+  "Postventas",
+  "Comercial",
+  "Administración",
+  "Calidad",
+  "Logística",
+  "Producción",
+];
+export const paymentMethods = [
+  "Efectivo",
+  "Transferencia",
+  "Consignación",
+  "Cheque",
 ];

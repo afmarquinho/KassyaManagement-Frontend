@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import InventoryLayout from "../../../layout/InventoryLayout";
-import { suppliers } from "../../../../db/db";
 import useForm from "../../../../helpers/useForm";
 import { addItemAsync } from "../../../../redux/thunks/inventoryThunks";
 import { useDispatch } from "react-redux";

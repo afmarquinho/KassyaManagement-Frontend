@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { listSuppliersAsync } from "../../redux/thunks/supplierThunks";
+import { countAsync } from "../../redux/thunks/purchasingThunks";
 
 // ?NOTA: PARA EVITAR CONSULTAR LA BBDD MUCHAS VECES, ES MEJOR CARGAR EL STATE DE LA DATA UNA VEZ AL CARGAR EL LAYOUT.
 
@@ -12,6 +13,7 @@ const SupplierLayout = ({ children }) => {
 
   useEffect(() => {
     dispatch(listSuppliersAsync());
+    dispatch(countAsync)
   }, []);
 
   return (
