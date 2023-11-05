@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { PurchasingLayout } from "../../../layout";
-import { ModalCompletePurch, ModalNewPurchasing } from "../../../modals";
+import { ModalCompletePurch, ModalEditPurchasing, ModalNewPurchasing } from "../../../modals";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const NewPurchasing = () => {
-  const [actModal, setActModal] = useState(false);
-  const [actModalComplete, setActModalComplete] = useState(false);
+  const [actModal, setActModal] = useState(false);   //?  ModalNewPurchasing 
+  const [actModalComplete, setActModalComplete] = useState(false); //?  ModalCpmpletePuchasing 
+  const [actModalEdit, setactModalEdit] = useState(false); //?  ModalEditPuchasing 
+  const [selectedItem, setSelectedItem] = useState(null); //? Almacenar el item a editar
+
 
   //? state que almacena de manera temporal la orden antes de envidarla al backend
   //TODO: poner este state en localstorage
@@ -50,13 +53,7 @@ const NewPurchasing = () => {
   return (
     <PurchasingLayout>
       <>
-        <button
-          className="h-10 px-5 flex items-center justify-center mb-2 bg-customDeepBlueGray text-white hover:bg-green-900"
-          onClick={onNew}
-        >
-          Nuevo Pedido
-        </button>
-        {actModal && <ModalNewPurchasing setActModal={setActModal} />}
+      {actModal && <ModalNewPurchasing setActModal={setActModal} />}
         {actModalComplete && (
           <ModalCompletePurch
             setActModalComplete={setActModalComplete}
@@ -64,6 +61,15 @@ const NewPurchasing = () => {
             requirements={requirements}
           />
         )}
+
+        {actModalEdit && <ModalEditPurchasing/>}
+        <button
+          className="h-10 px-5 flex items-center justify-center mb-2 bg-customDeepBlueGray text-white hover:bg-green-900"
+          onClick={onNew}
+        >
+          Nuevo Pedido
+        </button>
+        
 
         <h3 className="uppercase h-10 flex justify-center items-center bg-customDeepBlue text-slate-300">
           Nuevo pedido
@@ -163,8 +169,8 @@ const NewPurchasing = () => {
                     <td>{item.name}</td>
                     <td>{item.ref}</td>
                     <td>{item.supplier}</td>
-                    <td>{item.amount}</td>
-                    <td>{item.unit}</td>
+                    <td>{(item.amount).toLocaleString()}</td>
+                    <td>{(item.unit).toLocaleString()}</td>
                     <td>{`$ ${item.unitCost.toLocaleString()}`}</td>
                     <td>{`$ ${item.subTotal.toLocaleString()}`}</td>
                     <td>{item.department}</td>

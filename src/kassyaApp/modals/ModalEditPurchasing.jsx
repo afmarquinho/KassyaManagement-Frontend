@@ -1,32 +1,30 @@
+import useForm from "../../helpers/useForm";
+import { companyDepartments } from "../../db/db";
 import { useDispatch, useSelector } from "react-redux";
 import { Alerta } from "../components";
+import { setMsg, setStatus } from "../../redux/slices/purchasingSlice";
 import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
-import { setItemArray, setMsg, setStatus } from "../../redux/slices/purchasingSlice";
-import { companyDepartments } from "../../db/db";
-import useForm from "../../helpers/useForm";
 
-const intialState = {
-  name: "",
-  ref: "",
-  supplier: "",
-  amount: 0,
-  unit: "",
-  unitCost: 0,
-  subTotal: 0,
-  department: "",
-};
-
-const ModalNewPurchasing = ({ setActModal }) => {
+const ModalEditPurchasing = ({ setActModalEdit, item = "" }) => {
+  const intialState = {
+    name: "",
+    ref: "",
+    supplier: "",
+    amount: 0,
+    unit: "",
+    unitCost: 0,
+    subTotal: 0,
+    department: "",
+  };
   const { formValues, resetForm, onInputChange } = useForm(intialState);
   const suppliers = useSelector((state) => state.supplier.data);
-  const msg = useSelector((state) => state.purchasing.msg);
-  const status = useSelector((state) => state.purchasing.status);
-  const dispatch = useDispatch();
-
-  const subTotal = (formValues.amount * formValues.unitCost).toLocaleString();
+  const msg = useSelector((state) => state.supplier.msg);
+  const status = useSelector((state) => state.supplier.status);
+  const subTotal = formValues.amount * formValues.unitCost;
+  const dispatch = useDispatch
 
   const onClose = () => {
-    setActModal(false);
+    setActModalEdit(false);
     //? Me aseguro que al cerrar el modal no se vaya una alerta sin setear que me vaya a afectar en otro formulario
     dispatch(setMsg(""));
     dispatch(setStatus(""));
@@ -34,59 +32,37 @@ const ModalNewPurchasing = ({ setActModal }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!hasNonEmptyValues(formValues)) {
-      dispatch(setMsg("Diligencie todos los campos del artículo"));
-      dispatch(setStatus("error"));
-      return;
-    }
-    if (formValues.amount <= 0 || formValues.unitCost <= 0) {
-      dispatch(setMsg("Cantidades incorrectas"));
-      dispatch(setStatus("error"));
-      return;
-    }
-    //? Al hacer submit se actualiza el subtotal
-    formValues.subTotal = subTotal;
-    dispatch(setItemArray(formValues))
-    dispatch(setMsg("Artículo Agreagdo al pedido"));
-    dispatch(setStatus("success"));
-    resetForm(intialState);
-  
-    setTimeout(() => {
-      dispatch(setMsg(""));
-      dispatch(setStatus(""));
-    }, 3000);
+    console.log("desde submit");
   };
-
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-10 pt-20 overflow-auto bg-black bg-opacity-80">
+      <div
+        className="btn-cerrar absolute top-4 right-4 cursor-pointer text-white"
+        onClick={onClose}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={6}
+          stroke="currentColor"
+          className="w-10 h-10 "
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </div>
       <form
         className="w-11/12 md:w-4/5 lg:w-1/3 max-w-lg m-auto bg-white"
         onSubmit={onSubmit}
       >
-        <div
-          className="btn-cerrar absolute top-4 right-4 cursor-pointer text-white"
-          onClick={onClose}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={6}
-            stroke="currentColor"
-            className="w-10 h-10 "
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </div>
         <h3 className="w-full h-20  flex items-center justify-center uppercase text-cyan-100 bg-cyan-700">
-          Agregar artículo
+          Editar: <span>{formValues.name}</span>
         </h3>
         {msg && <Alerta status={status} msg={msg} />}
-
         <div className="contenedor w-full p-10 pt-6">
           <div className="w-full flex flex-col">
             <label className="w-full" htmlFor="name">
@@ -134,17 +110,18 @@ const ModalNewPurchasing = ({ setActModal }) => {
           </div>
           <div className="flex gap-3">
             <div className="w-1/2">
-              <label className="w-full" htmlFor="amount">
-                Cantidad
+              <label className="w-full" htmlFor="unitCost">
+                Costo Unitario en COP
               </label>
               <input
                 className="w-full h-7 focus:outline-none bg-slate-200"
-                name="amount"
+                name="unitCost"
                 type="number"
-                value={formValues.amount}
+                value={formValues.unitCost}
                 onChange={onInputChange}
               />
             </div>
+
             <div className="w-1/2">
               <label className="w-full" htmlFor="unit">
                 Unidad
@@ -167,14 +144,14 @@ const ModalNewPurchasing = ({ setActModal }) => {
 
           <div className="flex gap-3">
             <div className="w-1/2">
-              <label className="w-full" htmlFor="unitCost">
-                Costo Unitario en COP
+              <label className="w-full" htmlFor="amount">
+                Cantidad
               </label>
               <input
                 className="w-full h-7 focus:outline-none bg-slate-200"
-                name="unitCost"
+                name="amount"
                 type="number"
-                value={formValues.unitCost}
+                value={formValues.amount}
                 onChange={onInputChange}
               />
             </div>
@@ -222,4 +199,4 @@ const ModalNewPurchasing = ({ setActModal }) => {
   );
 };
 
-export default ModalNewPurchasing;
+export default ModalEditPurchasing;
