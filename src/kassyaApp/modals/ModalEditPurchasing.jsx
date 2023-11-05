@@ -7,7 +7,7 @@ import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
 
 const ModalEditPurchasing = ({ setActModalEdit, item = "" }) => {
   const intialState = {
-    name: "",
+    name: "nombre",
     ref: "",
     supplier: "",
     amount: 0,
@@ -32,7 +32,7 @@ const ModalEditPurchasing = ({ setActModalEdit, item = "" }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("desde submit");
+    console.log("desde submit de editar");
   };
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-10 pt-20 overflow-auto bg-black bg-opacity-80">

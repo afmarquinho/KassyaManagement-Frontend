@@ -7,7 +7,7 @@ import styled from "styled-components";
 const NewPurchasing = () => {
   const [actModal, setActModal] = useState(false);   //?  ModalNewPurchasing 
   const [actModalComplete, setActModalComplete] = useState(false); //?  ModalCpmpletePuchasing 
-  const [actModalEdit, setactModalEdit] = useState(false); //?  ModalEditPuchasing 
+  const [actModalEdit, setActModalEdit] = useState(false); //?  ModalEditPuchasing 
   const [selectedItem, setSelectedItem] = useState(null); //? Almacenar el item a editar
 
 
@@ -41,6 +41,11 @@ const NewPurchasing = () => {
     }));
   }, [itemArray]);
 
+  const onEdit = () => {
+    setActModalEdit(true)
+    
+  };
+
   const onNew = () => {
     //? actualiza el status con la nueva orden y status
     setRequirements((prevState) => ({
@@ -62,7 +67,7 @@ const NewPurchasing = () => {
           />
         )}
 
-        {actModalEdit && <ModalEditPurchasing/>}
+        {actModalEdit && <ModalEditPurchasing setActModalEdit={setActModalEdit} />}
         <button
           className="h-10 px-5 flex items-center justify-center mb-2 bg-customDeepBlueGray text-white hover:bg-green-900"
           onClick={onNew}
@@ -175,7 +180,7 @@ const NewPurchasing = () => {
                     <td>{`$ ${item.subTotal.toLocaleString()}`}</td>
                     <td>{item.department}</td>
                     <td>
-                      <button className="text-xs text-blue-600 font-bold">
+                      <button className="text-xs text-blue-600 font-bold" onClick={onEdit}>
                         Editar
                       </button>
                     </td>
