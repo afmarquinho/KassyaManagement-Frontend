@@ -5,23 +5,23 @@ import { Alerta } from "../components";
 import { setMsg, setStatus } from "../../redux/slices/purchasingSlice";
 import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
 
-const ModalEditPurchasing = ({ setActModalEdit, item = "" }) => {
+const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
   const intialState = {
-    name: "nombre",
-    ref: "",
-    supplier: "",
-    amount: 0,
-    unit: "",
-    unitCost: 0,
-    subTotal: 0,
-    department: "",
+    name: selectedItem.name,
+    ref: selectedItem.ref,
+    supplier: selectedItem.supplier,
+    amount: selectedItem.amount,
+    unit: selectedItem.unit,
+    unitCost: selectedItem.unitCost,
+    subTotal: selectedItem.subTotal,
+    department: selectedItem.department,
   };
   const { formValues, resetForm, onInputChange } = useForm(intialState);
   const suppliers = useSelector((state) => state.supplier.data);
   const msg = useSelector((state) => state.supplier.msg);
   const status = useSelector((state) => state.supplier.status);
   const subTotal = formValues.amount * formValues.unitCost;
-  const dispatch = useDispatch
+  const dispatch = useDispatch();
 
   const onClose = () => {
     setActModalEdit(false);
