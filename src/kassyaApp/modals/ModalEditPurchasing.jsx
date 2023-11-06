@@ -2,7 +2,11 @@ import useForm from "../../helpers/useForm";
 import { companyDepartments } from "../../db/db";
 import { useDispatch, useSelector } from "react-redux";
 import { Alerta } from "../components";
-import { setMsg, setStatus } from "../../redux/slices/purchasingSlice";
+import {
+  setMsg,
+  setStatus,
+  updateItem,
+} from "../../redux/slices/purchasingSlice";
 import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
 
 const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
@@ -15,6 +19,7 @@ const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
     unitCost: selectedItem.unitCost,
     subTotal: selectedItem.subTotal,
     department: selectedItem.department,
+    id: selectedItem.id,
   };
   const { formValues, resetForm, onInputChange } = useForm(intialState);
   const suppliers = useSelector((state) => state.supplier.data);
@@ -32,7 +37,26 @@ const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("desde submit de editar");
+    if (!hasNonEmptyValues(formValues)) {
+      dispatch(setMsg("Diligencie todos los campos del artículo"));
+      dispatch(setStatus("error"));
+      return;
+    }
+    if (formValues.amount <= 0 || formValues.unitCost <= 0) {
+      dispatch(setMsg("Cantidades incorrectas"));
+      dispatch(setStatus("error"));
+      return;
+    }
+    //? Al hacer submit se actualiza el subtotal
+    formValues.subTotal = subTotal;
+    dispatch(updateItem(formValues));
+
+    dispatch(setMsg("Artículo Agreagdo al pedido"));
+    dispatch(setStatus("success"));
+    setTimeout(() => {
+      dispatch(setMsg(""));
+      dispatch(setStatus(""));
+    }, 3000);
   };
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-10 pt-20 overflow-auto bg-black bg-opacity-80">
@@ -190,7 +214,7 @@ const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
               className="w-full max-w-md h-10 flex justify-center items-center m-auto mt-3 bg-customDeepBlue text-white hover:bg-customMainColor transition-colors duration-500 ease-linear font-bold"
               type="submit"
             >
-              CREAR
+              EDITAR
             </button>
           </div>
         </div>

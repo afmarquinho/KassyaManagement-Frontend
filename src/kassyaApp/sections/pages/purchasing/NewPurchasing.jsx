@@ -47,7 +47,6 @@ const NewPurchasing = () => {
   const onEdit = (item) => {
     setSelectedItem(item);
     setActModalEdit(true);
-    console.log(selectedItem)
   };
 
   const onNew = () => {

@@ -4,23 +4,24 @@ import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
 import { setItemArray, setMsg, setStatus } from "../../redux/slices/purchasingSlice";
 import { companyDepartments } from "../../db/db";
 import useForm from "../../helpers/useForm";
+import { generarID } from "../../helpers/generarID";
 
-const intialState = {
-  name: "",
-  ref: "",
-  supplier: "",
-  amount: 0,
-  unit: "",
-  unitCost: 0,
-  subTotal: 0,
-  department: "",
-};
-
-const ModalNewPurchasing = ({ setActModal }) => {
+const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
+  const intialState = {
+    name: "",
+    ref: "",
+    supplier: "",
+    amount: 0,
+    unit: "",
+    unitCost: 0,
+    subTotal: 0,
+    department: "",
+  };
   const { formValues, resetForm, onInputChange } = useForm(intialState);
   const suppliers = useSelector((state) => state.supplier.data);
   const msg = useSelector((state) => state.purchasing.msg);
   const status = useSelector((state) => state.purchasing.status);
+
   const dispatch = useDispatch();
 
   const subTotal = (formValues.amount * formValues.unitCost).toLocaleString();
@@ -46,6 +47,7 @@ const ModalNewPurchasing = ({ setActModal }) => {
     }
     //? Al hacer submit se actualiza el subtotal
     formValues.subTotal = subTotal;
+    formValues.id = generarID();
     dispatch(setItemArray(formValues))
     dispatch(setMsg("Artículo Agreagdo al pedido"));
     dispatch(setStatus("success"));
