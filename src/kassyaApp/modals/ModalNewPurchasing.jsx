@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Alerta } from "../components";
 import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
-import { setItemArray, setMsg, setStatus } from "../../redux/slices/purchasingSlice";
+import { setItemArray, setMsg, setStatus, updateItem } from "../../redux/slices/purchasingSlice";
 import { companyDepartments } from "../../db/db";
 import useForm from "../../helpers/useForm";
 import { generarID } from "../../helpers/generarID";
 
 const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
-  const intialState = {
+
+
+  const initialState = {
     name: "",
     ref: "",
     supplier: "",
@@ -17,7 +19,22 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
     subTotal: 0,
     department: "",
   };
-  const { formValues, resetForm, onInputChange } = useForm(intialState);
+  
+
+  const initialValues = {
+    name: selectedItem.name,
+    ref: selectedItem.ref,
+    supplier: selectedItem.supplier,
+    amount: selectedItem.amount,
+    unit: selectedItem.unit,
+    unitCost: selectedItem.unitCost,
+    subTotal: selectedItem.subTotal,
+    department: selectedItem.department,
+    id: selectedItem.id,
+  };
+
+
+  const { formValues, resetForm, onInputChange } = useForm(selectedItem.id ? initialValues : initialState);
   const suppliers = useSelector((state) => state.supplier.data);
   const msg = useSelector((state) => state.purchasing.msg);
   const status = useSelector((state) => state.purchasing.status);
@@ -32,6 +49,9 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
     dispatch(setMsg(""));
     dispatch(setStatus(""));
   };
+
+
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +71,7 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
     dispatch(setItemArray(formValues))
     dispatch(setMsg("Artículo Agreagdo al pedido"));
     dispatch(setStatus("success"));
-    resetForm(intialState);
+    resetForm(initialState);
   
     setTimeout(() => {
       dispatch(setMsg(""));
@@ -59,11 +79,39 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
     }, 3000);
   };
 
+const onEdit = (e) => {
+  e.preventDefault();
+  e.preventDefault();
+  if (!hasNonEmptyValues(formValues)) {
+    dispatch(setMsg("Diligencie todos los campos del artículo"));
+    dispatch(setStatus("error"));
+    return;
+  }
+  if (formValues.amount <= 0 || formValues.unitCost <= 0) {  
+    dispatch(setMsg("Cantidades incorrectas"));
+    dispatch(setStatus("error"));
+    return;
+  }
+    //? Al hacer submit se actualiza el subtotal
+    formValues.subTotal = subTotal;
+    dispatch(updateItem(formValues));
+    resetForm(initialState);
+
+    dispatch(setMsg("Artículo editado con éxito"));
+    dispatch(setStatus("success"));
+    setTimeout(() => {
+      setActModal(false);
+      dispatch(setMsg(""));
+      dispatch(setStatus(""));
+    }, 3000);
+};
+
+
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-10 pt-20 overflow-auto bg-black bg-opacity-80">
       <form
         className="w-11/12 md:w-4/5 lg:w-1/3 max-w-lg m-auto bg-white"
-        onSubmit={onSubmit}
+        onSubmit={selectedItem.id ? onEdit : onSubmit}
       >
         <div
           className="btn-cerrar absolute top-4 right-4 cursor-pointer text-white"
@@ -85,7 +133,7 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
           </svg>
         </div>
         <h3 className="w-full h-20  flex items-center justify-center uppercase text-cyan-100 bg-cyan-700">
-          Agregar artículo
+          {selectedItem.id ? "Editar Artículo" : "Agregar Artículo"}
         </h3>
         {msg && <Alerta status={status} msg={msg} />}
 
@@ -215,7 +263,7 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
               className="w-full max-w-md h-10 flex justify-center items-center m-auto mt-3 bg-customDeepBlue text-white hover:bg-customMainColor transition-colors duration-500 ease-linear font-bold"
               type="submit"
             >
-              CREAR
+              {selectedItem.id ? "EDITAR" : "AGREGAR"}
             </button>
           </div>
         </div>

@@ -44,9 +44,15 @@ const NewPurchasing = () => {
     }));
   }, [itemArray]);
 
+
+  const onCreate = () => {
+    setActModal(true);
+    setSelectedItem("");
+  };
+
   const onEdit = (item) => {
     setSelectedItem(item);
-    setActModalEdit(true);
+    setActModal(true);
   };
 
   const onNew = () => {
@@ -61,7 +67,9 @@ const NewPurchasing = () => {
   return (
     <PurchasingLayout>
       <>
-        {actModal && <ModalNewPurchasing setActModal={setActModal} />}
+        {actModal && <ModalNewPurchasing setActModal={setActModal} selectedItem={selectedItem}
+        
+         />}
         {actModalComplete && (
           <ModalCompletePurch
             setActModalComplete={setActModalComplete}
@@ -137,7 +145,7 @@ const NewPurchasing = () => {
                 <div className="flex">
                   <button
                     className="text-sm flex gap-1 w-40 py-2 items-center justify-start font-bold"
-                    onClick={(e) => setActModal(true)}
+                    onClick={onCreate}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
