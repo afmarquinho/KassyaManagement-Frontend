@@ -94,6 +94,7 @@ const NewPurchasing = () => {
             setSelectedItem={setSelectedItem}
           />
         )}
+        {actModalDelete && <ModalDeleteItem/>}
         <button
           className="h-10 px-5 flex items-center justify-center mb-2 bg-customDeepBlueGray text-white hover:bg-green-900"
           onClick={onNew}
