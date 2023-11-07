@@ -28,7 +28,6 @@ const ModalNewPurchasing = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
     if (!hasNonEmptyValues(formValues)) {
       dispatch(setMsg("Diligencie todos los campos del artículo"));
       dispatch(setStatus("error"));

@@ -38,9 +38,16 @@ export const purchasingSlice = createSlice({
       const newItem = action.payload;
       state.itemArray = [...state.itemArray, newItem]
     },
+    updateItem: (state, action) => {
+      const updatedItem = action.payload;
+      const updatedItemArray = state.itemArray.map(item => 
+        item.id === updatedItem.id ? updatedItem : item
+      );
+      state.itemArray = updatedItemArray;
+    },
   },
 });
 
-export const { setStatus, setMsg, addNew, setData, setCount, setItemArray } =
+export const { setStatus, setMsg, addNew, setData, setCount, setItemArray, updateItem } =
   purchasingSlice.actions;
 export default purchasingSlice.reducer;
