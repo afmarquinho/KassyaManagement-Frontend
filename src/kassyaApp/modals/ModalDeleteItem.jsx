@@ -20,13 +20,21 @@ const ModalDeleteItem = () => {
             </svg>
           </div>
           <h4 className="text-center">
-              ¿Desea eliminar el artículo <br />
-              <span className="font-bold">nombre del articulo</span>?
-            </h4>
-            <p className="w-100 text-center text-red-500">
-              Una vez <span className="font-bold">confirmes</span> la
-              eliminación no podrás recuperar los datos.
-            </p>
+            ¿Desea eliminar el artículo <br />
+            <span className="font-bold">nombre del articulo</span>?
+          </h4>
+          <p className="w-100 text-center text-red-500">
+            Una vez <span className="font-bold">confirmes</span> la eliminación
+            no podrás recuperar los datos.
+          </p>
+          <div className="w-full flex justify-evenly items-center">
+            <button className="bg-teal-500 text-white w-28 h-8 font-medium hover:bg-teal-600 text-sm">
+              Confirmar
+            </button>
+            <button className="bg-red-500 text-white w-28 h-8 font-medium hover:bg-red-600 text-sm">
+              Cancelar
+            </button>
+          </div>
         </div>
       </div>
     </>
