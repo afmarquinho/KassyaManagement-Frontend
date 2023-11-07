@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { PurchasingLayout } from "../../../layout";
 import {
+  ModalCancelOrder,
   ModalCompletePurch,
   ModalDeleteItem,
   ModalEditPurchasing,
@@ -14,18 +15,21 @@ const NewPurchasing = () => {
   const [actModalComplete, setActModalComplete] = useState(false); //?  ModalCpmpletePuchasing
   const [actModalEdit, setActModalEdit] = useState(false); //?  ModalEditPuchasing
   const [actModalDelete, setActModalDelete] = useState(false); //?  ModalDelete
+  const [actModalCancel, setActModalCancel] = useState(false); //?  ModalCancelOrder
   const [selectedItem, setSelectedItem] = useState({}); //? Almacenar el item a editar
 
   //? state que almacena de manera temporal la orden antes de envidarla al backend
   //TODO: poner este state en localstorage
-  const [requirements, setRequirements] = useState({
+  const initalValues = {
     orderNumber: "",
     items: [],
     status: "",
     total: 0,
     paymentMethod: "",
     comments: "",
-  });
+  };
+
+  const [requirements, setRequirements] = useState(initalValues);
   const count = useSelector((state) => state.purchasing.count);
   const itemArray = useSelector((state) => state.purchasing.itemArray);
   const order = `OC${count + 1}`;
@@ -59,6 +63,10 @@ const NewPurchasing = () => {
   const onDelete = (item) => {
     setSelectedItem(item);
     setActModalDelete(true);
+  };
+
+  const onCancel = () => {
+   setActModalCancel(true)
   };
 
   const onNew = () => {
@@ -98,6 +106,12 @@ const NewPurchasing = () => {
           <ModalDeleteItem
             setActModalDelete={setActModalDelete}
             selectedItem={selectedItem}
+          />
+        )}
+        {actModalCancel && (
+          <ModalCancelOrder
+            setActModalCancel={setActModalCancel}
+            setRequirements={setRequirements}
           />
         )}
         <button
@@ -145,7 +159,7 @@ const NewPurchasing = () => {
                     </button>
                     <button
                       className="rounded-md p-2 mx-1 text-xs bg-red-500 text-white hover:bg-teal-700"
-                      onClick={(e) => setActModalComplete(true)}
+                      onClick={onCancel}
                     >
                       Cancelar
                     </button>

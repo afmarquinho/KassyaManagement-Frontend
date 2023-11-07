@@ -36,18 +36,33 @@ export const purchasingSlice = createSlice({
     //? guardar en el array los item de un nuevo pedido antes de mandarlo al backend, al procesar el pedido es necesario resetear el array
     setItemArray: (state, action) => {
       const newItem = action.payload;
-      state.itemArray = [...state.itemArray, newItem]
+      state.itemArray = [...state.itemArray, newItem];
     },
     updateItem: (state, action) => {
       const updatedItem = action.payload;
-      const updatedItemArray = state.itemArray.map(item => 
+      const updatedItemArray = state.itemArray.map((item) =>
         item.id === updatedItem.id ? updatedItem : item
       );
       state.itemArray = updatedItemArray;
     },
+
+    deleteItem: (state, action) => {
+      const deleteItemId = action.payload;
+      state.itemArray = state.itemArray.filter(
+        (item) => item.id !== deleteItemId
+      );
+    },
   },
 });
 
-export const { setStatus, setMsg, addNew, setData, setCount, setItemArray, updateItem } =
-  purchasingSlice.actions;
+export const {
+  setStatus,
+  setMsg,
+  addNew,
+  setData,
+  setCount,
+  setItemArray,
+  updateItem,
+  deleteItem,
+} = purchasingSlice.actions;
 export default purchasingSlice.reducer;

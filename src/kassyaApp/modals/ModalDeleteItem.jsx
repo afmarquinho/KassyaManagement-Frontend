@@ -1,16 +1,26 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Alerta } from "../components";
+import { deleteItem } from "../../redux/slices/purchasingSlice";
 
-const ModalDeleteItem = ({ setActModalDelete, selectedItem}) => {
+const ModalDeleteItem = ({ setActModalDelete, selectedItem }) => {
   const [msg, setMsg] = useState("");
   const [status, setStatus] = useState("");
+  const dispatch = useDispatch();
 
   const onCancel = () => {
     setActModalDelete(false);
+    setMsg("");
+    setStatus("");
   };
   const onDelete = () => {
-    console.log(selectedItem.id)
+    dispatch(deleteItem(selectedItem.id));
+    setMsg(`${selectedItem.name} eliminado/a con éxito de tu lista`);
+    setStatus("success");
+
+    setTimeout(() => {
+      setActModalDelete(false);
+    }, 2000);
   };
 
   return (
@@ -37,24 +47,32 @@ const ModalDeleteItem = ({ setActModalDelete, selectedItem}) => {
             ¿Desea eliminar el artículo <br />
             <span className="font-bold">{selectedItem.name}</span>?
           </h4>
-          <p className="w-100 text-center text-red-500">
-            Una vez <span className="font-bold">confirmes</span> la eliminación
-            no podrás recuperar los datos.
-          </p>
-          <div className="w-full flex justify-evenly items-center">
-            <button
-              className="bg-teal-500 text-white w-28 h-8 font-medium hover:bg-teal-600 text-sm"
-              onClick={onDelete}
-            >
-              Confirmar
-            </button>
-            <button
-              className="bg-red-500 text-white w-28 h-8 font-medium hover:bg-red-600 text-sm"
-              onClick={onCancel}
-            >
-              Cancelar
-            </button>
-          </div>
+
+          {msg ? (
+            <Alerta status={status} msg={msg} />
+          ) : (
+            <>
+              <p className="w-100 text-center text-red-500">
+                Una vez <span className="font-bold">confirmes</span> la
+                eliminación no podrás recuperar los datos.
+              </p>
+
+              <div className="w-full flex justify-evenly items-center">
+                <button
+                  className="bg-teal-500 text-white w-28 h-8 font-medium hover:bg-teal-600 text-sm"
+                  onClick={onDelete}
+                >
+                  Confirmar
+                </button>
+                <button
+                  className="bg-red-500 text-white w-28 h-8 font-medium hover:bg-red-600 text-sm"
+                  onClick={onCancel}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
