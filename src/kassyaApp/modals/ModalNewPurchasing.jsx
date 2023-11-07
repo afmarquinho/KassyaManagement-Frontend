@@ -41,7 +41,7 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
 
   const dispatch = useDispatch();
 
-  const subTotal = (formValues.amount * formValues.unitCost).toLocaleString();
+  const subTotal = (formValues.amount * formValues.unitCost);
 
   const onClose = () => {
     setActModal(false);
@@ -252,7 +252,7 @@ const onEdit = (e) => {
             <p>
               Subtotal:{" "}
               <span className="font-bold">
-                $ {subTotal <= 0 ? 0 : subTotal}
+                $ {subTotal <= 0 ? 0 : (subTotal).toLocaleString()}
               </span>{" "}
               COP
             </p>
