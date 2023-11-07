@@ -1,4 +1,18 @@
-const ModalDeleteItem = () => {
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Alerta } from "../components";
+
+const ModalDeleteItem = ({ setActModalDelete, selectedItem}) => {
+  const [msg, setMsg] = useState("");
+  const [status, setStatus] = useState("");
+
+  const onCancel = () => {
+    setActModalDelete(false);
+  };
+  const onDelete = () => {
+    console.log(selectedItem.id)
+  };
+
   return (
     <>
       <div className="fixed z-[60] left-0 right-0 bottom-0 top-0 overflow-auto pt-10 bg-black bg-opacity-80 flex justify-center items-center">
@@ -21,17 +35,23 @@ const ModalDeleteItem = () => {
           </div>
           <h4 className="text-center">
             ¿Desea eliminar el artículo <br />
-            <span className="font-bold">nombre del articulo</span>?
+            <span className="font-bold">{selectedItem.name}</span>?
           </h4>
           <p className="w-100 text-center text-red-500">
             Una vez <span className="font-bold">confirmes</span> la eliminación
             no podrás recuperar los datos.
           </p>
           <div className="w-full flex justify-evenly items-center">
-            <button className="bg-teal-500 text-white w-28 h-8 font-medium hover:bg-teal-600 text-sm">
+            <button
+              className="bg-teal-500 text-white w-28 h-8 font-medium hover:bg-teal-600 text-sm"
+              onClick={onDelete}
+            >
               Confirmar
             </button>
-            <button className="bg-red-500 text-white w-28 h-8 font-medium hover:bg-red-600 text-sm">
+            <button
+              className="bg-red-500 text-white w-28 h-8 font-medium hover:bg-red-600 text-sm"
+              onClick={onCancel}
+            >
               Cancelar
             </button>
           </div>
