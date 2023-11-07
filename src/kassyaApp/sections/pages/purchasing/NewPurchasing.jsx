@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PurchasingLayout } from "../../../layout";
 import {
   ModalCompletePurch,
+  ModalDeleteItem,
   ModalEditPurchasing,
   ModalNewPurchasing,
 } from "../../../modals";
@@ -12,6 +13,7 @@ const NewPurchasing = () => {
   const [actModal, setActModal] = useState(false); //?  ModalNewPurchasing
   const [actModalComplete, setActModalComplete] = useState(false); //?  ModalCpmpletePuchasing
   const [actModalEdit, setActModalEdit] = useState(false); //?  ModalEditPuchasing
+  const [actModalDelete, setActModalDelete] = useState(false); //?  ModalDelete
   const [selectedItem, setSelectedItem] = useState({}); //? Almacenar el item a editar
 
   //? state que almacena de manera temporal la orden antes de envidarla al backend
@@ -44,7 +46,6 @@ const NewPurchasing = () => {
     }));
   }, [itemArray]);
 
-
   const onCreate = () => {
     setActModal(true);
     setSelectedItem("");
@@ -53,6 +54,11 @@ const NewPurchasing = () => {
   const onEdit = (item) => {
     setSelectedItem(item);
     setActModal(true);
+  };
+
+  const onDelete = (item) => {
+    setSelectedItem(item);
+    setActModalDelete(true)
   };
 
   const onNew = () => {
@@ -67,9 +73,12 @@ const NewPurchasing = () => {
   return (
     <PurchasingLayout>
       <>
-        {actModal && <ModalNewPurchasing setActModal={setActModal} selectedItem={selectedItem}
-        
-         />}
+        {actModal && (
+          <ModalNewPurchasing
+            setActModal={setActModal}
+            selectedItem={selectedItem}
+          />
+        )}
         {actModalComplete && (
           <ModalCompletePurch
             setActModalComplete={setActModalComplete}
@@ -79,7 +88,11 @@ const NewPurchasing = () => {
         )}
 
         {actModalEdit && (
-          <ModalEditPurchasing setActModalEdit={setActModalEdit} selectedItem={selectedItem} />
+          <ModalEditPurchasing
+            setActModalEdit={setActModalEdit}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+          />
         )}
         <button
           className="h-10 px-5 flex items-center justify-center mb-2 bg-customDeepBlueGray text-white hover:bg-green-900"
@@ -200,7 +213,10 @@ const NewPurchasing = () => {
                       </button>
                     </td>
                     <td>
-                      <button className="text-xs text-red-600 font-bold">
+                      <button
+                        className="text-xs text-red-600 font-bold"
+                        onClick={() => onDelete(item)}
+                      >
                         Eliminar
                       </button>
                     </td>

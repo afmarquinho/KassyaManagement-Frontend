@@ -9,7 +9,7 @@ import {
 } from "../../redux/slices/purchasingSlice";
 import { hasNonEmptyValues } from "../../helpers/hasNonEmptyValues";
 
-const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
+const ModalEditPurchasing = ({ setActModalEdit, selectedItem, setSelectedItem }) => {
   const intialState = {
     name: selectedItem.name,
     ref: selectedItem.ref,
@@ -33,10 +33,12 @@ const ModalEditPurchasing = ({ setActModalEdit, selectedItem }) => {
     //? Me aseguro que al cerrar el modal no se vaya una alerta sin setear que me vaya a afectar en otro formulario
     dispatch(setMsg(""));
     dispatch(setStatus(""));
+    setSelectedItem({})
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setSelectedItem({})
     if (!hasNonEmptyValues(formValues)) {
       dispatch(setMsg("Diligencie todos los campos del artículo"));
       dispatch(setStatus("error"));
