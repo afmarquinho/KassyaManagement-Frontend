@@ -1,9 +1,9 @@
 
 const Alerta = ({ status, msg }) => {
   return (
-    <div className="py-1">
+    <div className="py-1 w-full">
       <p
-        className={`text-md text-center text-white ${
+        className={`py-1 text-md text-center text-white ${
           status === "warning"
             ? "bg-orange-500"
             : status === "error"

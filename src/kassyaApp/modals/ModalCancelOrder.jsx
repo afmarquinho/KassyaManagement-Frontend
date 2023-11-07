@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Alerta } from "../components";
+
 
 const ModalCancelOrder = ({ setActModalCancel, setRequirements }) => {
 const [msg, setMsg] = useState("");
@@ -15,8 +17,11 @@ const [status, setStatus] = useState("");
 
   const onRemove = () => {
     setRequirements(initalValues)
-    setMsg("Orden Cancelada")
+    setMsg("Orden Cancelada con éxito")
     setStatus("success")
+    setTimeout(() => {
+      setActModalCancel(false)
+    }, 2000);
   };
 
   return <>

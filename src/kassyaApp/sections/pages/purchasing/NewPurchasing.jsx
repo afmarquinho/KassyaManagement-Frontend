@@ -66,7 +66,7 @@ const NewPurchasing = () => {
   };
 
   const onCancel = () => {
-    setActModalCancel(true);
+   setActModalCancel(true)
   };
 
   const onNew = () => {
@@ -159,7 +159,7 @@ const NewPurchasing = () => {
                     </button>
                     <button
                       className="rounded-md p-2 mx-1 text-xs bg-red-500 text-white hover:bg-teal-700"
-                      onClick={() => onCancel}
+                      onClick={onCancel}
                     >
                       Cancelar
                     </button>
