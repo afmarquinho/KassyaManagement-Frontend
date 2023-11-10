@@ -10,12 +10,17 @@ const PurchasingViewPage = () => {
   const dispatch = useDispatch();
 
   const order = useSelector((state) => state.purchasing.order);
-   const suppliers = useSelector((state) => state.supplier.data);
+  const suppliers = useSelector((state) => state.supplier.data);
   const { items } = order;
+
+  //TODO: Poner esta funcion en los helpers y tambien usarla en el listado de las 
+  const findSupplier = (id, array) => {
+    const supplierName = array.find(obj => obj._id === id);
+    return supplierName;
+  };
 
   useEffect(() => {
     dispatch(getOrderAsync(params.id));
-    console.log(items);
   }, []);
   return (
     <PurchasingLayout>
@@ -57,19 +62,35 @@ const PurchasingViewPage = () => {
               Artículos de la órden
             </h3>
             {items.map((item) => (
-              <div key={item._id}>
-                <p><span className="font-bold">Nombre:</span>{" "}{item.name}</p>
-                <p><span className="font-bold">Cantidad:</span>{" "}{item.amount}</p>
-                <p><span className="font-bold">Área de la requisición:</span>{" "}{item.department}</p>
-                <p><span className="font-bold">Referencia:</span>{" "}{item.ref}</p>
-                <p><span className="font-bold">Subtotal:</span>{" "}{item.subtotal}</p>
-                
-                
-                
-                
-                
-                </div>
-              
+              <div key={item._id} className="mb-5">
+                <p>
+                  <span className="font-bold">Nombre:</span> {item.name}
+                </p>
+                <p>
+                  <span className="font-bold">Área de la requisición:</span>{" "}
+                  {item.department}
+                </p>
+                <p>
+                  <span className="font-bold">Referencia:</span> {item.ref}
+                </p>
+                <p>
+                  {/* <span className="font-bold">Proveedor:</span> {findSupplier(item.supplier, suppliers )} */}
+                </p>
+                <p>
+                  <span className="font-bold">Unidad:</span> {item.unit}
+                </p>
+                <p>
+                  <span className="font-bold">Cantidad:</span> {item.amount}
+                </p>
+                <p>
+                  <span className="font-bold">Costo Unitario:</span>{" "}
+                  {item.unitCost}
+                </p>
+                <p>
+                  <span className="font-bold">Subtotal:</span> {item.subTotal}
+                </p>
+                <hr />
+              </div>
             ))}
           </div>
         </div>
