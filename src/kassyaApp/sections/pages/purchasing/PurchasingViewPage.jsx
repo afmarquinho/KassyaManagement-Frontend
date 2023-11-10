@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderAsync } from "../../../../redux/thunks/purchasingThunks";
 import { formatDate } from "../../../../helpers/formatDate";
+import styled from "styled-components";
+
+
+
 
 const PurchasingViewPage = () => {
   const params = useParams();
@@ -11,24 +15,36 @@ const PurchasingViewPage = () => {
 
   const order = useSelector((state) => state.purchasing.order);
   const suppliers = useSelector((state) => state.supplier.data);
-  const { items } = order;
+
 
   //TODO: Poner esta funcion en los helpers y tambien usarla en el listado de las 
   const findSupplier = (id, array) => {
     const supplierName = array.find(obj => obj._id === id);
-    return supplierName;
+    return supplierName.businessName;
   };
 
   useEffect(() => {
     dispatch(getOrderAsync(params.id));
+
   }, []);
   return (
     <PurchasingLayout>
       <>
         <div className="p-10 bg-white">
-          <h3 className="mb-5">
+          <h3 className="px-5 italic bg-customBlueGray text-white">
             <span>ÓRDEN:</span> {order.orderNumber}
           </h3>
+          <hr className="mb-5"/>
+          <div className="w-full flex gap-5 justify-evenly">
+            <P className="relative">Creada</P>
+            <P className="relative">Rechazada</P>
+            <P className="relative">Aprobada</P>
+            <P className="relative">En pago</P>
+            <P className="relative">En espera</P>
+            <P className="relative">En bodega</P>
+          </div>
+
+
           <div className="mb-4 w-full flex flex-col md:flex-row gap-5 items-center justy justify-between">
             <p className="w-full md:w-1/2 font-bold">
               Estado de la Órden:{" "}
@@ -61,37 +77,28 @@ const PurchasingViewPage = () => {
             <h3 className="px-5 uppercase italic bg-customDeepBlue text-customMainColor">
               Artículos de la órden
             </h3>
-            {items.map((item) => (
-              <div key={item._id} className="mb-5">
-                <p>
-                  <span className="font-bold">Nombre:</span> {item.name}
-                </p>
-                <p>
-                  <span className="font-bold">Área de la requisición:</span>{" "}
-                  {item.department}
-                </p>
-                <p>
-                  <span className="font-bold">Referencia:</span> {item.ref}
-                </p>
-                <p>
-                  {/* <span className="font-bold">Proveedor:</span> {findSupplier(item.supplier, suppliers )} */}
-                </p>
-                <p>
-                  <span className="font-bold">Unidad:</span> {item.unit}
-                </p>
-                <p>
-                  <span className="font-bold">Cantidad:</span> {item.amount}
-                </p>
-                <p>
-                  <span className="font-bold">Costo Unitario:</span>{" "}
-                  {item.unitCost}
-                </p>
-                <p>
-                  <span className="font-bold">Subtotal:</span> {item.subTotal}
-                </p>
-                <hr />
-              </div>
-            ))}
+            {
+               order.items && order.items.map((item)=> (
+                <div key={item._id}>
+                  <p><span className="font-bold">Nombre: {" "}</span>{item.name}</p>
+                  <p><span className="font-bold">Referencia: {" "}</span>{item.ref}</p>
+                  <p><span className="font-bold">Proveedor: {" "}</span>{findSupplier(item.supplier, suppliers)}</p>
+                  <p><span className="font-bold">Unidad: {" "}</span>{item.unit}</p>
+                  <p><span className="font-bold">Cantidad: {" "}</span>{item.amount.toLocaleString()}</p>
+                  <p><span className="font-bold">Costo Unitario: {" "}</span>{`$ ${item.unitCost.toLocaleString()}`}</p>
+                  <p><span className="font-bold">Área de la requisicón: {" "}</span>{item.department}</p>
+                  <p><span className="font-bold">Subtotal: {" "}</span>{`$ ${item.subTotal.toLocaleString()}`}</p>
+                  <hr className="mb-5"/>
+                </div>
+
+              ))
+            }
+         
+            
+
+
+              
+            
           </div>
         </div>
       </>
@@ -100,3 +107,9 @@ const PurchasingViewPage = () => {
 };
 
 export default PurchasingViewPage;
+
+const P = styled.p`
+
+
+
+`

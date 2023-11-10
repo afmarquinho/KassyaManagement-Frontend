@@ -56,8 +56,6 @@ export const getOrderAsync = (id) => {
         `http://localhost:4000/api/purchasing/get-order/${id}`
       );
       dispatch(getOrder(response.data.data))
-      dispatch(setMsg(response.data.msg));
-      dispatch(setStatus(response.data.status));
     } catch (error) {
       console.log(error);
     }
