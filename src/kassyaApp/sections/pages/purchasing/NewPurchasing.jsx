@@ -7,8 +7,11 @@ import {
   ModalEditPurchasing,
   ModalNewPurchasing,
 } from "../../../modals";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { addNewAsync } from "../../../../redux/thunks/purchasingThunks";
+import { Alerta, Spinner2 } from "../../../components";
+import { dataValidation } from "../../../../helpers/hasNonEmptyValues";
 
 const NewPurchasing = () => {
   const [actModal, setActModal] = useState(false); //?  ModalNewPurchasing
@@ -16,7 +19,8 @@ const NewPurchasing = () => {
   const [actModalEdit, setActModalEdit] = useState(false); //?  ModalEditPuchasing
   const [actModalDelete, setActModalDelete] = useState(false); //?  ModalDelete
   const [actModalCancel, setActModalCancel] = useState(false); //?  ModalCancelOrder
-  const [selectedItem, setSelectedItem] = useState({}); //? Almacenar el item a editar
+  const [estado, setEstado] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
   //? state que almacena de manera temporal la orden antes de envidarla al backend
   //TODO: poner este state en localstorage
@@ -32,9 +36,15 @@ const NewPurchasing = () => {
   const [requirements, setRequirements] = useState(initalValues);
   const count = useSelector((state) => state.purchasing.count);
   const itemArray = useSelector((state) => state.purchasing.itemArray);
+  const statusAlert = useSelector((state) => state.purchasing.status);
+  const msg = useSelector((state) => state.purchasing.msg);
   const order = `OC${count + 1}`;
   const { orderNumber, items, status, paymentMethod, comments, total } =
     requirements;
+  const [selectedItem, setSelectedItem] = useState({}); //? Almacenar el item a editar
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //? consolida los subtotales es un variable para asignarlos al state
@@ -66,7 +76,7 @@ const NewPurchasing = () => {
   };
 
   const onCancel = () => {
-   setActModalCancel(true)
+    setActModalCancel(true);
   };
 
   const onNew = () => {
@@ -76,6 +86,44 @@ const NewPurchasing = () => {
       status: "Creada",
       orderNumber: order,
     }));
+  };
+
+  const onProcess = () => {
+    //? antes de mandar al backend debo eliminar el k,ey id de items, eso solo no necesité en el front
+    const newItemArray = itemArray.map(({ id, ...restOfKeys }) => {
+      return restOfKeys;
+    });
+    setRequirements((prevState) => ({
+      ...prevState,
+      items: newItemArray,
+    }));
+    const errorAlert = dataValidation(requirements);
+    if (errorAlert) {
+      alert(errorAlert);
+      return;
+    }
+
+    if (requirements.items.length === 0) {
+      alert("Debe haber al menos 1 (un) arrtículo en el pedido");
+      return;
+    }
+
+    dispatch(addNewAsync(requirements));
+    setLoading(true);
+    setMensaje("Orden creada con éxito");
+    setEstado("success");
+    
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    setTimeout(() => {
+      setMensaje("");
+      setEstado("");
+    }, 5000);
+    setTimeout(() => {
+      setRequirements(initalValues)
+    }, 6000);
   };
 
   return (
@@ -163,87 +211,97 @@ const NewPurchasing = () => {
                     >
                       Cancelar
                     </button>
-                    <button className="rounded-md p-2 mx-1 text-xs bg-green-600 text-white hover:bg-teal-700">
+                    <button
+                      className="rounded-md p-2 mx-1 text-xs bg-green-600 text-white hover:bg-teal-700"
+                      onClick={onProcess}
+                    >
                       Procesar
                     </button>
                   </td>
                 </tr>
               </tbody>
             </Table>
-            <Table className="w-full text-sm text-start mt-5">
-              <caption className="text-start font-bold italic bg-customBlueGray text-white">
-                Items de la Órden
-              </caption>
-              <caption>
-                <div className="flex">
-                  <button
-                    className="text-sm flex gap-1 w-40 py-2 items-center justify-start font-bold"
-                    onClick={onCreate}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                      className="w-4 h-4"
+
+            {loading ? (
+              <Spinner2 />
+            ) : mensaje ? (
+              <Alerta status={estado} msg={mensaje} />
+            ) : (
+              <Table className="w-full text-sm text-start mt-5">
+                <caption className="text-start font-bold italic bg-customBlueGray text-white">
+                  Items de la Órden
+                </caption>
+                <caption>
+                  <div className="flex">
+                    <button
+                      className="text-sm flex gap-1 w-40 py-2 items-center justify-start font-bold"
+                      onClick={onCreate}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 4.5v15m7.5-7.5h-15"
-                      />
-                    </svg>
-                    Agregar
-                  </button>
-                </div>
-              </caption>
-              <thead>
-                <tr>
-                  <th className="text-start">Nombre</th>
-                  <th className="text-start">Referencia</th>
-                  <th className="text-start">Proveedor</th>
-                  <th className="text-start">Cantiadad</th>
-                  <th className="text-start">Unidad</th>
-                  <th className="text-start">Costo Unitario</th>
-                  <th className="text-start">Subtotal</th>
-                  <th className="text-start">Departamento</th>
-                  <th className="text-start"></th>
-                  <th className="text-start"></th>
-                  <th className="text-start"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => (
-                  <tr key={item.ref}>
-                    <td>{item.name}</td>
-                    <td>{item.ref}</td>
-                    <td>{item.supplier}</td>
-                    <td>{item.amount.toLocaleString()}</td>
-                    <td>{item.unit.toLocaleString()}</td>
-                    <td>{`$ ${item.unitCost.toLocaleString()}`}</td>
-                    <td>{`$ ${item.subTotal.toLocaleString()}`}</td>
-                    <td>{item.department}</td>
-                    <td>
-                      <button
-                        className="text-xs text-blue-600 font-bold"
-                        onClick={() => onEdit(item)}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="w-4 h-4"
                       >
-                        Editar
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        className="text-xs text-red-600 font-bold"
-                        onClick={() => onDelete(item)}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                      Agregar
+                    </button>
+                  </div>
+                </caption>
+                <thead>
+                  <tr>
+                    <th className="text-start">Nombre</th>
+                    <th className="text-start">Referencia</th>
+                    <th className="text-start">Proveedor</th>
+                    <th className="text-start">Cantiadad</th>
+                    <th className="text-start">Unidad</th>
+                    <th className="text-start">Costo Unitario</th>
+                    <th className="text-start">Subtotal</th>
+                    <th className="text-start">Departamento</th>
+                    <th className="text-start"></th>
+                    <th className="text-start"></th>
+                    <th className="text-start"></th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {items.map((item) => (
+                    <tr key={item.ref}>
+                      <td>{item.name}</td>
+                      <td>{item.ref}</td>
+                      <td>{item.supplier}</td>
+                      <td>{item.amount.toLocaleString()}</td>
+                      <td>{item.unit.toLocaleString()}</td>
+                      <td>{`$ ${item.unitCost.toLocaleString()}`}</td>
+                      <td>{`$ ${item.subTotal.toLocaleString()}`}</td>
+                      <td>{item.department}</td>
+                      <td>
+                        <button
+                          className="text-xs text-blue-600 font-bold"
+                          onClick={() => onEdit(item)}
+                        >
+                          Editar
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          className="text-xs text-red-600 font-bold"
+                          onClick={() => onDelete(item)}
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </>
         )}
       </>

@@ -6,3 +6,4 @@ export { default as SupplierViewPage } from "./supplier/SupplierViewPage";
 export { default as AnalysisPage } from "./supplier/AnalysisPage";
 export { default as NewPurchasing } from "./purchasing/NewPurchasing";
 export { default as PurchasingListPage } from "./purchasing/PurchasingListPage";
+export { default as PurchasingViewPage } from "./purchasing/PurchasingViewPage";

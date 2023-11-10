@@ -4,10 +4,10 @@ import {
  AddItemPage,
   AddSupplierPage,
   AnalysisPage,
-  InventoryListPage,
-  
+  InventoryListPage,  
   NewPurchasing,
   PurchasingListPage,
+  PurchasingViewPage,
   SupplierListPage,
   SupplierViewPage
 } from "../kassyaApp/sections/pages";
@@ -30,6 +30,7 @@ const AppRouter = () => {
             <Route path="supplier/statistics" element={<AnalysisPage />} />
             <Route path="purchasing" element={<PurchasingListPage />} />
             <Route path="purchasing/new" element={<NewPurchasing />} />
+            <Route path="purchasing/:id" element={<PurchasingViewPage />} />
             
           </Route>
         </Routes>

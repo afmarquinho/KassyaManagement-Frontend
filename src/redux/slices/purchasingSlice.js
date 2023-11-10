@@ -8,6 +8,7 @@ export const purchasingSlice = createSlice({
     msg: "",
     count: 0,
     itemArray: [], //? array que en el front de manera temporal todos los articulos de un nuevo pedido
+    order: {},
   },
   reducers: {
     //? actulizar el status de la data
@@ -52,6 +53,9 @@ export const purchasingSlice = createSlice({
         (item) => item.id !== deleteItemId
       );
     },
+    getOrder: (state, action) => {
+      state.order = action.payload;
+    },
   },
 });
 
@@ -64,5 +68,6 @@ export const {
   setItemArray,
   updateItem,
   deleteItem,
+  getOrder,
 } = purchasingSlice.actions;
 export default purchasingSlice.reducer;

@@ -6,6 +6,7 @@ import { companyDepartments } from "../../db/db";
 import useForm from "../../helpers/useForm";
 import { generarID } from "../../helpers/generarID";
 
+
 const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
 
 
@@ -38,7 +39,7 @@ const ModalNewPurchasing = ({ setActModal, selectedItem="" }) => {
   const suppliers = useSelector((state) => state.supplier.data);
   const msg = useSelector((state) => state.purchasing.msg);
   const status = useSelector((state) => state.purchasing.status);
-
+ 
   const dispatch = useDispatch();
 
   const subTotal = (formValues.amount * formValues.unitCost);
@@ -207,7 +208,7 @@ const onEdit = (e) => {
                 onChange={onInputChange}
               >
                 <option value="">-- Seleccione --</option>
-                <option value="unidad">Unidad</option>
+                <option value="uni">Unidad</option>
                 <option value="g">Gramos</option>
                 <option value="l">Litros</option>
                 <option value=",k">Kilogramos</option>

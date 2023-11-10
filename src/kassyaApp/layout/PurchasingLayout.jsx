@@ -11,7 +11,6 @@ import { listSuppliersAsync } from "../../redux/thunks/supplierThunks";
 const PurchasingLayout = ({ children }) => {
   const [mostrarMenu, setMostarMenu] = useState(false);
   const data = useSelector((state) => state.purchasing.data);
-  const count = useSelector((state) => state.purchasing.count);
 
   const dispatch = useDispatch();
 
@@ -20,7 +19,7 @@ const PurchasingLayout = ({ children }) => {
     dispatch(countAsync());
     //? es necesario hacer la solicitud de provedores al bacen para llenar el status, de lo contrario se tendría que abrir siempre el modulo de proveedores para llenar el state
     dispatch(listSuppliersAsync());
-  }, []);
+  }, [data]);
 
   return (
     <>

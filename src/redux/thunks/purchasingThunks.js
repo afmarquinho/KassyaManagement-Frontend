@@ -5,6 +5,7 @@ import {
   setMsg,
   setStatus,
   setCount,
+  getOrder,
 } from "../slices/purchasingSlice";
 
 export const listPurchasingAsync = () => {
@@ -30,8 +31,9 @@ export const addNewAsync = (item) => {
       dispatch(addNew(response.data.data));
       dispatch(setMsg(response.data.msg));
       dispatch(setStatus(response.data.status));
-    } catch (error) {}
-    console.log(error);
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 export const countAsync = () => {
@@ -41,6 +43,21 @@ export const countAsync = () => {
         "http://localhost:4000/api/purchasing/count-orders"
       );
       dispatch(setCount(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getOrderAsync = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/api/purchasing/get-order/${id}`
+      );
+      dispatch(getOrder(response.data.data))
+      dispatch(setMsg(response.data.msg));
+      dispatch(setStatus(response.data.status));
     } catch (error) {
       console.log(error);
     }
