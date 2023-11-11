@@ -56,6 +56,12 @@ export const purchasingSlice = createSlice({
     getOrder: (state, action) => {
       state.order = action.payload;
     },
+    updateData: (state, action) => {
+      const updateOrder = action.payload;
+      state.data = state.data.map((item) =>
+      item._id === updateOrder._id ? updateOrder : item
+    );
+    },
   },
 });
 
@@ -69,5 +75,6 @@ export const {
   updateItem,
   deleteItem,
   getOrder,
+updateData
 } = purchasingSlice.actions;
 export default purchasingSlice.reducer;

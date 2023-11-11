@@ -6,7 +6,9 @@ import {
   setStatus,
   setCount,
   getOrder,
+  updateData,
 } from "../slices/purchasingSlice";
+
 
 export const listPurchasingAsync = () => {
   return async (dispatch) => {
@@ -53,9 +55,23 @@ export const getOrderAsync = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/purchasing/get-order/${id}`
+        `http://localhost:4000/api/purchasing/${id}`
       );
-      dispatch(getOrder(response.data.data))
+      dispatch(getOrder(response.data.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const updateOrderAsync = (id, updatedOrder) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:4000/api/purchasing/${id}`,
+        updatedOrder
+      );
+      dispatch(updateData(response.data.data));
+
     } catch (error) {
       console.log(error);
     }
