@@ -33,7 +33,7 @@
 
 1. **Clonar el Repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/kassya-management.git
+   git clone https://github.com/afmarquinho/KassyaManagement-Frontend.git
    cd kassya-management
    ```
 
@@ -74,7 +74,7 @@
 - **Análisis en Tiempo Real:**
   - Utilización de informes detallados y análisis en tiempo real para tomar decisiones informadas y optimizar la gestión logística.
 
-Este repositorio contiene el código fuente completo de Kassya Management, una aplicación diseñada para transformar la gestión logística. ¡Explora el potencial de la eficiencia logística avanzada hoy!
+Este repositorio contiene el código fuente completo de Kassya Management FrontEnd, una aplicación diseñada para transformar la gestión logística. ¡Explora el potencial de la eficiencia logística avanzada hoy!
 
 
 
