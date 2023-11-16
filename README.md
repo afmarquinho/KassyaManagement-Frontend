@@ -57,7 +57,7 @@
    - Frontend:
      ```bash
      cd frontend
-     npm start
+     npm run build
      ```
 
 ### Características Destacadas:
