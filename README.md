@@ -77,7 +77,3 @@
 Este repositorio contiene el código fuente completo de Kassya Management FrontEnd, una aplicación diseñada para transformar la gestión logística. ¡Explora el potencial de la eficiencia logística avanzada hoy!
 
 
-
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
